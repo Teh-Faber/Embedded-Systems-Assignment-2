@@ -1,0 +1,5 @@
+﻿image_id,image_path,true_id,true_label,comparison,cnn_status,cnn_prediction_id,cnn_prediction,cnn_correct,cnn_infer_us,cnn_prep_us,cnn_dfx_us,cnn_scores,snn_status,snn_prediction_id,snn_prediction,snn_correct,snn_infer_us,snn_prep_us,snn_dfx_us,snn_scores,transport_errors
+1,Circle/test_00000.png,0,Circle,incomplete_pair,protocol_test,,,,,,,,protocol_test,,,,,,,,
+501,Figure Eight/test_00000.png,1,Figure Eight,incomplete_pair,protocol_test,,,,,,,,protocol_test,,,,,,,,
+1001,Square/test_00000.png,2,Square,incomplete_pair,protocol_test,,,,,,,,protocol_test,,,,,,,,
+1501,Triangle/test_00000.png,3,Triangle,incomplete_pair,protocol_test,,,,,,,,protocol_test,,,,,,,,

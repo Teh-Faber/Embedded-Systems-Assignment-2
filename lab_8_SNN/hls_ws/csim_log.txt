@@ -1,0 +1,217 @@
+
+****** vitis-run v2026.1 (64-bit)
+  **** SW Build 6511674 on 2026-06-16-13:14:00
+  **** Start of session at: Sun Nov  8 16:11:11 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+  **** HLS Build v2026.1 6493734
+
+INFO: [HLS 200-2005] Using work_dir C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/hls_ws/snn_mlp 
+
+INFO: [HLS 200-2176] Writing Vitis IDE component file C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/hls_ws/snn_mlp/vitis-comp.json
+
+INFO: [HLS 200-10] Creating and opening component 'C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/hls_ws/snn_mlp'.
+
+INFO: [HLS 200-2174] Applying component config ini file hls_config.cfg
+
+INFO: [HLS 200-1465] Applying config ini 'syn.file=C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/code/snn_mlp.cpp' from hls_config.cfg(7)
+
+INFO: [HLS 200-10] Adding design file 'C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/code/snn_mlp.cpp' to the project
+
+INFO: [HLS 200-1465] Applying config ini 'syn.file=C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/code/fpga_weights.h' from hls_config.cfg(8)
+
+INFO: [HLS 200-10] Adding design file 'C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/code/fpga_weights.h' to the project
+
+INFO: [HLS 200-1465] Applying config ini 'tb.file=C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/code/snn_mlp_tb.cpp' from hls_config.cfg(9)
+
+INFO: [HLS 200-10] Adding test bench file 'C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/code/snn_mlp_tb.cpp' to the project
+
+INFO: [HLS 200-1465] Applying config ini 'syn.top=snn_mlp' from hls_config.cfg(6)
+
+INFO: [HLS 200-1465] Applying config ini 'flow_target=vivado' from hls_config.cfg(4)
+
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+
+Resolution: For help on HLS 200-1505 see docs.amd.com/access/sources/dita/topic?Doc_Version=2026.1%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+
+WARNING: [HLS 200-2149] The 'flow_target' option is deprecated and will be removed in a future release. For 'vivado' value you may simply remove the option for equivalent behavior.
+
+INFO: [HLS 200-1465] Applying config ini 'part=xc7z020clg400-1' from hls_config.cfg(1)
+
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+
+INFO: [HLS 200-1465] Applying config ini 'clock=10ns' from hls_config.cfg(5)
+
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+
+INFO: [HLS 200-1465] Applying config ini 'package.output.format=ip_catalog' from hls_config.cfg(10)
+
+INFO: [HLS 200-2176] Writing Vitis IDE component file C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/hls_ws/snn_mlp/vitis-comp.json
+
+INFO: [SIM 211-2] *************** CSIM start ***************
+
+INFO: [HLS 200-2191] C-Simulation will use clang-16 as the compiler
+
+INFO: [HLS 200-2036] Building debug C Simulation binaries
+
+   Compiling ../../../../../SNN_guest_lecture/code/snn_mlp_tb.cpp in debug mode
+   Compiling ../../../../../SNN_guest_lecture/code/snn_mlp.cpp in debug mode
+   Generating csim.exe
+In file included from ../../../../../SNN_guest_lecture/code/snn_mlp_tb.cpp:10:
+In file included from C:/AMDDesignTools/2026.1/Vitis/include\ap_int.h:10:
+In file included from C:/AMDDesignTools/2026.1/Vitis/include\etc/ap_common.h:668:
+In file included from C:/AMDDesignTools/2026.1/Vitis/include\etc/ap_private.h:68:
+In file included from C:/AMDDesignTools/2026.1/Vitis/include\hls_half.h:26:
+In file included from C:/AMDDesignTools/2026.1/Vitis/include/etc/hls_half_fpo.h:19:
+In file included from C:/AMDDesignTools/2026.1/Vitis/include\hls_fpo.h:140:
+In file included from C:/AMDDesignTools/2026.1/Vitis/include/floating_point_v7_1_bitacc_cmodel.h:150:
+C:/AMDDesignTools/2026.1/Vitis/include\gmp.h:58:9: warning: '__GMP_LIBGMP_DLL' macro redefined [-Wmacro-redefined]
+#define __GMP_LIBGMP_DLL  0
+        ^
+C:/AMDDesignTools/2026.1/Vitis/include/floating_point_v7_1_bitacc_cmodel.h:142:9: note: previous definition is here
+#define __GMP_LIBGMP_DLL 1
+        ^
+1 warning generated.
+In file included from ../../../../../SNN_guest_lecture/code/snn_mlp.cpp:8:
+In file included from C:/AMDDesignTools/2026.1/Vitis/include\ap_int.h:10:
+In file included from C:/AMDDesignTools/2026.1/Vitis/include\etc/ap_common.h:668:
+In file included from C:/AMDDesignTools/2026.1/Vitis/include\etc/ap_private.h:68:
+In file included from C:/AMDDesignTools/2026.1/Vitis/include\hls_half.h:26:
+In file included from C:/AMDDesignTools/2026.1/Vitis/include/etc/hls_half_fpo.h:19:
+In file included from C:/AMDDesignTools/2026.1/Vitis/include\hls_fpo.h:140:
+In file included from C:/AMDDesignTools/2026.1/Vitis/include/floating_point_v7_1_bitacc_cmodel.h:150:
+C:/AMDDesignTools/2026.1/Vitis/include\gmp.h:58:9: warning: '__GMP_LIBGMP_DLL' macro redefined [-Wmacro-redefined]
+#define __GMP_LIBGMP_DLL  0
+        ^
+C:/AMDDesignTools/2026.1/Vitis/include/floating_point_v7_1_bitacc_cmodel.h:142:9: note: previous definition is here
+#define __GMP_LIBGMP_DLL 1
+        ^
+1 warning generated.
+
+
+Class: Full Cable | using 10 files
+
+[1] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Full Cable/12_frame_000055_aug01_LightingOnly.txt | true=Full Cable | pred=Full Cable | logits=[576, -175, -569, -772]
+
+[2] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Full Cable/12_frame_000055_aug02_GaussianBlur.txt | true=Full Cable | pred=Full Cable | logits=[553, -234, -480, -687]
+
+[3] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Full Cable/12_frame_000055_aug03_MotionBlur.txt | true=Full Cable | pred=Full Cable | logits=[576, -175, -569, -772]
+
+[4] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Full Cable/12_frame_000055_aug04_FogHaze.txt | true=Full Cable | pred=Full Cable | logits=[553, -234, -480, -687]
+
+[5] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Full Cable/12_frame_000055_aug05_OpticalDistortion.txt | true=Full Cable | pred=Full Cable | logits=[576, -175, -569, -772]
+
+[6] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Full Cable/12_frame_000055_aug06_CLAHE.txt | true=Full Cable | pred=Full Cable | logits=[553, -234, -480, -687]
+
+[7] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Full Cable/12_frame_000055_aug07_Sharpen.txt | true=Full Cable | pred=Full Cable | logits=[576, -175, -569, -772]
+
+[8] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Full Cable/12_frame_000055_aug08_MedianBlur.txt | true=Full Cable | pred=Full Cable | logits=[553, -234, -480, -687]
+
+[9] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Full Cable/12_frame_000055_aug09_Defocus.txt | true=Full Cable | pred=Full Cable | logits=[553, -234, -480, -687]
+
+[10] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Full Cable/12_frame_000055_aug10_ISONoise.txt | true=Full Cable | pred=Full Cable | logits=[576, -175, -569, -772]
+
+
+
+Class: Left End | using 10 files
+
+[11] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Left End/13_frame_000245_aug01_LightingOnly.txt | true=Left End | pred=Left End | logits=[-368, 616, -443, -518]
+
+[12] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Left End/13_frame_000245_aug02_GaussianBlur.txt | true=Left End | pred=Left End | logits=[-368, 616, -443, -518]
+
+[13] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Left End/13_frame_000245_aug03_MotionBlur.txt | true=Left End | pred=Left End | logits=[-368, 616, -443, -518]
+
+[14] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Left End/13_frame_000245_aug04_FogHaze.txt | true=Left End | pred=Left End | logits=[-345, 675, -532, -603]
+
+[15] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Left End/13_frame_000245_aug05_OpticalDistortion.txt | true=Left End | pred=Right End | logits=[-209, -279, 613, -404]
+
+[16] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Left End/13_frame_000245_aug06_CLAHE.txt | true=Left End | pred=Left End | logits=[-187, 389, -190, -551]
+
+[17] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Left End/13_frame_000245_aug07_Sharpen.txt | true=Left End | pred=Left End | logits=[-368, 616, -443, -518]
+
+[18] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Left End/13_frame_000245_aug08_MedianBlur.txt | true=Left End | pred=Left End | logits=[-368, 616, -443, -518]
+
+[19] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Left End/13_frame_000245_aug09_Defocus.txt | true=Left End | pred=Left End | logits=[-384, 564, -341, -432]
+
+[20] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Left End/13_frame_000245_aug10_ISONoise.txt | true=Left End | pred=Left End | logits=[-345, 675, -532, -603]
+
+
+
+Class: No Cable | using 10 files
+
+[21] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/No Cable/7_frame_002180_aug01_LightingOnly.txt | true=No Cable | pred=No Cable | logits=[-387, -311, -531, 760]
+
+[22] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/No Cable/7_frame_002180_aug02_GaussianBlur.txt | true=No Cable | pred=No Cable | logits=[-337, -299, -576, 664]
+
+[23] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/No Cable/7_frame_002180_aug03_MotionBlur.txt | true=No Cable | pred=No Cable | logits=[-269, -250, -816, 597]
+
+[24] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/No Cable/7_frame_002180_aug04_FogHaze.txt | true=No Cable | pred=No Cable | logits=[-265, -426, -561, 772]
+
+[25] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/No Cable/7_frame_002180_aug05_OpticalDistortion.txt | true=No Cable | pred=No Cable | logits=[-265, -426, -561, 772]
+
+[26] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/No Cable/7_frame_002180_aug06_CLAHE.txt | true=No Cable | pred=Full Cable | logits=[396, -634, -480, 40]
+
+[27] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/No Cable/7_frame_002180_aug07_Sharpen.txt | true=No Cable | pred=No Cable | logits=[-43, -513, -537, 609]
+
+[28] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/No Cable/7_frame_002180_aug08_MedianBlur.txt | true=No Cable | pred=No Cable | logits=[-306, -359, -616, 766]
+
+[29] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/No Cable/7_frame_002180_aug09_Defocus.txt | true=No Cable | pred=Left End | logits=[-335, 318, -718, -22]
+
+[30] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/No Cable/7_frame_002180_aug10_ISONoise.txt | true=No Cable | pred=No Cable | logits=[-208, -487, -501, 752]
+
+
+
+Class: Right End | using 10 files
+
+[31] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Right End/10_0001_aug01_LightingOnly.txt | true=Right End | pred=Right End | logits=[-86, -115, 359, -375]
+
+[32] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Right End/10_0001_aug02_GaussianBlur.txt | true=Right End | pred=Right End | logits=[-390, -291, 749, -585]
+
+[33] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Right End/10_0001_aug03_MotionBlur.txt | true=Right End | pred=Right End | logits=[-333, -107, 460, -411]
+
+[34] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Right End/10_0001_aug04_FogHaze.txt | true=Right End | pred=Right End | logits=[-299, -265, 666, -486]
+
+[35] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Right End/10_0001_aug05_OpticalDistortion.txt | true=Right End | pred=Right End | logits=[-256, -410, 707, -562]
+
+[36] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Right End/10_0001_aug06_CLAHE.txt | true=Right End | pred=Right End | logits=[-390, -291, 749, -585]
+
+[37] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Right End/10_0001_aug07_Sharpen.txt | true=Right End | pred=Right End | logits=[-222, -82, 403, -453]
+
+[38] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Right End/10_0001_aug08_MedianBlur.txt | true=Right End | pred=Right End | logits=[-247, 37, 246, -545]
+
+[39] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Right End/10_0001_aug09_Defocus.txt | true=Right End | pred=Right End | logits=[-390, -291, 749, -585]
+
+[40] C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features/Right End/10_0001_aug10_ISONoise.txt | true=Right End | pred=Right End | logits=[-256, -410, 707, -562]
+
+
+
+====================================
+
+Total tested: 40
+
+Correct: 37
+
+Accuracy: 92.5%
+
+
+
+Confusion Matrix
+
+(rows=true, cols=pred)
+
+10 0 0 0 
+
+0 9 1 0 
+
+0 0 10 0 
+
+1 1 0 8 
+
+INFO: [SIM 211-1] CSim done with 0 errors.
+
+INFO: [SIM 211-3] *************** CSIM finish ***************
+
+INFO: [HLS 200-112] Total CPU user time: 2 seconds. Total CPU system time: 3 seconds. Total elapsed time: 16.944 seconds; peak allocated memory: 168.289 MB.
+
+INFO: [vitis-run 60-791] Total elapsed time: 0h 0m 21s
