@@ -10,13 +10,12 @@ Deadline: 23.11.2026 23:59. Assignment text is in `docs/assignment_2.pdf`.
 | Folder | What is in it |
 |---|---|
 | `cnn/` | DS-CNN training scripts, HLS source, testbench, weights and `hls_config.cfg` |
-| `snn/` | SNN MLP training script, HLS source, testbench, weights and `hls_config.cfg` |
+| `snn/` | SNN MLP training script, HLS source, testbench, weights and `hls_config.cfg`. `lab_app/` is the PS app and PC script from lab 8 |
 | `ps/` | Bare-metal C for the Zynq PS: UART framing, main loop, UART test app |
 | `pc/` | Python scripts that send images and compare results |
 | `pl/` | Exported IP, Vivado project, Vitis workspace, constraints (see `pl/README.md`) |
 | `data/` | Datasets. Not in git, see below |
 | `docs/` | Assignment, system and UART diagrams, protocol notes, lecture guides |
-| `labs/` | Lab 7 and lab 8 leftovers kept for reference (see `labs/README.md`) |
 
 ## Where to start
 
@@ -38,7 +37,7 @@ Nothing has been re-tested after the files were moved here.
 
 - Both networks still use the weights from the labs, trained on the cable dataset (Full Cable, Left End, Right End, No Cable). They need retraining on shapes.
 - Images are 80x60 grayscale, 4800 bytes per frame. The SNN uses 384 features (12x16 grid), T=1.
-- `ps/ps_main.c` only drives the CNN. SNN and DFX hook in at `select_model()`.
+- `ps/ps_main.c` only drives the CNN. SNN and DFX hook in at `select_model()`. `snn/lab_app/helloworld.c` shows how the PS drives the SNN IP (features into BRAM, start, read result). `snn/lab_app/README.md` lists what has to move into the SNN IP so both setups match.
 - `snn/` is our lab 8 version, not the original from the lecture repo. It has the rounding fix in `fc1` in `snn_mlp.cpp`.
 - The lecture datasets are not in the repo (about 400k files each). Get them from the lecture repos if needed.
 
@@ -66,7 +65,7 @@ The serial port is still set in the scripts or given with `--port`.
 - [ ] Retrain SNN, export weights, check HLS csim against Python
 - [ ] Vivado design for each IP, decide memory arrangement for the SNN input
 - [ ] SNN path in `ps_main.c`
-- [ ] DFX (bonus)
+- [ ] DFX
 - [ ] Benchmark runs: accuracy, latency, throughput, UART time, utilization, power
 - [ ] Report (3 pages) and video (15 min)
 

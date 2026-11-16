@@ -23,9 +23,9 @@ compile_commands.json
 # Datasets
 /data/
 
-# Lab workspaces
-labs/lab_8_snn/vitis/ws/
-labs/lab_8_snn/hls/ip/
+# Workspaces
+pl/vivado/*/
+pl/vitis/ws/
 
 # Python
 __pycache__/
