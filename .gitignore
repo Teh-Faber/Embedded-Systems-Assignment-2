@@ -1,0 +1,33 @@
+# Vivado / Vitis / HLS
+.Xil/
+.cache/
+_ide/
+build/
+export/
+logs/
+*.log
+*.jou
+*.str
+*.cache/
+*.gen/
+*.hw/
+*.runs/
+*.sim/
+*.ip_user_files/
+NA/
+compile_commands.json
+.vitisWorkspace.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+snn_env/
+
+# Editors
+.vscode/
+
+# Run output
+*.jsonl
+!pc/example_output/*.jsonl
