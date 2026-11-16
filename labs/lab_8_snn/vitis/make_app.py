@@ -1,8 +1,9 @@
 import shutil, os, glob
 import vitis
 
-WS = r"C:\Users\Bluex\Desktop\FPGA\lab_8_SNN\vitis_ws\ws"
-SRC = r"C:\Users\Bluex\Desktop\FPGA\lab_8_SNN\SNN_guest_lecture\code\helloworld.c"
+HERE = os.path.dirname(os.path.abspath(__file__))
+WS = os.path.join(HERE, "ws")
+SRC = os.path.normpath(os.path.join(HERE, "..", "helloworld.c"))
 XPFM = os.path.join(WS, "snn_platform", "export", "snn_platform", "snn_platform.xpfm")
 
 client = vitis.create_client()

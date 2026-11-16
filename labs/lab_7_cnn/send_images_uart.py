@@ -13,7 +13,7 @@ import serial
 # CONFIGURATION
 # ============================================================
 
-ROOT = Path("/home/dinesh/Journal/Dataset/new_testing_data_aug")
+ROOT = Path(__file__).resolve().parents[2] / "data" / "new_testing_data_aug"
 
 SERIAL_PORT = "/dev/ttyUSB1"
 BAUD_RATE = 4000000

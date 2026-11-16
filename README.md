@@ -9,11 +9,12 @@ Deadline: 23.11.2026 23:59. Assignment text is in `docs/assignment_2.pdf`.
 
 | Folder | What is in it |
 |---|---|
-| `cnn/` | DS-CNN HLS source, testbench, weights and training scripts (lab 7) |
-| `snn/` | SNN MLP HLS source, testbench, weights and training script (lab 8) |
+| `cnn/` | DS-CNN training scripts, HLS source, testbench, weights and `hls_config.cfg` |
+| `snn/` | SNN MLP training script, HLS source, testbench, weights and `hls_config.cfg` |
 | `ps/` | Bare-metal C for the Zynq PS: UART framing, main loop, UART test app |
 | `pc/` | Python scripts that send images and compare results |
-| `hw/` | Board constraints. Vivado/DFX files go here |
+| `pl/` | Exported IP, Vivado project, Vitis workspace, constraints (see `pl/README.md`) |
+| `data/` | Datasets. Not in git, see below |
 | `docs/` | Assignment, system and UART diagrams, protocol notes, lecture guides |
 | `labs/` | Lab 7 and lab 8 leftovers kept for reference (see `labs/README.md`) |
 
@@ -39,8 +40,24 @@ Nothing has been re-tested after the files were moved here.
 - Images are 80x60 grayscale, 4800 bytes per frame. The SNN uses 384 features (12x16 grid), T=1.
 - `ps/ps_main.c` only drives the CNN. SNN and DFX hook in at `select_model()`.
 - `snn/` is our lab 8 version, not the original from the lecture repo. It has the rounding fix in `fc1` in `snn_mlp.cpp`.
-- Several files have absolute paths from the machine they were last used on (`cnn/train_cnn.py`, `cnn/ds_cnn_tb.cpp`, `snn/snn_mlp.py`, `snn/snn_mlp_tb.cpp`). Change them locally before running.
 - The lecture datasets are not in the repo (about 400k files each). Get them from the lecture repos if needed.
+
+## Paths
+
+No absolute paths. Scripts and testbenches find things relative to their own location, so the repo can be cloned anywhere.
+
+Datasets go in `data/` in the repo root, with the folder names the code expects:
+
+| Folder | Used by |
+|---|---|
+| `data/new_training_data/` | `snn/snn_mlp.py` |
+| `data/new_training_data_aug/` | `cnn/train_cnn.py` |
+| `data/new_testing_data/` | `cnn/augment_data.py` (writes `new_testing_data_aug/`) |
+| `data/dwpw_cnn_testing_data_aug_txt/` | `cnn/ds_cnn_tb.cpp` |
+| `data/fpga_test_features/` | `snn/snn_mlp_tb.cpp` |
+
+Training output is written to `cnn/trained_model/` and `snn/snn_mlp_model/`.
+The serial port is still set in the scripts or given with `--port`.
 
 ## To do
 

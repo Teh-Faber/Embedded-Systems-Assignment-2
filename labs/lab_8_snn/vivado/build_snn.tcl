@@ -1,10 +1,10 @@
 # Rebuilds the SNN block design from vivado_block_diagram.png (steps 22-26).
 # Run: vivado -mode batch -source build_snn.tcl
 set root   [file normalize [file dirname [info script]]]
-set ip_dir "C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/hls_ws/snn_mlp/hls/impl/ip"
+set ip_dir [file normalize $root/../hls/ip]
 set proj   snn_vivado
 
-set_param board.repoPaths [list "C:/Users/Bluex/AppData/Roaming/Xilinx/Vivado/2026.1/xhub/board_store/xilinx_board_store/XilinxBoardStore/Vivado/2026.1/boards"]
+set_param board.repoPaths [list [file join $::env(APPDATA) Xilinx/Vivado/2026.1/xhub/board_store/xilinx_board_store/XilinxBoardStore/Vivado/2026.1/boards]]
 create_project $proj $root/$proj -part xc7z020clg400-1 -force
 set_property board_part tul.com.tw:pynq-z2:part0:1.0 [current_project]
 set_property target_language VHDL [current_project]

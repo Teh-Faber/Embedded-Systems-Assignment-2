@@ -13,7 +13,7 @@ import serial
 # CONFIGURATION
 # ============================================================
 
-ROOT = Path(r"C:\Users\Bluex\Desktop\FPGA\lab_8_SNN\SNN_guest_lecture\datasets\new_testing_data")
+ROOT = Path(__file__).resolve().parents[2] / "data" / "new_testing_data"
 
 SERIAL_PORT = "COM8"
 BAUD_RATE = 4000000

@@ -17,7 +17,8 @@ from snntorch import surrogate
 from tqdm import tqdm
 
 
-ROOT = Path(r"C:\Users\Bluex\Desktop\FPGA\lab_8_SNN\SNN_guest_lecture\datasets\new_training_data")
+REPO_ROOT = Path(__file__).resolve().parents[1]
+ROOT = REPO_ROOT / "data" / "new_training_data"
 
 CLASS_FOLDERS = [
     "Full Cable",
@@ -50,7 +51,7 @@ EARLY_EXIT_CONFIDENCE = 0.70
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
-OUT_DIR = Path(r"C:\Users\Bluex\Desktop\FPGA\lab_8_SNN\snn_mlp_model")
+OUT_DIR = Path(__file__).resolve().parent / "snn_mlp_model"
 
 MODELS_DIR = OUT_DIR / "models"
 PLOTS_DIR = OUT_DIR / "plots"

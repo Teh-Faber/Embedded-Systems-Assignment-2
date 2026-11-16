@@ -33,8 +33,14 @@ extern void ds_cnn(
     data_t logits_out[N_CLASSES]
 );
 
-// Your actual test data root:
-static const std::string BASE_DIR = "/home/dinesh/journal_dwpw_cnn/dwpw_cnn_testing_data_aug_txt";
+// Test data root: <repo>/data, located relative to this file
+static std::string repo_data_dir()
+{
+    std::string f = __FILE__;
+    size_t p = f.find_last_of("/\\");
+    return (p == std::string::npos ? std::string(".") : f.substr(0, p)) + "/../data";
+}
+static const std::string BASE_DIR = repo_data_dir() + "/dwpw_cnn_testing_data_aug_txt";
 
 
 

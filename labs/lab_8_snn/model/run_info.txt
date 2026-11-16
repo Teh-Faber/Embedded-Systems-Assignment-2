@@ -1,4 +1,4 @@
-root=C:\Users\Bluex\Desktop\FPGA\lab_8_SNN\SNN_guest_lecture\datasets\new_training_data
+root=data/new_training_data
 classes=['Full Cable', 'Left End', 'Right End', 'No Cable']
 img_h=60
 img_w=80

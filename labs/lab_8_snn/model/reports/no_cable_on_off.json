@@ -1,6 +1,6 @@
 {
   "class_name": "No Cable",
-  "image_path": "C:\\Users\\Bluex\\Desktop\\FPGA\\lab_8_SNN\\SNN_guest_lecture\\datasets\\new_training_data\\No Cable\\1_frame_000000.jpg",
+  "image_path": "data/new_training_data/No Cable\\1_frame_000000.jpg",
   "T": 1,
   "img_h": 60,
   "img_w": 80,

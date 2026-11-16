@@ -1,7 +1,9 @@
+import os
 import vitis
 
-WS = r"C:\Users\Bluex\Desktop\FPGA\lab_8_SNN\vitis_ws\ws"
-XSA = r"C:\Users\Bluex\Desktop\FPGA\lab_8_SNN\vivado\snn_design.xsa"
+HERE = os.path.dirname(os.path.abspath(__file__))
+WS = os.path.join(HERE, "ws")
+XSA = os.path.normpath(os.path.join(HERE, "..", "vivado", "snn_design.xsa"))
 
 client = vitis.create_client()
 client.set_workspace(path=WS)

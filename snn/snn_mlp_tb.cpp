@@ -146,12 +146,19 @@ static std::vector<std::string> list_txt_files(const std::string &folder_path)
     return files;
 }
 
+// <repo>/data, located relative to this file
+static std::string repo_data_dir()
+{
+    std::string f = __FILE__;
+    size_t p = f.find_last_of("/\\");
+    return (p == std::string::npos ? std::string(".") : f.substr(0, p)) + "/../data";
+}
+
 int main()
 {
     const int N = 10;
 
-    const std::string root =
-        "C:/Users/Bluex/Desktop/FPGA/lab_8_SNN/SNN_guest_lecture/datasets/fpga_test_features";
+    const std::string root = repo_data_dir() + "/fpga_test_features";
 
     int total = 0;
     int correct = 0;

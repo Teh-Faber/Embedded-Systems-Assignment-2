@@ -4,8 +4,8 @@ import cv2
 import albumentations as A
 
 # ===================== EDIT THESE =====================
-# DATA_ROOT = Path("/home/dinesh/drone_training_data")
-DATA_ROOT = Path("/home/dinesh/recordings/new_testing_data")
+REPO_ROOT = Path(__file__).resolve().parents[1]
+DATA_ROOT = REPO_ROOT / "data" / "new_testing_data"
 
 INPUT_FOLDERS = [
     "Full Cable",
@@ -16,7 +16,7 @@ INPUT_FOLDERS = [
 
 # Output folder name (as requested)
 # OUTPUT_ROOT = DATA_ROOT.parent / "drone_training_data_aug"
-OUTPUT_ROOT = Path("/home/dinesh/recordings/new_testing_data_aug")
+OUTPUT_ROOT = REPO_ROOT / "data" / "new_testing_data_aug"
 
 # Options
 SAVE_ORIGINALS = True          # save *_orig files too

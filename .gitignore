@@ -14,9 +14,18 @@ logs/
 *.runs/
 *.sim/
 *.ip_user_files/
+*.srcs/
+*.xpr
 NA/
 compile_commands.json
 .vitisWorkspace.json
+
+# Datasets
+/data/
+
+# Lab workspaces
+labs/lab_8_snn/vitis/ws/
+labs/lab_8_snn/hls/ip/
 
 # Python
 __pycache__/

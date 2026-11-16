@@ -71,7 +71,8 @@ from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, classifica
 
 
 # ===================== EDIT THESE =====================
-ROOT = Path("/home/dinesh/Journal/Dataset/new_training_data_aug")
+REPO_ROOT = Path(__file__).resolve().parents[1]
+ROOT = REPO_ROOT / "data" / "new_training_data_aug"
 
 CLASS_FOLDERS = [
     "Full Cable", # 0
@@ -96,7 +97,7 @@ BINS_POOL_SIZE = (6, 8)
 # RUNS_DIR = Path("runs")
 # RUN_NAME_PREFIX = "tinycnn_bn_DW_PW_convGAP_5x5_4class_60x80"
 
-run_dir = Path("/home/dinesh/Journal/dw_pw_cnn_trained_model_gl")
+run_dir = Path(__file__).resolve().parent / "trained_model"
 
 # ======================================================
 
