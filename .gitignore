@@ -27,6 +27,10 @@ compile_commands.json
 pl/vivado/*/
 pl/vitis/ws/
 
+# Bitstreams exported for the PS (pl/vivado/export_dfx.tcl)
+ps/bitstreams/*.bin
+ps/bitstreams/*.bit
+
 # Python
 __pycache__/
 *.pyc

@@ -61,4 +61,11 @@ void uart_send_image_echo(const ImageRequest *request);
 /* Optional type 4 measurement. Send it before the corresponding model result. */
 void uart_send_dfx_timing(uint32_t image_id, uint8_t model_id, uint32_t dfx_us);
 
+/* DFX over PCAP (ps_dfx.c). dfx_init() returns the Xilinx driver status and
+ * leaves the reconfigurable partition decoupled. dfx_load() writes the partial
+ * bitstream of MODEL_CNN or MODEL_SNN and couples the partition again. It
+ * reports the time for the whole switch, also when it fails. */
+int dfx_init(void);
+bool dfx_load(uint8_t model_id, uint32_t *duration_us);
+
 #endif

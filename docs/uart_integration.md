@@ -7,7 +7,8 @@ Board sources are in `ps/`, PC scripts in `pc/`.
 | Vitis application | Files to add | Purpose |
 |---|---|---|
 | UART protocol test | `ps_uart_test.c`, `ps_uart.c`, `ps.h` | Checks the framing and the received pixels on the board. |
-| CNN integration | `ps_main.c`, `ps_uart.c`, `ps.h` | Runs the lab CNN and sends model results using the same UART module. |
+| CNN integration | `ps_main.c`, `ps_uart.c`, `ps.h`, built with `-DPS_DFX=0` | Runs the lab CNN and sends model results using the same UART module. |
+| CNN + SNN with DFX | `ps_main.c`, `ps_uart.c`, `ps_dfx.c`, `ps_bitstreams.S`, `ps.h` | Swaps the two accelerators over PCAP. Needs the DFX bitstreams, see `ps/README.md`. |
 
 Use a Vitis 2026.1 SDT Cortex-A9 standalone application. Each row is a separate build with one entry point. Use the working PYNQ-Z2 platform and its FSBL to initialize the PS. For CNN integration, load the lab CNN bitstream and use its matching BSP. The draft uses `XPAR_DS_CNN_0_BASEADDR` and the CNN register offsets from the lab. The UART defaults to `XPAR_XUARTPS_0_BASEADDR`, 4 Mbaud, 8N1.
 
@@ -46,7 +47,7 @@ py results.py cnn.jsonl snn.jsonl --output benchmark_comparison.csv
 
 - `ps_uart.c` owns UART initialization, request validation, and reply serialization. `uart_receive_request()` fills an `ImageRequest` owned by the caller. `uart_send_result()` sends the result for one model.
 - `ps_main.c` owns the application loop and model readiness. `prepare_cnn_input()` converts raw grayscale pixels to the lab's signed Q8.8 format and flushes the DDR buffer. `run_cnn()` starts the IP, applies a timeout, and returns the classification. After a CNN timeout the draft marks the hardware unavailable and preserves the input buffer until recovery or restart.
-- Add DFX in `select_model()` or call the group's controller from there. Update `ready_model` when the selected module is ready. Set `DfxTiming` to emit one optional type 4 measurement before the associated result. Add SNN preparation and inference in the model dispatch. The UART module stays the same.
+- `select_model()` calls `dfx_load()` in `ps_dfx.c` when the requested module is not the loaded one, updates `ready_model`, and fills `DfxTiming` so one type 4 measurement is sent before the associated result. Both models run through `run_model()` with their own register offsets. The UART module stays the same. Details in `ps/README.md`.
 
 ## Wire format
 

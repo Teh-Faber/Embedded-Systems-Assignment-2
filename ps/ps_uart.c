@@ -98,7 +98,7 @@ static void wait_for_start(void)
 
 static bool read_bytes(uint8_t *destination, size_t count)
 {
-    const XTime idle_limit = (XTime)COUNTS_PER_SECOND / 2u;
+    const XTime idle_limit = (XTime)(COUNTS_PER_SECOND) / 2u;
     for (size_t i = 0; i < count; ++i) {
         if (!XUartPs_IsReceiveData(UART_BASE_ADDR)) {
             XTime start, now;

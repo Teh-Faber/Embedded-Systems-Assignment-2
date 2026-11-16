@@ -11,7 +11,7 @@ Deadline: 23.11.2026 23:59. Assignment text is in `docs/assignment_2.pdf`.
 |---|---|
 | `cnn/` | DS-CNN training scripts, HLS source, testbench, weights and `hls_config.cfg` |
 | `snn/` | SNN MLP training script, HLS source, testbench, weights and `hls_config.cfg`. `lab_app/` is the PS app and PC script from lab 8 |
-| `ps/` | Bare-metal C for the Zynq PS: UART framing, main loop, UART test app |
+| `ps/` | Bare-metal C for the Zynq PS: UART framing, main loop, DFX over PCAP, UART test app (see `ps/README.md`) |
 | `pc/` | Python scripts that send images and compare results |
 | `pl/` | Exported IP, Vivado project, Vitis workspace, constraints (see `pl/README.md`) |
 | `data/` | Datasets. Not in git, see below |
@@ -21,6 +21,7 @@ Deadline: 23.11.2026 23:59. Assignment text is in `docs/assignment_2.pdf`.
 
 - System overview and UART frames: `docs/system-og-uart-diagrammer.md`
 - Building the PS apps and running the PC scripts: `docs/uart_integration.md`
+- DFX design and what to do once the HLS IPs exist: `pl/ip/README.md`, then `pl/README.md`, then `ps/README.md`
 - HLS / Vivado / Vitis steps from the lectures: `docs/lectures/cnn/README.md` and `docs/lectures/snn/README.md`
 
 PC side:
@@ -37,7 +38,8 @@ Nothing has been re-tested after the files were moved here.
 
 - Both networks still use the weights from the labs, trained on the cable dataset (Full Cable, Left End, Right End, No Cable). They need retraining on shapes.
 - Images are 80x60 grayscale, 4800 bytes per frame. The SNN uses 384 features (12x16 grid), T=1.
-- `ps/ps_main.c` only drives the CNN. SNN and DFX hook in at `select_model()`. `snn/lab_app/helloworld.c` shows how the PS drives the SNN IP (features into BRAM, start, read result). `snn/lab_app/README.md` lists what has to move into the SNN IP so both setups match.
+- `ps/ps_main.c` drives both models through one reconfigurable partition and swaps them over PCAP (`ps/ps_dfx.c`). The static PL is defined by `pl/vivado/dfx_project.tcl`. None of this has been built or run yet, see the status sections in `pl/README.md` and `ps/README.md`.
+- The PS gives both IPs the same Q8.8 image buffer. The SNN IP still expects 384 features from the PC, as in `snn/lab_app/helloworld.c`. `snn/lab_app/README.md` lists what has to move into the SNN IP so both setups match.
 - `snn/` is our lab 8 version, not the original from the lecture repo. It has the rounding fix in `fc1` in `snn_mlp.cpp`.
 - The lecture datasets are not in the repo (about 400k files each). Get them from the lecture repos if needed.
 
@@ -64,8 +66,8 @@ The serial port is still set in the scripts or given with `--port`.
 - [ ] Retrain CNN, export weights, check HLS csim against Python
 - [ ] Retrain SNN, export weights, check HLS csim against Python
 - [ ] Vivado design for each IP, decide memory arrangement for the SNN input
-- [ ] SNN path in `ps_main.c`
-- [ ] DFX
+- [ ] SNN front end in the HLS IP (image in, same interface as the CNN)
+- [ ] DFX: first Vivado build of `pl/vivado/dfx_project.tcl`, first run of the PS on the board
 - [ ] Benchmark runs: accuracy, latency, throughput, UART time, utilization, power
 - [ ] Report (3 pages) and video (15 min)
 
