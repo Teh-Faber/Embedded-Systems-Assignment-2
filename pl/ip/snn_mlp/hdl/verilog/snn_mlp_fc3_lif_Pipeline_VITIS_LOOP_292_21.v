@@ -145,7 +145,7 @@ p_ZL5fc3_w_1_U(
     .def_WIDTH( 1 ),
     .sel_WIDTH( 2 ),
     .dout_WIDTH( 1 ))
-sparsemux_9_2_1_1_1_U164(
+sparsemux_9_2_1_1_1_U165(
     .din0(spk2_0_q0),
     .din1(spk2_1_q0),
     .din2(spk2_2_q0),
@@ -215,7 +215,7 @@ end
 always @ (posedge ap_clk) begin
     if ((1'b0 == ap_block_pp0_stage0_11001)) begin
         if (((1'b1 == ap_CS_fsm_pp0_stage0) & (ap_loop_init == 1'b1))) begin
-            acc_3_fu_60 <= 32'd4294967268;
+            acc_3_fu_60 <= 32'd4294967262;
         end else if ((ap_enable_reg_pp0_iter2 == 1'b1)) begin
             acc_3_fu_60 <= acc_fu_233_p2;
         end

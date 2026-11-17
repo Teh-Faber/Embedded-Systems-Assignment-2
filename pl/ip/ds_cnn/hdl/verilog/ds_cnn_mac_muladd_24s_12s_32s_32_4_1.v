@@ -4,14 +4,14 @@
 // Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
 // ==============================================================
 `timescale 1 ns / 1 ps
-(* DowngradeIPIdentifiedWarnings="yes" *) module ds_cnn_mac_muladd_15ns_10s_19s_24_4_1_DSP48_0(
+(* DowngradeIPIdentifiedWarnings="yes" *) module ds_cnn_mac_muladd_24s_12s_32s_32_4_1_DSP48_0(
     input clk,
     input rst,
     input ce,
-    input  [15 - 1:0] in0,
-    input  [10 - 1:0] in1,
-    input  [19 - 1:0] in2,
-    output [24 - 1:0]  dout);
+    input  [24 - 1:0] in0,
+    input  [12 - 1:0] in1,
+    input  [32 - 1:0] in2,
+    output [32 - 1:0]  dout);
 
 wire signed [25 - 1:0]     a;
 wire signed [18 - 1:0]     b;
@@ -23,7 +23,7 @@ reg  signed [25 - 1:0]     a_reg;
 reg  signed [18 - 1:0]     b_reg;
 reg  signed [48 - 1:0]     p_reg;
 
-assign a  = $unsigned(in0);
+assign a  = $signed(in0);
 assign b  = $signed(in1);
 assign c  = $signed(in2);
 
@@ -42,7 +42,7 @@ assign dout = p_reg;
 
 endmodule
 
-(* DowngradeIPIdentifiedWarnings="yes" *) module ds_cnn_mac_muladd_15ns_10s_19s_24_4_1(
+(* DowngradeIPIdentifiedWarnings="yes" *) module ds_cnn_mac_muladd_24s_12s_32s_32_4_1(
     clk,
     reset,
     ce,
@@ -66,7 +66,7 @@ input[din2_WIDTH - 1:0] din2;
 output[dout_WIDTH - 1:0] dout;
 
 
-ds_cnn_mac_muladd_15ns_10s_19s_24_4_1_DSP48_0 ds_cnn_mac_muladd_15ns_10s_19s_24_4_1_DSP48_0_U(
+ds_cnn_mac_muladd_24s_12s_32s_32_4_1_DSP48_0 ds_cnn_mac_muladd_24s_12s_32s_32_4_1_DSP48_0_U(
     .clk( clk ),
     .rst( reset ),
     .ce( ce ),

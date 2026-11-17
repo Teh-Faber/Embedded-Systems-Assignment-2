@@ -68,7 +68,7 @@ reg    ap_condition_exit_pp0_iter0_stage0;
 wire    ap_loop_exit_ready;
 reg    ap_ready_int;
 wire   [4:0] p_ZL5fc3_w_0_address0;
-wire   [7:0] p_ZL5fc3_w_0_q0;
+wire   [8:0] p_ZL5fc3_w_0_q0;
 wire    ap_block_pp0_stage0_11001;
 reg   [5:0] i_4_reg_263;
 reg   [0:0] icmp_ln292_reg_269;
@@ -120,7 +120,7 @@ initial begin
 end
 
 snn_mlp_fc3_lif_Pipeline_VITIS_LOOP_292_2_p_ZL5fc3_w_0_ROM_AUTO_1R #(
-    .DataWidth( 8 ),
+    .DataWidth( 9 ),
     .AddressRange( 32 ),
     .AddressWidth( 5 ))
 p_ZL5fc3_w_0_U(
@@ -145,7 +145,7 @@ p_ZL5fc3_w_0_U(
     .def_WIDTH( 1 ),
     .sel_WIDTH( 2 ),
     .dout_WIDTH( 1 ))
-sparsemux_9_2_1_1_1_U157(
+sparsemux_9_2_1_1_1_U158(
     .din0(spk2_0_q0),
     .din1(spk2_1_q0),
     .din2(spk2_2_q0),
@@ -215,7 +215,7 @@ end
 always @ (posedge ap_clk) begin
     if ((1'b0 == ap_block_pp0_stage0_11001)) begin
         if (((1'b1 == ap_CS_fsm_pp0_stage0) & (ap_loop_init == 1'b1))) begin
-            acc_fu_60 <= 32'd24;
+            acc_fu_60 <= 32'd44;
         end else if ((ap_enable_reg_pp0_iter2 == 1'b1)) begin
             acc_fu_60 <= acc_5_fu_233_p2;
         end

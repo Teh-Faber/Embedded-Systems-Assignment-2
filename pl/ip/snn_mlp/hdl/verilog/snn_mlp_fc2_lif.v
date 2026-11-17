@@ -152,7 +152,7 @@ wire   [6:0] p_ZL5fc2_b_0_q0;
 wire   [2:0] p_ZL5fc2_b_1_address0;
 wire   [5:0] p_ZL5fc2_b_1_q0;
 wire   [2:0] p_ZL5fc2_b_2_address0;
-wire   [6:0] p_ZL5fc2_b_2_q0;
+wire   [7:0] p_ZL5fc2_b_2_q0;
 wire   [2:0] p_ZL5fc2_b_3_address0;
 wire   [6:0] p_ZL5fc2_b_3_q0;
 wire   [2:0] lshr_ln_fu_360_p4;
@@ -183,7 +183,7 @@ wire    ap_CS_fsm_state7;
 reg  signed [31:0] mem2_1_load_reg_891;
 wire   [38:0] sub_ln45_2_fu_507_p2;
 reg   [38:0] sub_ln45_2_reg_898;
-reg   [6:0] acc_13_reg_903;
+reg   [7:0] acc_13_reg_903;
 wire   [0:0] previous_spike_1_fu_516_p2;
 reg   [0:0] previous_spike_1_reg_908;
 wire    ap_CS_fsm_state8;
@@ -406,7 +406,7 @@ p_ZL5fc2_b_1_U(
 );
 
 snn_mlp_fc2_lif_p_ZL5fc2_b_2_ROM_AUTO_1R #(
-    .DataWidth( 7 ),
+    .DataWidth( 8 ),
     .AddressRange( 8 ),
     .AddressWidth( 3 ))
 p_ZL5fc2_b_2_U(

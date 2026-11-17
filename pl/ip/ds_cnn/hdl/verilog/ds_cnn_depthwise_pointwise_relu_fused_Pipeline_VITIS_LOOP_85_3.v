@@ -225,23 +225,23 @@ reg    ap_ready_int;
 wire   [3:0] weights_DW_B_address0;
 wire   [10:0] weights_DW_B_q0;
 wire   [3:0] p_ZN7weights4DW_WE_0_address0;
-wire  signed [9:0] p_ZN7weights4DW_WE_0_q0;
+wire  signed [10:0] p_ZN7weights4DW_WE_0_q0;
 wire   [3:0] p_ZN7weights4DW_WE_1_address0;
 wire  signed [10:0] p_ZN7weights4DW_WE_1_q0;
 wire   [3:0] p_ZN7weights4DW_WE_2_address0;
-wire  signed [10:0] p_ZN7weights4DW_WE_2_q0;
+wire  signed [11:0] p_ZN7weights4DW_WE_2_q0;
 wire   [3:0] p_ZN7weights4DW_WE_3_address0;
 wire   [9:0] p_ZN7weights4DW_WE_3_q0;
 wire   [3:0] p_ZN7weights4DW_WE_4_address0;
 wire   [10:0] p_ZN7weights4DW_WE_4_q0;
 wire   [3:0] p_ZN7weights4DW_WE_5_address0;
-wire   [9:0] p_ZN7weights4DW_WE_5_q0;
+wire   [10:0] p_ZN7weights4DW_WE_5_q0;
 wire   [3:0] p_ZN7weights4DW_WE_6_address0;
 wire   [9:0] p_ZN7weights4DW_WE_6_q0;
 wire   [3:0] p_ZN7weights4DW_WE_7_address0;
-wire   [10:0] p_ZN7weights4DW_WE_7_q0;
+wire   [9:0] p_ZN7weights4DW_WE_7_q0;
 wire   [3:0] p_ZN7weights4DW_WE_8_address0;
-wire   [8:0] p_ZN7weights4DW_WE_8_q0;
+wire   [9:0] p_ZN7weights4DW_WE_8_q0;
 wire   [14:0] grp_fu_1347_p9;
 reg   [14:0] reg_1518;
 wire    ap_block_pp0_stage0_11001;
@@ -354,24 +354,24 @@ reg   [14:0] inval_16_reg_3206_pp0_iter10_reg;
 reg  signed [9:0] p_ZN7weights4DW_WE_3_load_reg_3276;
 reg   [10:0] p_ZN7weights4DW_WE_4_load_reg_3281;
 reg  signed [10:0] p_ZN7weights4DW_WE_4_load_reg_3281_pp0_iter6_reg;
-reg   [9:0] p_ZN7weights4DW_WE_5_load_reg_3286;
-reg   [9:0] p_ZN7weights4DW_WE_5_load_reg_3286_pp0_iter6_reg;
-reg  signed [9:0] p_ZN7weights4DW_WE_5_load_reg_3286_pp0_iter7_reg;
+reg   [10:0] p_ZN7weights4DW_WE_5_load_reg_3286;
+reg   [10:0] p_ZN7weights4DW_WE_5_load_reg_3286_pp0_iter6_reg;
+reg  signed [10:0] p_ZN7weights4DW_WE_5_load_reg_3286_pp0_iter7_reg;
 reg   [9:0] p_ZN7weights4DW_WE_6_load_reg_3291;
 reg   [9:0] p_ZN7weights4DW_WE_6_load_reg_3291_pp0_iter6_reg;
 reg   [9:0] p_ZN7weights4DW_WE_6_load_reg_3291_pp0_iter7_reg;
 reg  signed [9:0] p_ZN7weights4DW_WE_6_load_reg_3291_pp0_iter8_reg;
-reg   [10:0] p_ZN7weights4DW_WE_7_load_reg_3296;
-reg   [10:0] p_ZN7weights4DW_WE_7_load_reg_3296_pp0_iter6_reg;
-reg   [10:0] p_ZN7weights4DW_WE_7_load_reg_3296_pp0_iter7_reg;
-reg   [10:0] p_ZN7weights4DW_WE_7_load_reg_3296_pp0_iter8_reg;
-reg  signed [10:0] p_ZN7weights4DW_WE_7_load_reg_3296_pp0_iter9_reg;
-reg   [8:0] p_ZN7weights4DW_WE_8_load_reg_3301;
-reg   [8:0] p_ZN7weights4DW_WE_8_load_reg_3301_pp0_iter6_reg;
-reg   [8:0] p_ZN7weights4DW_WE_8_load_reg_3301_pp0_iter7_reg;
-reg   [8:0] p_ZN7weights4DW_WE_8_load_reg_3301_pp0_iter8_reg;
-reg   [8:0] p_ZN7weights4DW_WE_8_load_reg_3301_pp0_iter9_reg;
-reg  signed [8:0] p_ZN7weights4DW_WE_8_load_reg_3301_pp0_iter10_reg;
+reg   [9:0] p_ZN7weights4DW_WE_7_load_reg_3296;
+reg   [9:0] p_ZN7weights4DW_WE_7_load_reg_3296_pp0_iter6_reg;
+reg   [9:0] p_ZN7weights4DW_WE_7_load_reg_3296_pp0_iter7_reg;
+reg   [9:0] p_ZN7weights4DW_WE_7_load_reg_3296_pp0_iter8_reg;
+reg  signed [9:0] p_ZN7weights4DW_WE_7_load_reg_3296_pp0_iter9_reg;
+reg   [9:0] p_ZN7weights4DW_WE_8_load_reg_3301;
+reg   [9:0] p_ZN7weights4DW_WE_8_load_reg_3301_pp0_iter6_reg;
+reg   [9:0] p_ZN7weights4DW_WE_8_load_reg_3301_pp0_iter7_reg;
+reg   [9:0] p_ZN7weights4DW_WE_8_load_reg_3301_pp0_iter8_reg;
+reg   [9:0] p_ZN7weights4DW_WE_8_load_reg_3301_pp0_iter9_reg;
+reg  signed [9:0] p_ZN7weights4DW_WE_8_load_reg_3301_pp0_iter10_reg;
 wire   [63:0] zext_ln101_1_fu_1611_p1;
 wire    ap_block_pp0_stage0;
 wire   [63:0] zext_ln101_2_fu_1629_p1;
@@ -717,7 +717,7 @@ weights_DW_B_U(
 );
 
 ds_cnn_depthwise_pointwise_relu_fused_Pipeline_VITIS_LOOP_85_3_p_ZN7weights4DW_WE_0_cud #(
-    .DataWidth( 10 ),
+    .DataWidth( 11 ),
     .AddressRange( 16 ),
     .AddressWidth( 4 ))
 p_ZN7weights4DW_WE_0_U(
@@ -741,7 +741,7 @@ p_ZN7weights4DW_WE_1_U(
 );
 
 ds_cnn_depthwise_pointwise_relu_fused_Pipeline_VITIS_LOOP_85_3_p_ZN7weights4DW_WE_2_eOg #(
-    .DataWidth( 11 ),
+    .DataWidth( 12 ),
     .AddressRange( 16 ),
     .AddressWidth( 4 ))
 p_ZN7weights4DW_WE_2_U(
@@ -777,7 +777,7 @@ p_ZN7weights4DW_WE_4_U(
 );
 
 ds_cnn_depthwise_pointwise_relu_fused_Pipeline_VITIS_LOOP_85_3_p_ZN7weights4DW_WE_5_hbi #(
-    .DataWidth( 10 ),
+    .DataWidth( 11 ),
     .AddressRange( 16 ),
     .AddressWidth( 4 ))
 p_ZN7weights4DW_WE_5_U(
@@ -801,7 +801,7 @@ p_ZN7weights4DW_WE_6_U(
 );
 
 ds_cnn_depthwise_pointwise_relu_fused_Pipeline_VITIS_LOOP_85_3_p_ZN7weights4DW_WE_7_jbC #(
-    .DataWidth( 11 ),
+    .DataWidth( 10 ),
     .AddressRange( 16 ),
     .AddressWidth( 4 ))
 p_ZN7weights4DW_WE_7_U(
@@ -813,7 +813,7 @@ p_ZN7weights4DW_WE_7_U(
 );
 
 ds_cnn_depthwise_pointwise_relu_fused_Pipeline_VITIS_LOOP_85_3_p_ZN7weights4DW_WE_8_kbM #(
-    .DataWidth( 9 ),
+    .DataWidth( 10 ),
     .AddressRange( 16 ),
     .AddressWidth( 4 ))
 p_ZN7weights4DW_WE_8_U(
@@ -1202,14 +1202,14 @@ sparsemux_7_2_15_1_1_U102(
     .dout(inval_15_fu_2018_p9)
 );
 
-ds_cnn_mac_muladd_15ns_10s_19s_24_4_1 #(
+ds_cnn_mac_muladd_15ns_11s_19s_24_4_1 #(
     .ID( 1 ),
     .NUM_STAGE( 4 ),
     .din0_WIDTH( 15 ),
-    .din1_WIDTH( 10 ),
+    .din1_WIDTH( 11 ),
     .din2_WIDTH( 19 ),
     .dout_WIDTH( 24 ))
-mac_muladd_15ns_10s_19s_24_4_1_U103(
+mac_muladd_15ns_11s_19s_24_4_1_U103(
     .clk(ap_clk),
     .reset(ap_rst),
     .din0(grp_fu_2422_p0),
@@ -1236,14 +1236,14 @@ mac_muladd_15ns_11s_24s_24_4_1_U104(
     .dout(grp_fu_2431_p3)
 );
 
-ds_cnn_mac_muladd_15ns_11s_24s_24_4_1 #(
+ds_cnn_mac_muladd_15ns_12s_24s_24_4_1 #(
     .ID( 1 ),
     .NUM_STAGE( 4 ),
     .din0_WIDTH( 15 ),
-    .din1_WIDTH( 11 ),
+    .din1_WIDTH( 12 ),
     .din2_WIDTH( 24 ),
     .dout_WIDTH( 24 ))
-mac_muladd_15ns_11s_24s_24_4_1_U105(
+mac_muladd_15ns_12s_24s_24_4_1_U105(
     .clk(ap_clk),
     .reset(ap_rst),
     .din0(grp_fu_2440_p0),
@@ -1287,14 +1287,14 @@ mac_muladd_15ns_11s_24s_24_4_1_U107(
     .dout(grp_fu_2458_p3)
 );
 
-ds_cnn_mac_muladd_15ns_10s_24s_24_4_1 #(
+ds_cnn_mac_muladd_15ns_11s_24s_24_4_1 #(
     .ID( 1 ),
     .NUM_STAGE( 4 ),
     .din0_WIDTH( 15 ),
-    .din1_WIDTH( 10 ),
+    .din1_WIDTH( 11 ),
     .din2_WIDTH( 24 ),
     .dout_WIDTH( 24 ))
-mac_muladd_15ns_10s_24s_24_4_1_U108(
+mac_muladd_15ns_11s_24s_24_4_1_U108(
     .clk(ap_clk),
     .reset(ap_rst),
     .din0(grp_fu_2467_p0),
@@ -1321,14 +1321,14 @@ mac_muladd_15ns_10s_24s_24_4_1_U109(
     .dout(grp_fu_2476_p3)
 );
 
-ds_cnn_mac_muladd_15ns_11s_24s_24_4_1 #(
+ds_cnn_mac_muladd_15ns_10s_24s_24_4_1 #(
     .ID( 1 ),
     .NUM_STAGE( 4 ),
     .din0_WIDTH( 15 ),
-    .din1_WIDTH( 11 ),
+    .din1_WIDTH( 10 ),
     .din2_WIDTH( 24 ),
     .dout_WIDTH( 24 ))
-mac_muladd_15ns_11s_24s_24_4_1_U110(
+mac_muladd_15ns_10s_24s_24_4_1_U110(
     .clk(ap_clk),
     .reset(ap_rst),
     .din0(grp_fu_2485_p0),
@@ -1338,14 +1338,14 @@ mac_muladd_15ns_11s_24s_24_4_1_U110(
     .dout(grp_fu_2485_p3)
 );
 
-ds_cnn_mac_muladd_15ns_9s_24s_24_4_1 #(
+ds_cnn_mac_muladd_15ns_10s_24s_24_4_1 #(
     .ID( 1 ),
     .NUM_STAGE( 4 ),
     .din0_WIDTH( 15 ),
-    .din1_WIDTH( 9 ),
+    .din1_WIDTH( 10 ),
     .din2_WIDTH( 24 ),
     .dout_WIDTH( 24 ))
-mac_muladd_15ns_9s_24s_24_4_1_U111(
+mac_muladd_15ns_10s_24s_24_4_1_U111(
     .clk(ap_clk),
     .reset(ap_rst),
     .din0(grp_fu_2494_p0),

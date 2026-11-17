@@ -63,9 +63,9 @@ attribute shreg_extract : string;
     signal ap_loop_exit_ready : STD_LOGIC;
     signal ap_ready_int : STD_LOGIC;
     signal p_ZL5fc1_w_1_0_address0 : STD_LOGIC_VECTOR (11 downto 0);
-    signal p_ZL5fc1_w_1_0_q0 : STD_LOGIC_VECTOR (6 downto 0);
+    signal p_ZL5fc1_w_1_0_q0 : STD_LOGIC_VECTOR (8 downto 0);
     signal p_ZL5fc1_w_1_1_address0 : STD_LOGIC_VECTOR (11 downto 0);
-    signal p_ZL5fc1_w_1_1_q0 : STD_LOGIC_VECTOR (6 downto 0);
+    signal p_ZL5fc1_w_1_1_q0 : STD_LOGIC_VECTOR (8 downto 0);
     signal ap_block_pp0_stage0_11001 : BOOLEAN;
     signal icmp_ln220_reg_301 : STD_LOGIC_VECTOR (0 downto 0);
     signal icmp_ln220_reg_301_pp0_iter1_reg : STD_LOGIC_VECTOR (0 downto 0);
@@ -73,16 +73,16 @@ attribute shreg_extract : string;
     signal icmp_ln223_fu_206_p2 : STD_LOGIC_VECTOR (0 downto 0);
     signal icmp_ln223_reg_330 : STD_LOGIC_VECTOR (0 downto 0);
     signal icmp_ln223_reg_330_pp0_iter2_reg : STD_LOGIC_VECTOR (0 downto 0);
-    signal p_ZL5fc1_w_1_0_load_reg_335 : STD_LOGIC_VECTOR (6 downto 0);
+    signal p_ZL5fc1_w_1_0_load_reg_335 : STD_LOGIC_VECTOR (8 downto 0);
     signal x_load_reg_340 : STD_LOGIC_VECTOR (7 downto 0);
     signal icmp_ln227_fu_212_p2 : STD_LOGIC_VECTOR (0 downto 0);
     signal icmp_ln227_reg_345 : STD_LOGIC_VECTOR (0 downto 0);
     signal icmp_ln227_reg_345_pp0_iter2_reg : STD_LOGIC_VECTOR (0 downto 0);
-    signal p_ZL5fc1_w_1_1_load_reg_350 : STD_LOGIC_VECTOR (6 downto 0);
-    signal mul_ln224_fu_224_p2 : STD_LOGIC_VECTOR (14 downto 0);
-    signal mul_ln224_reg_355 : STD_LOGIC_VECTOR (14 downto 0);
-    signal mul_ln228_fu_236_p2 : STD_LOGIC_VECTOR (14 downto 0);
-    signal mul_ln228_reg_360 : STD_LOGIC_VECTOR (14 downto 0);
+    signal p_ZL5fc1_w_1_1_load_reg_350 : STD_LOGIC_VECTOR (8 downto 0);
+    signal mul_ln224_fu_224_p2 : STD_LOGIC_VECTOR (16 downto 0);
+    signal mul_ln224_reg_355 : STD_LOGIC_VECTOR (16 downto 0);
+    signal mul_ln228_fu_236_p2 : STD_LOGIC_VECTOR (16 downto 0);
+    signal mul_ln228_reg_360 : STD_LOGIC_VECTOR (16 downto 0);
     signal zext_ln224_4_fu_176_p1 : STD_LOGIC_VECTOR (63 downto 0);
     signal ap_block_pp0_stage0 : BOOLEAN;
     signal zext_ln220_fu_151_p1 : STD_LOGIC_VECTOR (63 downto 0);
@@ -119,11 +119,11 @@ attribute shreg_extract : string;
     signal ap_start_int : STD_LOGIC;
     signal ap_ready_sig : STD_LOGIC;
     signal ap_done_sig : STD_LOGIC;
-    signal mul_ln224_fu_224_p10 : STD_LOGIC_VECTOR (14 downto 0);
-    signal mul_ln228_fu_236_p10 : STD_LOGIC_VECTOR (14 downto 0);
+    signal mul_ln224_fu_224_p10 : STD_LOGIC_VECTOR (16 downto 0);
+    signal mul_ln228_fu_236_p10 : STD_LOGIC_VECTOR (16 downto 0);
     signal ap_ce_reg : STD_LOGIC;
 
-    component snn_mlp_mul_7s_8ns_15_1_1 IS
+    component snn_mlp_mul_9s_8ns_17_1_1 IS
     generic (
         ID : INTEGER;
         NUM_STAGE : INTEGER;
@@ -131,9 +131,9 @@ attribute shreg_extract : string;
         din1_WIDTH : INTEGER;
         dout_WIDTH : INTEGER );
     port (
-        din0 : IN STD_LOGIC_VECTOR (6 downto 0);
+        din0 : IN STD_LOGIC_VECTOR (8 downto 0);
         din1 : IN STD_LOGIC_VECTOR (7 downto 0);
-        dout : OUT STD_LOGIC_VECTOR (14 downto 0) );
+        dout : OUT STD_LOGIC_VECTOR (16 downto 0) );
     end component;
 
 
@@ -147,7 +147,7 @@ attribute shreg_extract : string;
         reset : IN STD_LOGIC;
         address0 : IN STD_LOGIC_VECTOR (11 downto 0);
         ce0 : IN STD_LOGIC;
-        q0 : OUT STD_LOGIC_VECTOR (6 downto 0) );
+        q0 : OUT STD_LOGIC_VECTOR (8 downto 0) );
     end component;
 
 
@@ -161,7 +161,7 @@ attribute shreg_extract : string;
         reset : IN STD_LOGIC;
         address0 : IN STD_LOGIC_VECTOR (11 downto 0);
         ce0 : IN STD_LOGIC;
-        q0 : OUT STD_LOGIC_VECTOR (6 downto 0) );
+        q0 : OUT STD_LOGIC_VECTOR (8 downto 0) );
     end component;
 
 
@@ -186,7 +186,7 @@ attribute shreg_extract : string;
 begin
     p_ZL5fc1_w_1_0_U : component snn_mlp_fc1_lif_Pipeline_VITIS_LOOP_220_27_p_ZL5fc1_w_1_0_ROM_AUTO_1R
     generic map (
-        DataWidth => 7,
+        DataWidth => 9,
         AddressRange => 3072,
         AddressWidth => 12)
     port map (
@@ -198,7 +198,7 @@ begin
 
     p_ZL5fc1_w_1_1_U : component snn_mlp_fc1_lif_Pipeline_VITIS_LOOP_220_27_p_ZL5fc1_w_1_1_ROM_AUTO_1R
     generic map (
-        DataWidth => 7,
+        DataWidth => 9,
         AddressRange => 3072,
         AddressWidth => 12)
     port map (
@@ -208,25 +208,25 @@ begin
         ce0 => p_ZL5fc1_w_1_1_ce0_local,
         q0 => p_ZL5fc1_w_1_1_q0);
 
-    mul_7s_8ns_15_1_1_U70 : component snn_mlp_mul_7s_8ns_15_1_1
+    mul_9s_8ns_17_1_1_U71 : component snn_mlp_mul_9s_8ns_17_1_1
     generic map (
         ID => 1,
         NUM_STAGE => 1,
-        din0_WIDTH => 7,
+        din0_WIDTH => 9,
         din1_WIDTH => 8,
-        dout_WIDTH => 15)
+        dout_WIDTH => 17)
     port map (
         din0 => p_ZL5fc1_w_1_0_load_reg_335,
         din1 => mul_ln224_fu_224_p1,
         dout => mul_ln224_fu_224_p2);
 
-    mul_7s_8ns_15_1_1_U71 : component snn_mlp_mul_7s_8ns_15_1_1
+    mul_9s_8ns_17_1_1_U72 : component snn_mlp_mul_9s_8ns_17_1_1
     generic map (
         ID => 1,
         NUM_STAGE => 1,
-        din0_WIDTH => 7,
+        din0_WIDTH => 9,
         din1_WIDTH => 8,
-        dout_WIDTH => 15)
+        dout_WIDTH => 17)
     port map (
         din0 => p_ZL5fc1_w_1_1_load_reg_350,
         din1 => mul_ln228_fu_236_p1,
@@ -489,9 +489,9 @@ begin
     icmp_ln227_fu_212_p2 <= "1" when (x_q0 = ap_const_lv8_0) else "0";
     lshr_ln218_1_fu_156_p4 <= ap_sig_allocacmp_i(8 downto 1);
     mul_ln224_fu_224_p1 <= mul_ln224_fu_224_p10(8 - 1 downto 0);
-    mul_ln224_fu_224_p10 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(x_load_2_reg_325),15));
+    mul_ln224_fu_224_p10 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(x_load_2_reg_325),17));
     mul_ln228_fu_236_p1 <= mul_ln228_fu_236_p10(8 - 1 downto 0);
-    mul_ln228_fu_236_p10 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(x_load_reg_340),15));
+    mul_ln228_fu_236_p10 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(x_load_reg_340),17));
     or_ln227_1_fu_182_p3 <= (lshr_ln218_1_fu_156_p4 & ap_const_lv1_1);
     p_ZL5fc1_w_1_0_address0 <= zext_ln224_4_fu_176_p1(12 - 1 downto 0);
 

@@ -72,14 +72,14 @@ reg    ap_condition_exit_pp0_iter0_stage0;
 wire    ap_loop_exit_ready;
 reg    ap_ready_int;
 wire   [8:0] p_ZL5fc2_w_0_address0;
-wire   [6:0] p_ZL5fc2_w_0_q0;
+wire   [7:0] p_ZL5fc2_w_0_q0;
 wire    ap_block_pp0_stage0_11001;
 reg   [0:0] icmp_ln260_reg_295;
 wire   [1:0] trunc_ln260_fu_202_p1;
 reg   [1:0] trunc_ln260_reg_304;
 wire   [0:0] tmp_fu_229_p11;
 reg   [0:0] tmp_reg_329;
-reg   [6:0] p_ZL5fc2_w_0_load_reg_334;
+reg   [7:0] p_ZL5fc2_w_0_load_reg_334;
 wire   [63:0] zext_ln264_8_fu_197_p1;
 wire    ap_block_pp0_stage0;
 wire   [63:0] zext_ln258_1_fu_216_p1;
@@ -128,7 +128,7 @@ initial begin
 end
 
 snn_mlp_fc2_lif_Pipeline_VITIS_LOOP_260_2_p_ZL5fc2_w_0_ROM_AUTO_1R #(
-    .DataWidth( 7 ),
+    .DataWidth( 8 ),
     .AddressRange( 512 ),
     .AddressWidth( 9 ))
 p_ZL5fc2_w_0_U(
@@ -153,7 +153,7 @@ p_ZL5fc2_w_0_U(
     .def_WIDTH( 1 ),
     .sel_WIDTH( 2 ),
     .dout_WIDTH( 1 ))
-sparsemux_9_2_1_1_1_U104(
+sparsemux_9_2_1_1_1_U105(
     .din0(spk1_0_q0),
     .din1(spk1_1_q0),
     .din2(spk1_2_q0),

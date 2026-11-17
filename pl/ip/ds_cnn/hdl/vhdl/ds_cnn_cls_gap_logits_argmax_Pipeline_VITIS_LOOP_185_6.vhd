@@ -57,10 +57,10 @@ architecture behav of ds_cnn_cls_gap_logits_argmax_Pipeline_VITIS_LOOP_185_6 is
     constant ap_const_lv2_3 : STD_LOGIC_VECTOR (1 downto 0) := "11";
     constant ap_const_lv3_4 : STD_LOGIC_VECTOR (2 downto 0) := "100";
     constant ap_const_lv3_1 : STD_LOGIC_VECTOR (2 downto 0) := "001";
-    constant ap_const_lv6_16 : STD_LOGIC_VECTOR (5 downto 0) := "010110";
-    constant ap_const_lv6_3F : STD_LOGIC_VECTOR (5 downto 0) := "111111";
-    constant ap_const_lv6_24 : STD_LOGIC_VECTOR (5 downto 0) := "100100";
-    constant ap_const_lv6_9 : STD_LOGIC_VECTOR (5 downto 0) := "001001";
+    constant ap_const_lv9_D2 : STD_LOGIC_VECTOR (8 downto 0) := "011010010";
+    constant ap_const_lv9_1A0 : STD_LOGIC_VECTOR (8 downto 0) := "110100000";
+    constant ap_const_lv9_9 : STD_LOGIC_VECTOR (8 downto 0) := "000001001";
+    constant ap_const_lv9_1A9 : STD_LOGIC_VECTOR (8 downto 0) := "110101001";
     constant ap_const_lv12_0 : STD_LOGIC_VECTOR (11 downto 0) := "000000000000";
     constant ap_const_lv32_8 : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000001000";
     constant ap_const_lv32_1F : STD_LOGIC_VECTOR (31 downto 0) := "00000000000000000000000000011111";
@@ -94,19 +94,19 @@ attribute shreg_extract : string;
     signal ap_loop_exit_ready : STD_LOGIC;
     signal ap_ready_int : STD_LOGIC;
     signal p_ZN7weights5CLS_WE_0_address0 : STD_LOGIC_VECTOR (1 downto 0);
-    signal p_ZN7weights5CLS_WE_0_q0 : STD_LOGIC_VECTOR (8 downto 0);
+    signal p_ZN7weights5CLS_WE_0_q0 : STD_LOGIC_VECTOR (9 downto 0);
     signal p_ZN7weights5CLS_WE_1_address0 : STD_LOGIC_VECTOR (1 downto 0);
-    signal p_ZN7weights5CLS_WE_1_q0 : STD_LOGIC_VECTOR (8 downto 0);
+    signal p_ZN7weights5CLS_WE_1_q0 : STD_LOGIC_VECTOR (9 downto 0);
     signal p_ZN7weights5CLS_WE_2_address0 : STD_LOGIC_VECTOR (1 downto 0);
-    signal p_ZN7weights5CLS_WE_2_q0 : STD_LOGIC_VECTOR (9 downto 0);
+    signal p_ZN7weights5CLS_WE_2_q0 : STD_LOGIC_VECTOR (11 downto 0);
     signal p_ZN7weights5CLS_WE_3_address0 : STD_LOGIC_VECTOR (1 downto 0);
-    signal p_ZN7weights5CLS_WE_3_q0 : STD_LOGIC_VECTOR (8 downto 0);
+    signal p_ZN7weights5CLS_WE_3_q0 : STD_LOGIC_VECTOR (9 downto 0);
     signal p_ZN7weights5CLS_WE_4_address0 : STD_LOGIC_VECTOR (1 downto 0);
-    signal p_ZN7weights5CLS_WE_4_q0 : STD_LOGIC_VECTOR (9 downto 0);
+    signal p_ZN7weights5CLS_WE_4_q0 : STD_LOGIC_VECTOR (11 downto 0);
     signal p_ZN7weights5CLS_WE_5_address0 : STD_LOGIC_VECTOR (1 downto 0);
-    signal p_ZN7weights5CLS_WE_5_q0 : STD_LOGIC_VECTOR (8 downto 0);
+    signal p_ZN7weights5CLS_WE_5_q0 : STD_LOGIC_VECTOR (9 downto 0);
     signal p_ZN7weights5CLS_WE_6_address0 : STD_LOGIC_VECTOR (1 downto 0);
-    signal p_ZN7weights5CLS_WE_6_q0 : STD_LOGIC_VECTOR (8 downto 0);
+    signal p_ZN7weights5CLS_WE_6_q0 : STD_LOGIC_VECTOR (10 downto 0);
     signal p_ZN7weights5CLS_WE_7_address0 : STD_LOGIC_VECTOR (1 downto 0);
     signal p_ZN7weights5CLS_WE_7_q0 : STD_LOGIC_VECTOR (9 downto 0);
     signal ap_block_pp0_stage0_11001 : BOOLEAN;
@@ -193,9 +193,9 @@ attribute shreg_extract : string;
     signal p_ZN7weights5CLS_WE_7_ce0_local : STD_LOGIC;
     signal logits_out_63_we0_local : STD_LOGIC;
     signal logits_out_63_ce0_local : STD_LOGIC;
-    signal tmp_s_fu_423_p9 : STD_LOGIC_VECTOR (5 downto 0);
-    signal tmp_s_fu_423_p11 : STD_LOGIC_VECTOR (5 downto 0);
-    signal shl_ln188_1_fu_446_p3 : STD_LOGIC_VECTOR (17 downto 0);
+    signal tmp_s_fu_423_p9 : STD_LOGIC_VECTOR (8 downto 0);
+    signal tmp_s_fu_423_p11 : STD_LOGIC_VECTOR (8 downto 0);
+    signal shl_ln188_1_fu_446_p3 : STD_LOGIC_VECTOR (20 downto 0);
     signal grp_fu_672_p3 : STD_LOGIC_VECTOR (31 downto 0);
     signal tmp_98_fu_462_p4 : STD_LOGIC_VECTOR (23 downto 0);
     signal grp_fu_680_p3 : STD_LOGIC_VECTOR (31 downto 0);
@@ -240,7 +240,7 @@ attribute shreg_extract : string;
     signal tmp_s_fu_423_p7 : STD_LOGIC_VECTOR (1 downto 0);
     signal ap_ce_reg : STD_LOGIC;
 
-    component ds_cnn_sparsemux_9_2_6_1_1 IS
+    component ds_cnn_sparsemux_9_2_9_1_1 IS
     generic (
         ID : INTEGER;
         NUM_STAGE : INTEGER;
@@ -256,17 +256,17 @@ attribute shreg_extract : string;
         sel_WIDTH : INTEGER;
         dout_WIDTH : INTEGER );
     port (
-        din0 : IN STD_LOGIC_VECTOR (5 downto 0);
-        din1 : IN STD_LOGIC_VECTOR (5 downto 0);
-        din2 : IN STD_LOGIC_VECTOR (5 downto 0);
-        din3 : IN STD_LOGIC_VECTOR (5 downto 0);
-        def : IN STD_LOGIC_VECTOR (5 downto 0);
+        din0 : IN STD_LOGIC_VECTOR (8 downto 0);
+        din1 : IN STD_LOGIC_VECTOR (8 downto 0);
+        din2 : IN STD_LOGIC_VECTOR (8 downto 0);
+        din3 : IN STD_LOGIC_VECTOR (8 downto 0);
+        def : IN STD_LOGIC_VECTOR (8 downto 0);
         sel : IN STD_LOGIC_VECTOR (1 downto 0);
-        dout : OUT STD_LOGIC_VECTOR (5 downto 0) );
+        dout : OUT STD_LOGIC_VECTOR (8 downto 0) );
     end component;
 
 
-    component ds_cnn_mac_muladd_24s_9s_18s_32_4_1 IS
+    component ds_cnn_mac_muladd_24s_10s_21s_32_4_1 IS
     generic (
         ID : INTEGER;
         NUM_STAGE : INTEGER;
@@ -278,27 +278,8 @@ attribute shreg_extract : string;
         clk : IN STD_LOGIC;
         reset : IN STD_LOGIC;
         din0 : IN STD_LOGIC_VECTOR (23 downto 0);
-        din1 : IN STD_LOGIC_VECTOR (8 downto 0);
-        din2 : IN STD_LOGIC_VECTOR (17 downto 0);
-        ce : IN STD_LOGIC;
-        dout : OUT STD_LOGIC_VECTOR (31 downto 0) );
-    end component;
-
-
-    component ds_cnn_mac_muladd_24s_9s_32s_32_4_1 IS
-    generic (
-        ID : INTEGER;
-        NUM_STAGE : INTEGER;
-        din0_WIDTH : INTEGER;
-        din1_WIDTH : INTEGER;
-        din2_WIDTH : INTEGER;
-        dout_WIDTH : INTEGER );
-    port (
-        clk : IN STD_LOGIC;
-        reset : IN STD_LOGIC;
-        din0 : IN STD_LOGIC_VECTOR (23 downto 0);
-        din1 : IN STD_LOGIC_VECTOR (8 downto 0);
-        din2 : IN STD_LOGIC_VECTOR (31 downto 0);
+        din1 : IN STD_LOGIC_VECTOR (9 downto 0);
+        din2 : IN STD_LOGIC_VECTOR (20 downto 0);
         ce : IN STD_LOGIC;
         dout : OUT STD_LOGIC_VECTOR (31 downto 0) );
     end component;
@@ -323,6 +304,44 @@ attribute shreg_extract : string;
     end component;
 
 
+    component ds_cnn_mac_muladd_24s_12s_32s_32_4_1 IS
+    generic (
+        ID : INTEGER;
+        NUM_STAGE : INTEGER;
+        din0_WIDTH : INTEGER;
+        din1_WIDTH : INTEGER;
+        din2_WIDTH : INTEGER;
+        dout_WIDTH : INTEGER );
+    port (
+        clk : IN STD_LOGIC;
+        reset : IN STD_LOGIC;
+        din0 : IN STD_LOGIC_VECTOR (23 downto 0);
+        din1 : IN STD_LOGIC_VECTOR (11 downto 0);
+        din2 : IN STD_LOGIC_VECTOR (31 downto 0);
+        ce : IN STD_LOGIC;
+        dout : OUT STD_LOGIC_VECTOR (31 downto 0) );
+    end component;
+
+
+    component ds_cnn_mac_muladd_24s_11s_32s_32_4_1 IS
+    generic (
+        ID : INTEGER;
+        NUM_STAGE : INTEGER;
+        din0_WIDTH : INTEGER;
+        din1_WIDTH : INTEGER;
+        din2_WIDTH : INTEGER;
+        dout_WIDTH : INTEGER );
+    port (
+        clk : IN STD_LOGIC;
+        reset : IN STD_LOGIC;
+        din0 : IN STD_LOGIC_VECTOR (23 downto 0);
+        din1 : IN STD_LOGIC_VECTOR (10 downto 0);
+        din2 : IN STD_LOGIC_VECTOR (31 downto 0);
+        ce : IN STD_LOGIC;
+        dout : OUT STD_LOGIC_VECTOR (31 downto 0) );
+    end component;
+
+
     component ds_cnn_cls_gap_logits_argmax_Pipeline_VITIS_LOOP_185_6_p_ZN7weights5CLS_WE_0_ROM_AUTCeG IS
     generic (
         DataWidth : INTEGER;
@@ -333,7 +352,7 @@ attribute shreg_extract : string;
         reset : IN STD_LOGIC;
         address0 : IN STD_LOGIC_VECTOR (1 downto 0);
         ce0 : IN STD_LOGIC;
-        q0 : OUT STD_LOGIC_VECTOR (8 downto 0) );
+        q0 : OUT STD_LOGIC_VECTOR (9 downto 0) );
     end component;
 
 
@@ -347,7 +366,7 @@ attribute shreg_extract : string;
         reset : IN STD_LOGIC;
         address0 : IN STD_LOGIC_VECTOR (1 downto 0);
         ce0 : IN STD_LOGIC;
-        q0 : OUT STD_LOGIC_VECTOR (8 downto 0) );
+        q0 : OUT STD_LOGIC_VECTOR (9 downto 0) );
     end component;
 
 
@@ -361,7 +380,7 @@ attribute shreg_extract : string;
         reset : IN STD_LOGIC;
         address0 : IN STD_LOGIC_VECTOR (1 downto 0);
         ce0 : IN STD_LOGIC;
-        q0 : OUT STD_LOGIC_VECTOR (9 downto 0) );
+        q0 : OUT STD_LOGIC_VECTOR (11 downto 0) );
     end component;
 
 
@@ -375,7 +394,7 @@ attribute shreg_extract : string;
         reset : IN STD_LOGIC;
         address0 : IN STD_LOGIC_VECTOR (1 downto 0);
         ce0 : IN STD_LOGIC;
-        q0 : OUT STD_LOGIC_VECTOR (8 downto 0) );
+        q0 : OUT STD_LOGIC_VECTOR (9 downto 0) );
     end component;
 
 
@@ -389,7 +408,7 @@ attribute shreg_extract : string;
         reset : IN STD_LOGIC;
         address0 : IN STD_LOGIC_VECTOR (1 downto 0);
         ce0 : IN STD_LOGIC;
-        q0 : OUT STD_LOGIC_VECTOR (9 downto 0) );
+        q0 : OUT STD_LOGIC_VECTOR (11 downto 0) );
     end component;
 
 
@@ -403,7 +422,7 @@ attribute shreg_extract : string;
         reset : IN STD_LOGIC;
         address0 : IN STD_LOGIC_VECTOR (1 downto 0);
         ce0 : IN STD_LOGIC;
-        q0 : OUT STD_LOGIC_VECTOR (8 downto 0) );
+        q0 : OUT STD_LOGIC_VECTOR (9 downto 0) );
     end component;
 
 
@@ -417,7 +436,7 @@ attribute shreg_extract : string;
         reset : IN STD_LOGIC;
         address0 : IN STD_LOGIC_VECTOR (1 downto 0);
         ce0 : IN STD_LOGIC;
-        q0 : OUT STD_LOGIC_VECTOR (8 downto 0) );
+        q0 : OUT STD_LOGIC_VECTOR (10 downto 0) );
     end component;
 
 
@@ -456,7 +475,7 @@ attribute shreg_extract : string;
 begin
     p_ZN7weights5CLS_WE_0_U : component ds_cnn_cls_gap_logits_argmax_Pipeline_VITIS_LOOP_185_6_p_ZN7weights5CLS_WE_0_ROM_AUTCeG
     generic map (
-        DataWidth => 9,
+        DataWidth => 10,
         AddressRange => 4,
         AddressWidth => 2)
     port map (
@@ -468,7 +487,7 @@ begin
 
     p_ZN7weights5CLS_WE_1_U : component ds_cnn_cls_gap_logits_argmax_Pipeline_VITIS_LOOP_185_6_p_ZN7weights5CLS_WE_1_ROM_AUTDeQ
     generic map (
-        DataWidth => 9,
+        DataWidth => 10,
         AddressRange => 4,
         AddressWidth => 2)
     port map (
@@ -480,7 +499,7 @@ begin
 
     p_ZN7weights5CLS_WE_2_U : component ds_cnn_cls_gap_logits_argmax_Pipeline_VITIS_LOOP_185_6_p_ZN7weights5CLS_WE_2_ROM_AUTEe0
     generic map (
-        DataWidth => 10,
+        DataWidth => 12,
         AddressRange => 4,
         AddressWidth => 2)
     port map (
@@ -492,7 +511,7 @@ begin
 
     p_ZN7weights5CLS_WE_3_U : component ds_cnn_cls_gap_logits_argmax_Pipeline_VITIS_LOOP_185_6_p_ZN7weights5CLS_WE_3_ROM_AUTFfa
     generic map (
-        DataWidth => 9,
+        DataWidth => 10,
         AddressRange => 4,
         AddressWidth => 2)
     port map (
@@ -504,7 +523,7 @@ begin
 
     p_ZN7weights5CLS_WE_4_U : component ds_cnn_cls_gap_logits_argmax_Pipeline_VITIS_LOOP_185_6_p_ZN7weights5CLS_WE_4_ROM_AUTGfk
     generic map (
-        DataWidth => 10,
+        DataWidth => 12,
         AddressRange => 4,
         AddressWidth => 2)
     port map (
@@ -516,7 +535,7 @@ begin
 
     p_ZN7weights5CLS_WE_5_U : component ds_cnn_cls_gap_logits_argmax_Pipeline_VITIS_LOOP_185_6_p_ZN7weights5CLS_WE_5_ROM_AUTHfu
     generic map (
-        DataWidth => 9,
+        DataWidth => 10,
         AddressRange => 4,
         AddressWidth => 2)
     port map (
@@ -528,7 +547,7 @@ begin
 
     p_ZN7weights5CLS_WE_6_U : component ds_cnn_cls_gap_logits_argmax_Pipeline_VITIS_LOOP_185_6_p_ZN7weights5CLS_WE_6_ROM_AUTIfE
     generic map (
-        DataWidth => 9,
+        DataWidth => 11,
         AddressRange => 4,
         AddressWidth => 2)
     port map (
@@ -550,37 +569,37 @@ begin
         ce0 => p_ZN7weights5CLS_WE_7_ce0_local,
         q0 => p_ZN7weights5CLS_WE_7_q0);
 
-    sparsemux_9_2_6_1_1_U338 : component ds_cnn_sparsemux_9_2_6_1_1
+    sparsemux_9_2_9_1_1_U338 : component ds_cnn_sparsemux_9_2_9_1_1
     generic map (
         ID => 1,
         NUM_STAGE => 1,
         CASE0 => "00",
-        din0_WIDTH => 6,
+        din0_WIDTH => 9,
         CASE1 => "01",
-        din1_WIDTH => 6,
+        din1_WIDTH => 9,
         CASE2 => "10",
-        din2_WIDTH => 6,
+        din2_WIDTH => 9,
         CASE3 => "11",
-        din3_WIDTH => 6,
-        def_WIDTH => 6,
+        din3_WIDTH => 9,
+        def_WIDTH => 9,
         sel_WIDTH => 2,
-        dout_WIDTH => 6)
+        dout_WIDTH => 9)
     port map (
-        din0 => ap_const_lv6_16,
-        din1 => ap_const_lv6_3F,
-        din2 => ap_const_lv6_24,
-        din3 => ap_const_lv6_9,
+        din0 => ap_const_lv9_D2,
+        din1 => ap_const_lv9_1A0,
+        din2 => ap_const_lv9_9,
+        din3 => ap_const_lv9_1A9,
         def => tmp_s_fu_423_p9,
         sel => trunc_ln185_4_reg_824_pp0_iter2_reg,
         dout => tmp_s_fu_423_p11);
 
-    mac_muladd_24s_9s_18s_32_4_1_U339 : component ds_cnn_mac_muladd_24s_9s_18s_32_4_1
+    mac_muladd_24s_10s_21s_32_4_1_U339 : component ds_cnn_mac_muladd_24s_10s_21s_32_4_1
     generic map (
         ID => 1,
         NUM_STAGE => 4,
         din0_WIDTH => 24,
-        din1_WIDTH => 9,
-        din2_WIDTH => 18,
+        din1_WIDTH => 10,
+        din2_WIDTH => 21,
         dout_WIDTH => 32)
     port map (
         clk => ap_clk,
@@ -591,12 +610,12 @@ begin
         ce => ap_const_logic_1,
         dout => grp_fu_672_p3);
 
-    mac_muladd_24s_9s_32s_32_4_1_U340 : component ds_cnn_mac_muladd_24s_9s_32s_32_4_1
+    mac_muladd_24s_10s_32s_32_4_1_U340 : component ds_cnn_mac_muladd_24s_10s_32s_32_4_1
     generic map (
         ID => 1,
         NUM_STAGE => 4,
         din0_WIDTH => 24,
-        din1_WIDTH => 9,
+        din1_WIDTH => 10,
         din2_WIDTH => 32,
         dout_WIDTH => 32)
     port map (
@@ -608,12 +627,12 @@ begin
         ce => ap_const_logic_1,
         dout => grp_fu_680_p3);
 
-    mac_muladd_24s_10s_32s_32_4_1_U341 : component ds_cnn_mac_muladd_24s_10s_32s_32_4_1
+    mac_muladd_24s_12s_32s_32_4_1_U341 : component ds_cnn_mac_muladd_24s_12s_32s_32_4_1
     generic map (
         ID => 1,
         NUM_STAGE => 4,
         din0_WIDTH => 24,
-        din1_WIDTH => 10,
+        din1_WIDTH => 12,
         din2_WIDTH => 32,
         dout_WIDTH => 32)
     port map (
@@ -625,12 +644,12 @@ begin
         ce => ap_const_logic_1,
         dout => grp_fu_688_p3);
 
-    mac_muladd_24s_9s_32s_32_4_1_U342 : component ds_cnn_mac_muladd_24s_9s_32s_32_4_1
+    mac_muladd_24s_10s_32s_32_4_1_U342 : component ds_cnn_mac_muladd_24s_10s_32s_32_4_1
     generic map (
         ID => 1,
         NUM_STAGE => 4,
         din0_WIDTH => 24,
-        din1_WIDTH => 9,
+        din1_WIDTH => 10,
         din2_WIDTH => 32,
         dout_WIDTH => 32)
     port map (
@@ -642,12 +661,12 @@ begin
         ce => ap_const_logic_1,
         dout => grp_fu_696_p3);
 
-    mac_muladd_24s_10s_32s_32_4_1_U343 : component ds_cnn_mac_muladd_24s_10s_32s_32_4_1
+    mac_muladd_24s_12s_32s_32_4_1_U343 : component ds_cnn_mac_muladd_24s_12s_32s_32_4_1
     generic map (
         ID => 1,
         NUM_STAGE => 4,
         din0_WIDTH => 24,
-        din1_WIDTH => 10,
+        din1_WIDTH => 12,
         din2_WIDTH => 32,
         dout_WIDTH => 32)
     port map (
@@ -659,12 +678,12 @@ begin
         ce => ap_const_logic_1,
         dout => grp_fu_704_p3);
 
-    mac_muladd_24s_9s_32s_32_4_1_U344 : component ds_cnn_mac_muladd_24s_9s_32s_32_4_1
+    mac_muladd_24s_10s_32s_32_4_1_U344 : component ds_cnn_mac_muladd_24s_10s_32s_32_4_1
     generic map (
         ID => 1,
         NUM_STAGE => 4,
         din0_WIDTH => 24,
-        din1_WIDTH => 9,
+        din1_WIDTH => 10,
         din2_WIDTH => 32,
         dout_WIDTH => 32)
     port map (
@@ -676,12 +695,12 @@ begin
         ce => ap_const_logic_1,
         dout => grp_fu_712_p3);
 
-    mac_muladd_24s_9s_32s_32_4_1_U345 : component ds_cnn_mac_muladd_24s_9s_32s_32_4_1
+    mac_muladd_24s_11s_32s_32_4_1_U345 : component ds_cnn_mac_muladd_24s_11s_32s_32_4_1
     generic map (
         ID => 1,
         NUM_STAGE => 4,
         din0_WIDTH => 24,
-        din1_WIDTH => 9,
+        din1_WIDTH => 11,
         din2_WIDTH => 32,
         dout_WIDTH => 32)
     port map (
@@ -1335,7 +1354,7 @@ begin
     tmp_104_fu_584_p4 <= grp_fu_720_p3(31 downto 8);
     tmp_98_fu_462_p4 <= grp_fu_672_p3(31 downto 8);
     tmp_99_fu_483_p4 <= grp_fu_680_p3(31 downto 8);
-    tmp_s_fu_423_p9 <= "XXXXXX";
+    tmp_s_fu_423_p9 <= "XXXXXXXXX";
     trunc_ln185_4_fu_396_p1 <= ap_sig_allocacmp_o_1(2 - 1 downto 0);
     zext_ln185_fu_391_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(ap_sig_allocacmp_o_1),64));
 end behav;

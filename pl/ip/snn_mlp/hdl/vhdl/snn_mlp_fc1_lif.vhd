@@ -114,11 +114,11 @@ attribute shreg_extract : string;
     signal p_ZL5fc1_b_0_address0 : STD_LOGIC_VECTOR (3 downto 0);
     signal p_ZL5fc1_b_0_q0 : STD_LOGIC_VECTOR (6 downto 0);
     signal p_ZL5fc1_b_1_address0 : STD_LOGIC_VECTOR (3 downto 0);
-    signal p_ZL5fc1_b_1_q0 : STD_LOGIC_VECTOR (6 downto 0);
+    signal p_ZL5fc1_b_1_q0 : STD_LOGIC_VECTOR (5 downto 0);
     signal p_ZL5fc1_b_2_address0 : STD_LOGIC_VECTOR (3 downto 0);
-    signal p_ZL5fc1_b_2_q0 : STD_LOGIC_VECTOR (6 downto 0);
+    signal p_ZL5fc1_b_2_q0 : STD_LOGIC_VECTOR (7 downto 0);
     signal p_ZL5fc1_b_3_address0 : STD_LOGIC_VECTOR (3 downto 0);
-    signal p_ZL5fc1_b_3_q0 : STD_LOGIC_VECTOR (6 downto 0);
+    signal p_ZL5fc1_b_3_q0 : STD_LOGIC_VECTOR (5 downto 0);
     signal lshr_ln_fu_362_p4 : STD_LOGIC_VECTOR (3 downto 0);
     signal lshr_ln_reg_971 : STD_LOGIC_VECTOR (3 downto 0);
     signal ap_CS_fsm_state2 : STD_LOGIC;
@@ -460,7 +460,7 @@ attribute shreg_extract : string;
         reset : IN STD_LOGIC;
         address0 : IN STD_LOGIC_VECTOR (3 downto 0);
         ce0 : IN STD_LOGIC;
-        q0 : OUT STD_LOGIC_VECTOR (6 downto 0) );
+        q0 : OUT STD_LOGIC_VECTOR (5 downto 0) );
     end component;
 
 
@@ -474,7 +474,7 @@ attribute shreg_extract : string;
         reset : IN STD_LOGIC;
         address0 : IN STD_LOGIC_VECTOR (3 downto 0);
         ce0 : IN STD_LOGIC;
-        q0 : OUT STD_LOGIC_VECTOR (6 downto 0) );
+        q0 : OUT STD_LOGIC_VECTOR (7 downto 0) );
     end component;
 
 
@@ -488,7 +488,7 @@ attribute shreg_extract : string;
         reset : IN STD_LOGIC;
         address0 : IN STD_LOGIC_VECTOR (3 downto 0);
         ce0 : IN STD_LOGIC;
-        q0 : OUT STD_LOGIC_VECTOR (6 downto 0) );
+        q0 : OUT STD_LOGIC_VECTOR (5 downto 0) );
     end component;
 
 
@@ -508,7 +508,7 @@ begin
 
     p_ZL5fc1_b_1_U : component snn_mlp_fc1_lif_p_ZL5fc1_b_1_ROM_AUTO_1R
     generic map (
-        DataWidth => 7,
+        DataWidth => 6,
         AddressRange => 16,
         AddressWidth => 4)
     port map (
@@ -520,7 +520,7 @@ begin
 
     p_ZL5fc1_b_2_U : component snn_mlp_fc1_lif_p_ZL5fc1_b_2_ROM_AUTO_1R
     generic map (
-        DataWidth => 7,
+        DataWidth => 8,
         AddressRange => 16,
         AddressWidth => 4)
     port map (
@@ -532,7 +532,7 @@ begin
 
     p_ZL5fc1_b_3_U : component snn_mlp_fc1_lif_p_ZL5fc1_b_3_ROM_AUTO_1R
     generic map (
-        DataWidth => 7,
+        DataWidth => 6,
         AddressRange => 16,
         AddressWidth => 4)
     port map (

@@ -16,7 +16,7 @@ port (
     ap_done : OUT STD_LOGIC;
     ap_idle : OUT STD_LOGIC;
     ap_ready : OUT STD_LOGIC;
-    sext_ln258_1 : IN STD_LOGIC_VECTOR (6 downto 0);
+    sext_ln258_1 : IN STD_LOGIC_VECTOR (7 downto 0);
     zext_ln264 : IN STD_LOGIC_VECTOR (8 downto 0);
     spk1_0_address0 : OUT STD_LOGIC_VECTOR (3 downto 0);
     spk1_0_ce0 : OUT STD_LOGIC;
@@ -68,14 +68,14 @@ attribute shreg_extract : string;
     signal ap_loop_exit_ready : STD_LOGIC;
     signal ap_ready_int : STD_LOGIC;
     signal p_ZL5fc2_w_2_address0 : STD_LOGIC_VECTOR (8 downto 0);
-    signal p_ZL5fc2_w_2_q0 : STD_LOGIC_VECTOR (6 downto 0);
+    signal p_ZL5fc2_w_2_q0 : STD_LOGIC_VECTOR (7 downto 0);
     signal ap_block_pp0_stage0_11001 : BOOLEAN;
     signal icmp_ln260_reg_295 : STD_LOGIC_VECTOR (0 downto 0);
     signal trunc_ln260_fu_202_p1 : STD_LOGIC_VECTOR (1 downto 0);
     signal trunc_ln260_reg_304 : STD_LOGIC_VECTOR (1 downto 0);
     signal tmp_5_fu_229_p11 : STD_LOGIC_VECTOR (0 downto 0);
     signal tmp_5_reg_329 : STD_LOGIC_VECTOR (0 downto 0);
-    signal p_ZL5fc2_w_2_load_reg_334 : STD_LOGIC_VECTOR (6 downto 0);
+    signal p_ZL5fc2_w_2_load_reg_334 : STD_LOGIC_VECTOR (7 downto 0);
     signal zext_ln264_4_fu_197_p1 : STD_LOGIC_VECTOR (63 downto 0);
     signal ap_block_pp0_stage0 : BOOLEAN;
     signal zext_ln258_fu_216_p1 : STD_LOGIC_VECTOR (63 downto 0);
@@ -149,7 +149,7 @@ attribute shreg_extract : string;
         reset : IN STD_LOGIC;
         address0 : IN STD_LOGIC_VECTOR (8 downto 0);
         ce0 : IN STD_LOGIC;
-        q0 : OUT STD_LOGIC_VECTOR (6 downto 0) );
+        q0 : OUT STD_LOGIC_VECTOR (7 downto 0) );
     end component;
 
 
@@ -174,7 +174,7 @@ attribute shreg_extract : string;
 begin
     p_ZL5fc2_w_2_U : component snn_mlp_fc2_lif_Pipeline_VITIS_LOOP_260_25_p_ZL5fc2_w_2_ROM_AUTO_1R
     generic map (
-        DataWidth => 7,
+        DataWidth => 8,
         AddressRange => 512,
         AddressWidth => 9)
     port map (
@@ -184,7 +184,7 @@ begin
         ce0 => p_ZL5fc2_w_2_ce0_local,
         q0 => p_ZL5fc2_w_2_q0);
 
-    sparsemux_9_2_1_1_1_U123 : component snn_mlp_sparsemux_9_2_1_1_1
+    sparsemux_9_2_1_1_1_U124 : component snn_mlp_sparsemux_9_2_1_1_1
     generic map (
         ID => 1,
         NUM_STAGE => 1,

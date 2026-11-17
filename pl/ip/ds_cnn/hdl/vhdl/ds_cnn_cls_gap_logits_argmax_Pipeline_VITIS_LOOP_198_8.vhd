@@ -129,7 +129,7 @@ attribute shreg_extract : string;
 
 
 begin
-    sparsemux_7_2_20_1_1_U372 : component ds_cnn_sparsemux_7_2_20_1_1
+    sparsemux_7_2_20_1_1_U373 : component ds_cnn_sparsemux_7_2_20_1_1
     generic map (
         ID => 1,
         NUM_STAGE => 1,

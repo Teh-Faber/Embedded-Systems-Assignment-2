@@ -287,124 +287,120 @@ reg    ap_condition_exit_pp0_iter0_stage0;
 wire    ap_loop_exit_ready;
 reg    ap_ready_int;
 wire   [2:0] weights_PW_B_address0;
-wire   [10:0] weights_PW_B_q0;
+wire   [11:0] weights_PW_B_q0;
 wire   [2:0] p_ZN7weights4PW_WE_0_address0;
-wire  signed [9:0] p_ZN7weights4PW_WE_0_q0;
+wire  signed [10:0] p_ZN7weights4PW_WE_0_q0;
 wire   [2:0] p_ZN7weights4PW_WE_1_address0;
-wire  signed [10:0] p_ZN7weights4PW_WE_1_q0;
+wire  signed [12:0] p_ZN7weights4PW_WE_1_q0;
 wire   [2:0] p_ZN7weights4PW_WE_2_address0;
-wire  signed [10:0] p_ZN7weights4PW_WE_2_q0;
+wire  signed [12:0] p_ZN7weights4PW_WE_2_q0;
 wire   [2:0] p_ZN7weights4PW_WE_3_address0;
-wire  signed [10:0] p_ZN7weights4PW_WE_3_q0;
+wire  signed [12:0] p_ZN7weights4PW_WE_3_q0;
 wire   [2:0] p_ZN7weights4PW_WE_4_address0;
-wire  signed [11:0] p_ZN7weights4PW_WE_4_q0;
+wire  signed [12:0] p_ZN7weights4PW_WE_4_q0;
 wire   [2:0] p_ZN7weights4PW_WE_5_address0;
-wire  signed [10:0] p_ZN7weights4PW_WE_5_q0;
+wire  signed [12:0] p_ZN7weights4PW_WE_5_q0;
 wire   [2:0] p_ZN7weights4PW_WE_6_address0;
-wire  signed [11:0] p_ZN7weights4PW_WE_6_q0;
+wire  signed [12:0] p_ZN7weights4PW_WE_6_q0;
 wire   [2:0] p_ZN7weights4PW_WE_7_address0;
-wire  signed [11:0] p_ZN7weights4PW_WE_7_q0;
+wire  signed [12:0] p_ZN7weights4PW_WE_7_q0;
 wire   [2:0] p_ZN7weights4PW_WE_8_address0;
-wire  signed [10:0] p_ZN7weights4PW_WE_8_q0;
+wire  signed [12:0] p_ZN7weights4PW_WE_8_q0;
 wire   [2:0] p_ZN7weights4PW_WE_9_address0;
-wire  signed [11:0] p_ZN7weights4PW_WE_9_q0;
+wire  signed [12:0] p_ZN7weights4PW_WE_9_q0;
 wire   [2:0] p_ZN7weights4PW_WE_10_address0;
-wire  signed [10:0] p_ZN7weights4PW_WE_10_q0;
+wire  signed [11:0] p_ZN7weights4PW_WE_10_q0;
 wire   [2:0] p_ZN7weights4PW_WE_11_address0;
-wire   [10:0] p_ZN7weights4PW_WE_11_q0;
+wire  signed [12:0] p_ZN7weights4PW_WE_11_q0;
 wire   [2:0] p_ZN7weights4PW_WE_12_address0;
-wire   [11:0] p_ZN7weights4PW_WE_12_q0;
+wire   [12:0] p_ZN7weights4PW_WE_12_q0;
 wire   [2:0] p_ZN7weights4PW_WE_13_address0;
-wire   [11:0] p_ZN7weights4PW_WE_13_q0;
+wire   [12:0] p_ZN7weights4PW_WE_13_q0;
 wire   [2:0] p_ZN7weights4PW_WE_14_address0;
-wire   [10:0] p_ZN7weights4PW_WE_14_q0;
+wire   [11:0] p_ZN7weights4PW_WE_14_q0;
 wire   [2:0] p_ZN7weights4PW_WE_15_address0;
-wire   [10:0] p_ZN7weights4PW_WE_15_q0;
-wire   [1:0] tmp_reg_1603;
+wire   [12:0] p_ZN7weights4PW_WE_15_q0;
+wire   [1:0] tmp_reg_1604;
 wire    ap_block_pp0_stage0_11001;
-wire   [2:0] tmp_38_reg_1612;
+wire   [2:0] tmp_38_reg_1613;
 wire  signed [23:0] sext_ln118_15_cast_fu_971_p1;
-reg  signed [23:0] sext_ln118_15_cast_reg_1616;
+reg  signed [23:0] sext_ln118_15_cast_reg_1617;
 wire  signed [23:0] sext_ln118_14_cast_fu_975_p1;
-reg  signed [23:0] sext_ln118_14_cast_reg_1621;
+reg  signed [23:0] sext_ln118_14_cast_reg_1622;
 wire  signed [23:0] sext_ln118_13_cast_fu_979_p1;
-reg  signed [23:0] sext_ln118_13_cast_reg_1626;
+reg  signed [23:0] sext_ln118_13_cast_reg_1627;
 wire  signed [23:0] sext_ln118_12_cast_fu_983_p1;
-reg  signed [23:0] sext_ln118_12_cast_reg_1631;
+reg  signed [23:0] sext_ln118_12_cast_reg_1632;
 wire  signed [23:0] sext_ln118_11_cast_fu_987_p1;
-reg  signed [23:0] sext_ln118_11_cast_reg_1636;
+reg  signed [23:0] sext_ln118_11_cast_reg_1637;
 wire  signed [23:0] sext_ln118_10_cast_fu_991_p1;
-reg  signed [23:0] sext_ln118_10_cast_reg_1641;
+reg  signed [23:0] sext_ln118_10_cast_reg_1642;
 wire  signed [23:0] sext_ln118_9_cast_fu_995_p1;
-reg  signed [23:0] sext_ln118_9_cast_reg_1646;
+reg  signed [23:0] sext_ln118_9_cast_reg_1647;
 wire  signed [23:0] sext_ln118_8_cast_fu_999_p1;
-reg  signed [23:0] sext_ln118_8_cast_reg_1651;
+reg  signed [23:0] sext_ln118_8_cast_reg_1652;
 wire  signed [23:0] sext_ln118_7_cast_fu_1003_p1;
-reg  signed [23:0] sext_ln118_7_cast_reg_1656;
+reg  signed [23:0] sext_ln118_7_cast_reg_1657;
 wire  signed [23:0] sext_ln118_6_cast_fu_1007_p1;
-reg  signed [23:0] sext_ln118_6_cast_reg_1661;
+reg  signed [23:0] sext_ln118_6_cast_reg_1662;
 wire  signed [23:0] sext_ln118_5_cast_fu_1011_p1;
-reg  signed [23:0] sext_ln118_5_cast_reg_1666;
+reg  signed [23:0] sext_ln118_5_cast_reg_1667;
 wire  signed [23:0] sext_ln118_4_cast_fu_1015_p1;
-reg  signed [23:0] sext_ln118_4_cast_reg_1671;
+reg  signed [23:0] sext_ln118_4_cast_reg_1672;
 wire  signed [23:0] sext_ln118_3_cast_fu_1019_p1;
-reg  signed [23:0] sext_ln118_3_cast_reg_1676;
+reg  signed [23:0] sext_ln118_3_cast_reg_1677;
 wire  signed [23:0] sext_ln118_2_cast_fu_1023_p1;
-reg  signed [23:0] sext_ln118_2_cast_reg_1681;
+reg  signed [23:0] sext_ln118_2_cast_reg_1682;
 wire  signed [23:0] sext_ln118_1_cast_fu_1027_p1;
-reg  signed [23:0] sext_ln118_1_cast_reg_1686;
+reg  signed [23:0] sext_ln118_1_cast_reg_1687;
 wire  signed [23:0] sext_ln118_cast_fu_1031_p1;
-reg  signed [23:0] sext_ln118_cast_reg_1691;
-reg   [3:0] oc_1_reg_1696;
-reg   [3:0] oc_1_reg_1696_pp0_iter1_reg;
-reg   [3:0] oc_1_reg_1696_pp0_iter2_reg;
-reg   [3:0] oc_1_reg_1696_pp0_iter3_reg;
-reg   [3:0] oc_1_reg_1696_pp0_iter4_reg;
-reg   [3:0] oc_1_reg_1696_pp0_iter5_reg;
-reg   [3:0] oc_1_reg_1696_pp0_iter6_reg;
-reg   [3:0] oc_1_reg_1696_pp0_iter7_reg;
-reg   [3:0] oc_1_reg_1696_pp0_iter8_reg;
-reg   [3:0] oc_1_reg_1696_pp0_iter9_reg;
-reg   [3:0] oc_1_reg_1696_pp0_iter10_reg;
-reg   [3:0] oc_1_reg_1696_pp0_iter11_reg;
-reg   [3:0] oc_1_reg_1696_pp0_iter12_reg;
-reg   [3:0] oc_1_reg_1696_pp0_iter13_reg;
-reg   [3:0] oc_1_reg_1696_pp0_iter14_reg;
-reg   [3:0] oc_1_reg_1696_pp0_iter15_reg;
-reg   [3:0] oc_1_reg_1696_pp0_iter16_reg;
-reg   [3:0] oc_1_reg_1696_pp0_iter17_reg;
-reg   [3:0] oc_1_reg_1696_pp0_iter18_reg;
-reg   [3:0] oc_1_reg_1696_pp0_iter19_reg;
+reg  signed [23:0] sext_ln118_cast_reg_1692;
+reg   [3:0] oc_1_reg_1697;
+reg   [3:0] oc_1_reg_1697_pp0_iter1_reg;
+reg   [3:0] oc_1_reg_1697_pp0_iter2_reg;
+reg   [3:0] oc_1_reg_1697_pp0_iter3_reg;
+reg   [3:0] oc_1_reg_1697_pp0_iter4_reg;
+reg   [3:0] oc_1_reg_1697_pp0_iter5_reg;
+reg   [3:0] oc_1_reg_1697_pp0_iter6_reg;
+reg   [3:0] oc_1_reg_1697_pp0_iter7_reg;
+reg   [3:0] oc_1_reg_1697_pp0_iter8_reg;
+reg   [3:0] oc_1_reg_1697_pp0_iter9_reg;
+reg   [3:0] oc_1_reg_1697_pp0_iter10_reg;
+reg   [3:0] oc_1_reg_1697_pp0_iter11_reg;
+reg   [3:0] oc_1_reg_1697_pp0_iter12_reg;
+reg   [3:0] oc_1_reg_1697_pp0_iter13_reg;
+reg   [3:0] oc_1_reg_1697_pp0_iter14_reg;
+reg   [3:0] oc_1_reg_1697_pp0_iter15_reg;
+reg   [3:0] oc_1_reg_1697_pp0_iter16_reg;
+reg   [3:0] oc_1_reg_1697_pp0_iter17_reg;
+reg   [3:0] oc_1_reg_1697_pp0_iter18_reg;
+reg   [3:0] oc_1_reg_1697_pp0_iter19_reg;
 wire   [63:0] zext_ln111_fu_1055_p1;
-reg   [63:0] zext_ln111_reg_1705;
-reg   [63:0] zext_ln111_reg_1705_pp0_iter1_reg;
-reg   [63:0] zext_ln111_reg_1705_pp0_iter2_reg;
-reg   [63:0] zext_ln111_reg_1705_pp0_iter3_reg;
-reg   [63:0] zext_ln111_reg_1705_pp0_iter4_reg;
-reg   [63:0] zext_ln111_reg_1705_pp0_iter5_reg;
-reg   [63:0] zext_ln111_reg_1705_pp0_iter6_reg;
-reg   [63:0] zext_ln111_reg_1705_pp0_iter7_reg;
-reg   [63:0] zext_ln111_reg_1705_pp0_iter8_reg;
-reg   [63:0] zext_ln111_reg_1705_pp0_iter9_reg;
-reg  signed [10:0] p_ZN7weights4PW_WE_11_load_reg_1910;
-reg   [11:0] p_ZN7weights4PW_WE_12_load_reg_1915;
-reg  signed [11:0] p_ZN7weights4PW_WE_12_load_reg_1915_pp0_iter12_reg;
-reg   [11:0] p_ZN7weights4PW_WE_13_load_reg_1920;
-reg   [11:0] p_ZN7weights4PW_WE_13_load_reg_1920_pp0_iter12_reg;
-reg  signed [11:0] p_ZN7weights4PW_WE_13_load_reg_1920_pp0_iter13_reg;
-reg   [10:0] p_ZN7weights4PW_WE_14_load_reg_1925;
-reg   [10:0] p_ZN7weights4PW_WE_14_load_reg_1925_pp0_iter12_reg;
-reg   [10:0] p_ZN7weights4PW_WE_14_load_reg_1925_pp0_iter13_reg;
-reg  signed [10:0] p_ZN7weights4PW_WE_14_load_reg_1925_pp0_iter14_reg;
-reg   [10:0] p_ZN7weights4PW_WE_15_load_reg_1930;
-reg   [10:0] p_ZN7weights4PW_WE_15_load_reg_1930_pp0_iter12_reg;
-reg   [10:0] p_ZN7weights4PW_WE_15_load_reg_1930_pp0_iter13_reg;
-reg   [10:0] p_ZN7weights4PW_WE_15_load_reg_1930_pp0_iter14_reg;
-reg  signed [10:0] p_ZN7weights4PW_WE_15_load_reg_1930_pp0_iter15_reg;
-wire   [14:0] select_ln13_fu_1423_p3;
-reg   [14:0] select_ln13_reg_1995;
+reg   [63:0] zext_ln111_reg_1706;
+reg   [63:0] zext_ln111_reg_1706_pp0_iter1_reg;
+reg   [63:0] zext_ln111_reg_1706_pp0_iter2_reg;
+reg   [63:0] zext_ln111_reg_1706_pp0_iter3_reg;
+reg   [63:0] zext_ln111_reg_1706_pp0_iter4_reg;
+reg   [63:0] zext_ln111_reg_1706_pp0_iter5_reg;
+reg   [63:0] zext_ln111_reg_1706_pp0_iter6_reg;
+reg   [63:0] zext_ln111_reg_1706_pp0_iter7_reg;
+reg   [63:0] zext_ln111_reg_1706_pp0_iter8_reg;
+reg   [63:0] zext_ln111_reg_1706_pp0_iter9_reg;
+reg   [63:0] zext_ln111_reg_1706_pp0_iter10_reg;
+reg  signed [12:0] p_ZN7weights4PW_WE_12_load_reg_1921;
+reg   [12:0] p_ZN7weights4PW_WE_13_load_reg_1926;
+reg  signed [12:0] p_ZN7weights4PW_WE_13_load_reg_1926_pp0_iter13_reg;
+reg   [11:0] p_ZN7weights4PW_WE_14_load_reg_1931;
+reg   [11:0] p_ZN7weights4PW_WE_14_load_reg_1931_pp0_iter13_reg;
+reg  signed [11:0] p_ZN7weights4PW_WE_14_load_reg_1931_pp0_iter14_reg;
+reg   [12:0] p_ZN7weights4PW_WE_15_load_reg_1936;
+reg   [12:0] p_ZN7weights4PW_WE_15_load_reg_1936_pp0_iter13_reg;
+reg   [12:0] p_ZN7weights4PW_WE_15_load_reg_1936_pp0_iter14_reg;
+reg  signed [12:0] p_ZN7weights4PW_WE_15_load_reg_1936_pp0_iter15_reg;
+wire   [14:0] select_ln13_fu_1424_p3;
+reg   [14:0] select_ln13_reg_1991;
 wire    ap_block_pp0_stage0;
-wire   [63:0] zext_ln121_1_fu_1439_p1;
+wire   [63:0] zext_ln121_1_fu_1440_p1;
 reg   [3:0] oc_fu_206;
 wire   [3:0] add_ln111_fu_1049_p2;
 wire    ap_loop_init;
@@ -427,145 +423,145 @@ reg    p_ZN7weights4PW_WE_13_ce0_local;
 reg    p_ZN7weights4PW_WE_14_ce0_local;
 reg    p_ZN7weights4PW_WE_15_ce0_local;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_6_we1_local;
-reg    ap_predicate_pred1019_state21;
+reg    ap_predicate_pred1017_state21;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_6_ce1_local;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_5_we1_local;
-reg    ap_predicate_pred1033_state21;
+reg    ap_predicate_pred1031_state21;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_5_ce1_local;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_4_we1_local;
-reg    ap_predicate_pred1047_state21;
+reg    ap_predicate_pred1045_state21;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_4_ce1_local;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_3_we1_local;
-reg    ap_predicate_pred1061_state21;
+reg    ap_predicate_pred1059_state21;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_3_ce1_local;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_2_we1_local;
-reg    ap_predicate_pred1075_state21;
+reg    ap_predicate_pred1073_state21;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_2_ce1_local;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_1_we1_local;
-reg    ap_predicate_pred1089_state21;
+reg    ap_predicate_pred1087_state21;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_1_ce1_local;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_0_we1_local;
-reg    ap_predicate_pred1103_state21;
+reg    ap_predicate_pred1101_state21;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_0_ce1_local;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_7_we1_local;
-reg    ap_predicate_pred1117_state21;
+reg    ap_predicate_pred1115_state21;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_7_ce1_local;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_6_we1_local;
-reg    ap_predicate_pred1131_state21;
+reg    ap_predicate_pred1129_state21;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_6_ce1_local;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_5_we1_local;
-reg    ap_predicate_pred1143_state21;
+reg    ap_predicate_pred1141_state21;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_5_ce1_local;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_4_we1_local;
-reg    ap_predicate_pred1155_state21;
+reg    ap_predicate_pred1153_state21;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_4_ce1_local;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_3_we1_local;
-reg    ap_predicate_pred1167_state21;
+reg    ap_predicate_pred1165_state21;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_3_ce1_local;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_2_we1_local;
-reg    ap_predicate_pred1179_state21;
+reg    ap_predicate_pred1177_state21;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_2_ce1_local;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_1_we1_local;
-reg    ap_predicate_pred1191_state21;
+reg    ap_predicate_pred1189_state21;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_1_ce1_local;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_0_we1_local;
-reg    ap_predicate_pred1203_state21;
+reg    ap_predicate_pred1201_state21;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_0_ce1_local;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_7_we1_local;
-reg    ap_predicate_pred1215_state21;
+reg    ap_predicate_pred1213_state21;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_7_ce1_local;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_6_we1_local;
-reg    ap_predicate_pred1230_state21;
+reg    ap_predicate_pred1228_state21;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_6_ce1_local;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_5_we1_local;
-reg    ap_predicate_pred1242_state21;
+reg    ap_predicate_pred1240_state21;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_5_ce1_local;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_4_we1_local;
-reg    ap_predicate_pred1254_state21;
+reg    ap_predicate_pred1252_state21;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_4_ce1_local;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_3_we1_local;
-reg    ap_predicate_pred1266_state21;
+reg    ap_predicate_pred1264_state21;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_3_ce1_local;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_2_we1_local;
-reg    ap_predicate_pred1278_state21;
+reg    ap_predicate_pred1276_state21;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_2_ce1_local;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_1_we1_local;
-reg    ap_predicate_pred1290_state21;
+reg    ap_predicate_pred1288_state21;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_1_ce1_local;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_0_we1_local;
-reg    ap_predicate_pred1302_state21;
+reg    ap_predicate_pred1300_state21;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_0_ce1_local;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_7_we1_local;
-reg    ap_predicate_pred1314_state21;
+reg    ap_predicate_pred1312_state21;
 reg    p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_7_ce1_local;
-wire  signed [18:0] shl_ln1_fu_1081_p3;
-wire  signed [23:0] grp_fu_1467_p3;
+wire  signed [19:0] shl_ln1_fu_1081_p3;
+wire  signed [23:0] grp_fu_1468_p3;
 wire   [19:0] tmp_s_fu_1097_p4;
-wire  signed [23:0] grp_fu_1475_p3;
+wire  signed [23:0] grp_fu_1476_p3;
 wire   [19:0] tmp_45_fu_1118_p4;
-wire  signed [23:0] grp_fu_1483_p3;
+wire  signed [23:0] grp_fu_1484_p3;
 wire   [19:0] tmp_46_fu_1139_p4;
-wire  signed [23:0] grp_fu_1491_p3;
+wire  signed [23:0] grp_fu_1492_p3;
 wire   [19:0] tmp_47_fu_1160_p4;
-wire  signed [23:0] grp_fu_1499_p3;
+wire  signed [23:0] grp_fu_1500_p3;
 wire   [19:0] tmp_48_fu_1181_p4;
-wire  signed [23:0] grp_fu_1507_p3;
+wire  signed [23:0] grp_fu_1508_p3;
 wire   [19:0] tmp_49_fu_1202_p4;
-wire  signed [23:0] grp_fu_1515_p3;
+wire  signed [23:0] grp_fu_1516_p3;
 wire   [19:0] tmp_50_fu_1223_p4;
-wire  signed [23:0] grp_fu_1523_p3;
+wire  signed [23:0] grp_fu_1524_p3;
 wire   [19:0] tmp_51_fu_1244_p4;
-wire  signed [23:0] grp_fu_1531_p3;
+wire  signed [23:0] grp_fu_1532_p3;
 wire   [19:0] tmp_52_fu_1265_p4;
-wire  signed [23:0] grp_fu_1539_p3;
-wire   [19:0] tmp_53_fu_1285_p4;
-wire  signed [23:0] grp_fu_1547_p3;
-wire   [19:0] tmp_54_fu_1305_p4;
-wire  signed [23:0] grp_fu_1555_p3;
-wire   [19:0] tmp_55_fu_1325_p4;
-wire  signed [23:0] grp_fu_1563_p3;
-wire   [19:0] tmp_56_fu_1345_p4;
-wire  signed [23:0] grp_fu_1571_p3;
-wire   [19:0] tmp_57_fu_1365_p4;
-wire  signed [23:0] grp_fu_1579_p3;
-wire   [19:0] tmp_58_fu_1382_p4;
-wire  signed [23:0] grp_fu_1587_p3;
-wire   [15:0] x_fu_1399_p4;
-wire   [0:0] icmp_ln13_fu_1417_p2;
-wire   [14:0] trunc_ln11_1_fu_1408_p4;
-wire   [8:0] zext_ln121_fu_1431_p1;
-wire   [8:0] add_ln121_fu_1434_p2;
-wire  signed [15:0] grp_fu_1467_p0;
-wire  signed [15:0] grp_fu_1475_p0;
-wire  signed [23:0] grp_fu_1475_p2;
-wire  signed [15:0] grp_fu_1483_p0;
-wire  signed [23:0] grp_fu_1483_p2;
-wire  signed [15:0] grp_fu_1491_p0;
-wire  signed [23:0] grp_fu_1491_p2;
-wire  signed [15:0] grp_fu_1499_p0;
-wire  signed [23:0] grp_fu_1499_p2;
-wire  signed [15:0] grp_fu_1507_p0;
-wire  signed [23:0] grp_fu_1507_p2;
-wire  signed [15:0] grp_fu_1515_p0;
-wire  signed [23:0] grp_fu_1515_p2;
-wire  signed [15:0] grp_fu_1523_p0;
-wire  signed [23:0] grp_fu_1523_p2;
-wire  signed [15:0] grp_fu_1531_p0;
-wire  signed [23:0] grp_fu_1531_p2;
-wire  signed [15:0] grp_fu_1539_p0;
-wire  signed [23:0] grp_fu_1539_p2;
-wire  signed [15:0] grp_fu_1547_p0;
-wire  signed [23:0] grp_fu_1547_p2;
-wire  signed [15:0] grp_fu_1555_p0;
-wire  signed [23:0] grp_fu_1555_p2;
-wire  signed [15:0] grp_fu_1563_p0;
-wire  signed [23:0] grp_fu_1563_p2;
-wire  signed [15:0] grp_fu_1571_p0;
-wire  signed [23:0] grp_fu_1571_p2;
-wire  signed [15:0] grp_fu_1579_p0;
-wire  signed [23:0] grp_fu_1579_p2;
-wire  signed [15:0] grp_fu_1587_p0;
-wire  signed [23:0] grp_fu_1587_p2;
+wire  signed [23:0] grp_fu_1540_p3;
+wire   [19:0] tmp_53_fu_1286_p4;
+wire  signed [23:0] grp_fu_1548_p3;
+wire   [19:0] tmp_54_fu_1306_p4;
+wire  signed [23:0] grp_fu_1556_p3;
+wire   [19:0] tmp_55_fu_1326_p4;
+wire  signed [23:0] grp_fu_1564_p3;
+wire   [19:0] tmp_56_fu_1346_p4;
+wire  signed [23:0] grp_fu_1572_p3;
+wire   [19:0] tmp_57_fu_1366_p4;
+wire  signed [23:0] grp_fu_1580_p3;
+wire   [19:0] tmp_58_fu_1383_p4;
+wire  signed [23:0] grp_fu_1588_p3;
+wire   [15:0] x_fu_1400_p4;
+wire   [0:0] icmp_ln13_fu_1418_p2;
+wire   [14:0] trunc_ln11_1_fu_1409_p4;
+wire   [8:0] zext_ln121_fu_1432_p1;
+wire   [8:0] add_ln121_fu_1435_p2;
+wire  signed [15:0] grp_fu_1468_p0;
+wire  signed [15:0] grp_fu_1476_p0;
+wire  signed [23:0] grp_fu_1476_p2;
+wire  signed [15:0] grp_fu_1484_p0;
+wire  signed [23:0] grp_fu_1484_p2;
+wire  signed [15:0] grp_fu_1492_p0;
+wire  signed [23:0] grp_fu_1492_p2;
+wire  signed [15:0] grp_fu_1500_p0;
+wire  signed [23:0] grp_fu_1500_p2;
+wire  signed [15:0] grp_fu_1508_p0;
+wire  signed [23:0] grp_fu_1508_p2;
+wire  signed [15:0] grp_fu_1516_p0;
+wire  signed [23:0] grp_fu_1516_p2;
+wire  signed [15:0] grp_fu_1524_p0;
+wire  signed [23:0] grp_fu_1524_p2;
+wire  signed [15:0] grp_fu_1532_p0;
+wire  signed [23:0] grp_fu_1532_p2;
+wire  signed [15:0] grp_fu_1540_p0;
+wire  signed [23:0] grp_fu_1540_p2;
+wire  signed [15:0] grp_fu_1548_p0;
+wire  signed [23:0] grp_fu_1548_p2;
+wire  signed [15:0] grp_fu_1556_p0;
+wire  signed [23:0] grp_fu_1556_p2;
+wire  signed [15:0] grp_fu_1564_p0;
+wire  signed [23:0] grp_fu_1564_p2;
+wire  signed [15:0] grp_fu_1572_p0;
+wire  signed [23:0] grp_fu_1572_p2;
+wire  signed [15:0] grp_fu_1580_p0;
+wire  signed [23:0] grp_fu_1580_p2;
+wire  signed [15:0] grp_fu_1588_p0;
+wire  signed [23:0] grp_fu_1588_p2;
 reg    ap_done_reg;
 wire    ap_continue_int;
 reg    ap_done_int;
@@ -623,7 +619,7 @@ initial begin
 end
 
 ds_cnn_depthwise_pointwise_relu_fused_Pipeline_VITIS_LOOP_111_6_weights_PW_B_ROM_AUTlbW #(
-    .DataWidth( 11 ),
+    .DataWidth( 12 ),
     .AddressRange( 8 ),
     .AddressWidth( 3 ))
 weights_PW_B_U(
@@ -635,7 +631,7 @@ weights_PW_B_U(
 );
 
 ds_cnn_depthwise_pointwise_relu_fused_Pipeline_VITIS_LOOP_111_6_p_ZN7weights4PW_WE_0mb6 #(
-    .DataWidth( 10 ),
+    .DataWidth( 11 ),
     .AddressRange( 8 ),
     .AddressWidth( 3 ))
 p_ZN7weights4PW_WE_0_U(
@@ -647,7 +643,7 @@ p_ZN7weights4PW_WE_0_U(
 );
 
 ds_cnn_depthwise_pointwise_relu_fused_Pipeline_VITIS_LOOP_111_6_p_ZN7weights4PW_WE_1ncg #(
-    .DataWidth( 11 ),
+    .DataWidth( 13 ),
     .AddressRange( 8 ),
     .AddressWidth( 3 ))
 p_ZN7weights4PW_WE_1_U(
@@ -659,7 +655,7 @@ p_ZN7weights4PW_WE_1_U(
 );
 
 ds_cnn_depthwise_pointwise_relu_fused_Pipeline_VITIS_LOOP_111_6_p_ZN7weights4PW_WE_2ocq #(
-    .DataWidth( 11 ),
+    .DataWidth( 13 ),
     .AddressRange( 8 ),
     .AddressWidth( 3 ))
 p_ZN7weights4PW_WE_2_U(
@@ -671,7 +667,7 @@ p_ZN7weights4PW_WE_2_U(
 );
 
 ds_cnn_depthwise_pointwise_relu_fused_Pipeline_VITIS_LOOP_111_6_p_ZN7weights4PW_WE_3pcA #(
-    .DataWidth( 11 ),
+    .DataWidth( 13 ),
     .AddressRange( 8 ),
     .AddressWidth( 3 ))
 p_ZN7weights4PW_WE_3_U(
@@ -683,7 +679,7 @@ p_ZN7weights4PW_WE_3_U(
 );
 
 ds_cnn_depthwise_pointwise_relu_fused_Pipeline_VITIS_LOOP_111_6_p_ZN7weights4PW_WE_4qcK #(
-    .DataWidth( 12 ),
+    .DataWidth( 13 ),
     .AddressRange( 8 ),
     .AddressWidth( 3 ))
 p_ZN7weights4PW_WE_4_U(
@@ -695,7 +691,7 @@ p_ZN7weights4PW_WE_4_U(
 );
 
 ds_cnn_depthwise_pointwise_relu_fused_Pipeline_VITIS_LOOP_111_6_p_ZN7weights4PW_WE_5rcU #(
-    .DataWidth( 11 ),
+    .DataWidth( 13 ),
     .AddressRange( 8 ),
     .AddressWidth( 3 ))
 p_ZN7weights4PW_WE_5_U(
@@ -707,7 +703,7 @@ p_ZN7weights4PW_WE_5_U(
 );
 
 ds_cnn_depthwise_pointwise_relu_fused_Pipeline_VITIS_LOOP_111_6_p_ZN7weights4PW_WE_6sc4 #(
-    .DataWidth( 12 ),
+    .DataWidth( 13 ),
     .AddressRange( 8 ),
     .AddressWidth( 3 ))
 p_ZN7weights4PW_WE_6_U(
@@ -719,7 +715,7 @@ p_ZN7weights4PW_WE_6_U(
 );
 
 ds_cnn_depthwise_pointwise_relu_fused_Pipeline_VITIS_LOOP_111_6_p_ZN7weights4PW_WE_7tde #(
-    .DataWidth( 12 ),
+    .DataWidth( 13 ),
     .AddressRange( 8 ),
     .AddressWidth( 3 ))
 p_ZN7weights4PW_WE_7_U(
@@ -731,7 +727,7 @@ p_ZN7weights4PW_WE_7_U(
 );
 
 ds_cnn_depthwise_pointwise_relu_fused_Pipeline_VITIS_LOOP_111_6_p_ZN7weights4PW_WE_8udo #(
-    .DataWidth( 11 ),
+    .DataWidth( 13 ),
     .AddressRange( 8 ),
     .AddressWidth( 3 ))
 p_ZN7weights4PW_WE_8_U(
@@ -743,7 +739,7 @@ p_ZN7weights4PW_WE_8_U(
 );
 
 ds_cnn_depthwise_pointwise_relu_fused_Pipeline_VITIS_LOOP_111_6_p_ZN7weights4PW_WE_9vdy #(
-    .DataWidth( 12 ),
+    .DataWidth( 13 ),
     .AddressRange( 8 ),
     .AddressWidth( 3 ))
 p_ZN7weights4PW_WE_9_U(
@@ -755,7 +751,7 @@ p_ZN7weights4PW_WE_9_U(
 );
 
 ds_cnn_depthwise_pointwise_relu_fused_Pipeline_VITIS_LOOP_111_6_p_ZN7weights4PW_WE_1wdI #(
-    .DataWidth( 11 ),
+    .DataWidth( 12 ),
     .AddressRange( 8 ),
     .AddressWidth( 3 ))
 p_ZN7weights4PW_WE_10_U(
@@ -767,7 +763,7 @@ p_ZN7weights4PW_WE_10_U(
 );
 
 ds_cnn_depthwise_pointwise_relu_fused_Pipeline_VITIS_LOOP_111_6_p_ZN7weights4PW_WE_1xdS #(
-    .DataWidth( 11 ),
+    .DataWidth( 13 ),
     .AddressRange( 8 ),
     .AddressWidth( 3 ))
 p_ZN7weights4PW_WE_11_U(
@@ -779,7 +775,7 @@ p_ZN7weights4PW_WE_11_U(
 );
 
 ds_cnn_depthwise_pointwise_relu_fused_Pipeline_VITIS_LOOP_111_6_p_ZN7weights4PW_WE_1yd2 #(
-    .DataWidth( 12 ),
+    .DataWidth( 13 ),
     .AddressRange( 8 ),
     .AddressWidth( 3 ))
 p_ZN7weights4PW_WE_12_U(
@@ -791,7 +787,7 @@ p_ZN7weights4PW_WE_12_U(
 );
 
 ds_cnn_depthwise_pointwise_relu_fused_Pipeline_VITIS_LOOP_111_6_p_ZN7weights4PW_WE_1zec #(
-    .DataWidth( 12 ),
+    .DataWidth( 13 ),
     .AddressRange( 8 ),
     .AddressWidth( 3 ))
 p_ZN7weights4PW_WE_13_U(
@@ -803,7 +799,7 @@ p_ZN7weights4PW_WE_13_U(
 );
 
 ds_cnn_depthwise_pointwise_relu_fused_Pipeline_VITIS_LOOP_111_6_p_ZN7weights4PW_WE_1Aem #(
-    .DataWidth( 11 ),
+    .DataWidth( 12 ),
     .AddressRange( 8 ),
     .AddressWidth( 3 ))
 p_ZN7weights4PW_WE_14_U(
@@ -815,7 +811,7 @@ p_ZN7weights4PW_WE_14_U(
 );
 
 ds_cnn_depthwise_pointwise_relu_fused_Pipeline_VITIS_LOOP_111_6_p_ZN7weights4PW_WE_1Bew #(
-    .DataWidth( 11 ),
+    .DataWidth( 13 ),
     .AddressRange( 8 ),
     .AddressWidth( 3 ))
 p_ZN7weights4PW_WE_15_U(
@@ -826,208 +822,242 @@ p_ZN7weights4PW_WE_15_U(
     .q0(p_ZN7weights4PW_WE_15_q0)
 );
 
-ds_cnn_mac_muladd_16s_10s_19s_24_4_1 #(
+ds_cnn_mac_muladd_16s_11s_20s_24_4_1 #(
     .ID( 1 ),
     .NUM_STAGE( 4 ),
     .din0_WIDTH( 16 ),
-    .din1_WIDTH( 10 ),
-    .din2_WIDTH( 19 ),
+    .din1_WIDTH( 11 ),
+    .din2_WIDTH( 20 ),
     .dout_WIDTH( 24 ))
-mac_muladd_16s_10s_19s_24_4_1_U173(
+mac_muladd_16s_11s_20s_24_4_1_U173(
     .clk(ap_clk),
     .reset(ap_rst),
-    .din0(grp_fu_1467_p0),
+    .din0(grp_fu_1468_p0),
     .din1(p_ZN7weights4PW_WE_0_q0),
     .din2(shl_ln1_fu_1081_p3),
     .ce(1'b1),
-    .dout(grp_fu_1467_p3)
+    .dout(grp_fu_1468_p3)
 );
 
-ds_cnn_mac_muladd_16s_11s_24s_24_4_1 #(
+ds_cnn_mac_muladd_16s_13s_24s_24_4_1 #(
     .ID( 1 ),
     .NUM_STAGE( 4 ),
     .din0_WIDTH( 16 ),
-    .din1_WIDTH( 11 ),
+    .din1_WIDTH( 13 ),
     .din2_WIDTH( 24 ),
     .dout_WIDTH( 24 ))
-mac_muladd_16s_11s_24s_24_4_1_U174(
+mac_muladd_16s_13s_24s_24_4_1_U174(
     .clk(ap_clk),
     .reset(ap_rst),
-    .din0(grp_fu_1475_p0),
+    .din0(grp_fu_1476_p0),
     .din1(p_ZN7weights4PW_WE_1_q0),
-    .din2(grp_fu_1475_p2),
+    .din2(grp_fu_1476_p2),
     .ce(1'b1),
-    .dout(grp_fu_1475_p3)
+    .dout(grp_fu_1476_p3)
 );
 
-ds_cnn_mac_muladd_16s_11s_24s_24_4_1 #(
+ds_cnn_mac_muladd_16s_13s_24s_24_4_1 #(
     .ID( 1 ),
     .NUM_STAGE( 4 ),
     .din0_WIDTH( 16 ),
-    .din1_WIDTH( 11 ),
+    .din1_WIDTH( 13 ),
     .din2_WIDTH( 24 ),
     .dout_WIDTH( 24 ))
-mac_muladd_16s_11s_24s_24_4_1_U175(
+mac_muladd_16s_13s_24s_24_4_1_U175(
     .clk(ap_clk),
     .reset(ap_rst),
-    .din0(grp_fu_1483_p0),
+    .din0(grp_fu_1484_p0),
     .din1(p_ZN7weights4PW_WE_2_q0),
-    .din2(grp_fu_1483_p2),
+    .din2(grp_fu_1484_p2),
     .ce(1'b1),
-    .dout(grp_fu_1483_p3)
+    .dout(grp_fu_1484_p3)
 );
 
-ds_cnn_mac_muladd_16s_11s_24s_24_4_1 #(
+ds_cnn_mac_muladd_16s_13s_24s_24_4_1 #(
     .ID( 1 ),
     .NUM_STAGE( 4 ),
     .din0_WIDTH( 16 ),
-    .din1_WIDTH( 11 ),
+    .din1_WIDTH( 13 ),
     .din2_WIDTH( 24 ),
     .dout_WIDTH( 24 ))
-mac_muladd_16s_11s_24s_24_4_1_U176(
+mac_muladd_16s_13s_24s_24_4_1_U176(
     .clk(ap_clk),
     .reset(ap_rst),
-    .din0(grp_fu_1491_p0),
+    .din0(grp_fu_1492_p0),
     .din1(p_ZN7weights4PW_WE_3_q0),
-    .din2(grp_fu_1491_p2),
+    .din2(grp_fu_1492_p2),
     .ce(1'b1),
-    .dout(grp_fu_1491_p3)
+    .dout(grp_fu_1492_p3)
 );
 
-ds_cnn_mac_muladd_16s_12s_24s_24_4_1 #(
+ds_cnn_mac_muladd_16s_13s_24s_24_4_1 #(
     .ID( 1 ),
     .NUM_STAGE( 4 ),
     .din0_WIDTH( 16 ),
-    .din1_WIDTH( 12 ),
+    .din1_WIDTH( 13 ),
     .din2_WIDTH( 24 ),
     .dout_WIDTH( 24 ))
-mac_muladd_16s_12s_24s_24_4_1_U177(
+mac_muladd_16s_13s_24s_24_4_1_U177(
     .clk(ap_clk),
     .reset(ap_rst),
-    .din0(grp_fu_1499_p0),
+    .din0(grp_fu_1500_p0),
     .din1(p_ZN7weights4PW_WE_4_q0),
-    .din2(grp_fu_1499_p2),
+    .din2(grp_fu_1500_p2),
     .ce(1'b1),
-    .dout(grp_fu_1499_p3)
+    .dout(grp_fu_1500_p3)
 );
 
-ds_cnn_mac_muladd_16s_11s_24s_24_4_1 #(
+ds_cnn_mac_muladd_16s_13s_24s_24_4_1 #(
     .ID( 1 ),
     .NUM_STAGE( 4 ),
     .din0_WIDTH( 16 ),
-    .din1_WIDTH( 11 ),
+    .din1_WIDTH( 13 ),
     .din2_WIDTH( 24 ),
     .dout_WIDTH( 24 ))
-mac_muladd_16s_11s_24s_24_4_1_U178(
+mac_muladd_16s_13s_24s_24_4_1_U178(
     .clk(ap_clk),
     .reset(ap_rst),
-    .din0(grp_fu_1507_p0),
+    .din0(grp_fu_1508_p0),
     .din1(p_ZN7weights4PW_WE_5_q0),
-    .din2(grp_fu_1507_p2),
+    .din2(grp_fu_1508_p2),
     .ce(1'b1),
-    .dout(grp_fu_1507_p3)
+    .dout(grp_fu_1508_p3)
 );
 
-ds_cnn_mac_muladd_16s_12s_24s_24_4_1 #(
+ds_cnn_mac_muladd_16s_13s_24s_24_4_1 #(
     .ID( 1 ),
     .NUM_STAGE( 4 ),
     .din0_WIDTH( 16 ),
-    .din1_WIDTH( 12 ),
+    .din1_WIDTH( 13 ),
     .din2_WIDTH( 24 ),
     .dout_WIDTH( 24 ))
-mac_muladd_16s_12s_24s_24_4_1_U179(
+mac_muladd_16s_13s_24s_24_4_1_U179(
     .clk(ap_clk),
     .reset(ap_rst),
-    .din0(grp_fu_1515_p0),
+    .din0(grp_fu_1516_p0),
     .din1(p_ZN7weights4PW_WE_6_q0),
-    .din2(grp_fu_1515_p2),
+    .din2(grp_fu_1516_p2),
     .ce(1'b1),
-    .dout(grp_fu_1515_p3)
+    .dout(grp_fu_1516_p3)
 );
 
-ds_cnn_mac_muladd_16s_12s_24s_24_4_1 #(
+ds_cnn_mac_muladd_16s_13s_24s_24_4_1 #(
     .ID( 1 ),
     .NUM_STAGE( 4 ),
     .din0_WIDTH( 16 ),
-    .din1_WIDTH( 12 ),
+    .din1_WIDTH( 13 ),
     .din2_WIDTH( 24 ),
     .dout_WIDTH( 24 ))
-mac_muladd_16s_12s_24s_24_4_1_U180(
+mac_muladd_16s_13s_24s_24_4_1_U180(
     .clk(ap_clk),
     .reset(ap_rst),
-    .din0(grp_fu_1523_p0),
+    .din0(grp_fu_1524_p0),
     .din1(p_ZN7weights4PW_WE_7_q0),
-    .din2(grp_fu_1523_p2),
+    .din2(grp_fu_1524_p2),
     .ce(1'b1),
-    .dout(grp_fu_1523_p3)
+    .dout(grp_fu_1524_p3)
 );
 
-ds_cnn_mac_muladd_16s_11s_24s_24_4_1 #(
+ds_cnn_mac_muladd_16s_13s_24s_24_4_1 #(
     .ID( 1 ),
     .NUM_STAGE( 4 ),
     .din0_WIDTH( 16 ),
-    .din1_WIDTH( 11 ),
+    .din1_WIDTH( 13 ),
     .din2_WIDTH( 24 ),
     .dout_WIDTH( 24 ))
-mac_muladd_16s_11s_24s_24_4_1_U181(
+mac_muladd_16s_13s_24s_24_4_1_U181(
     .clk(ap_clk),
     .reset(ap_rst),
-    .din0(grp_fu_1531_p0),
+    .din0(grp_fu_1532_p0),
     .din1(p_ZN7weights4PW_WE_8_q0),
-    .din2(grp_fu_1531_p2),
+    .din2(grp_fu_1532_p2),
     .ce(1'b1),
-    .dout(grp_fu_1531_p3)
+    .dout(grp_fu_1532_p3)
 );
 
-ds_cnn_mac_muladd_16s_12s_24s_24_4_1 #(
+ds_cnn_mac_muladd_16s_13s_24s_24_4_1 #(
     .ID( 1 ),
     .NUM_STAGE( 4 ),
     .din0_WIDTH( 16 ),
-    .din1_WIDTH( 12 ),
+    .din1_WIDTH( 13 ),
     .din2_WIDTH( 24 ),
     .dout_WIDTH( 24 ))
-mac_muladd_16s_12s_24s_24_4_1_U182(
+mac_muladd_16s_13s_24s_24_4_1_U182(
     .clk(ap_clk),
     .reset(ap_rst),
-    .din0(grp_fu_1539_p0),
+    .din0(grp_fu_1540_p0),
     .din1(p_ZN7weights4PW_WE_9_q0),
-    .din2(grp_fu_1539_p2),
+    .din2(grp_fu_1540_p2),
     .ce(1'b1),
-    .dout(grp_fu_1539_p3)
+    .dout(grp_fu_1540_p3)
 );
 
-ds_cnn_mac_muladd_16s_11s_24s_24_4_1 #(
+ds_cnn_mac_muladd_16s_12s_24s_24_4_1 #(
     .ID( 1 ),
     .NUM_STAGE( 4 ),
     .din0_WIDTH( 16 ),
-    .din1_WIDTH( 11 ),
+    .din1_WIDTH( 12 ),
     .din2_WIDTH( 24 ),
     .dout_WIDTH( 24 ))
-mac_muladd_16s_11s_24s_24_4_1_U183(
+mac_muladd_16s_12s_24s_24_4_1_U183(
     .clk(ap_clk),
     .reset(ap_rst),
-    .din0(grp_fu_1547_p0),
+    .din0(grp_fu_1548_p0),
     .din1(p_ZN7weights4PW_WE_10_q0),
-    .din2(grp_fu_1547_p2),
+    .din2(grp_fu_1548_p2),
     .ce(1'b1),
-    .dout(grp_fu_1547_p3)
+    .dout(grp_fu_1548_p3)
 );
 
-ds_cnn_mac_muladd_16s_11s_24s_24_4_1 #(
+ds_cnn_mac_muladd_16s_13s_24s_24_4_1 #(
     .ID( 1 ),
     .NUM_STAGE( 4 ),
     .din0_WIDTH( 16 ),
-    .din1_WIDTH( 11 ),
+    .din1_WIDTH( 13 ),
     .din2_WIDTH( 24 ),
     .dout_WIDTH( 24 ))
-mac_muladd_16s_11s_24s_24_4_1_U184(
+mac_muladd_16s_13s_24s_24_4_1_U184(
     .clk(ap_clk),
     .reset(ap_rst),
-    .din0(grp_fu_1555_p0),
-    .din1(p_ZN7weights4PW_WE_11_load_reg_1910),
-    .din2(grp_fu_1555_p2),
+    .din0(grp_fu_1556_p0),
+    .din1(p_ZN7weights4PW_WE_11_q0),
+    .din2(grp_fu_1556_p2),
     .ce(1'b1),
-    .dout(grp_fu_1555_p3)
+    .dout(grp_fu_1556_p3)
+);
+
+ds_cnn_mac_muladd_16s_13s_24s_24_4_1 #(
+    .ID( 1 ),
+    .NUM_STAGE( 4 ),
+    .din0_WIDTH( 16 ),
+    .din1_WIDTH( 13 ),
+    .din2_WIDTH( 24 ),
+    .dout_WIDTH( 24 ))
+mac_muladd_16s_13s_24s_24_4_1_U185(
+    .clk(ap_clk),
+    .reset(ap_rst),
+    .din0(grp_fu_1564_p0),
+    .din1(p_ZN7weights4PW_WE_12_load_reg_1921),
+    .din2(grp_fu_1564_p2),
+    .ce(1'b1),
+    .dout(grp_fu_1564_p3)
+);
+
+ds_cnn_mac_muladd_16s_13s_24s_24_4_1 #(
+    .ID( 1 ),
+    .NUM_STAGE( 4 ),
+    .din0_WIDTH( 16 ),
+    .din1_WIDTH( 13 ),
+    .din2_WIDTH( 24 ),
+    .dout_WIDTH( 24 ))
+mac_muladd_16s_13s_24s_24_4_1_U186(
+    .clk(ap_clk),
+    .reset(ap_rst),
+    .din0(grp_fu_1572_p0),
+    .din1(p_ZN7weights4PW_WE_13_load_reg_1926_pp0_iter13_reg),
+    .din2(grp_fu_1572_p2),
+    .ce(1'b1),
+    .dout(grp_fu_1572_p3)
 );
 
 ds_cnn_mac_muladd_16s_12s_24s_24_4_1 #(
@@ -1037,65 +1067,31 @@ ds_cnn_mac_muladd_16s_12s_24s_24_4_1 #(
     .din1_WIDTH( 12 ),
     .din2_WIDTH( 24 ),
     .dout_WIDTH( 24 ))
-mac_muladd_16s_12s_24s_24_4_1_U185(
+mac_muladd_16s_12s_24s_24_4_1_U187(
     .clk(ap_clk),
     .reset(ap_rst),
-    .din0(grp_fu_1563_p0),
-    .din1(p_ZN7weights4PW_WE_12_load_reg_1915_pp0_iter12_reg),
-    .din2(grp_fu_1563_p2),
+    .din0(grp_fu_1580_p0),
+    .din1(p_ZN7weights4PW_WE_14_load_reg_1931_pp0_iter14_reg),
+    .din2(grp_fu_1580_p2),
     .ce(1'b1),
-    .dout(grp_fu_1563_p3)
+    .dout(grp_fu_1580_p3)
 );
 
-ds_cnn_mac_muladd_16s_12s_24s_24_4_1 #(
+ds_cnn_mac_muladd_16s_13s_24s_24_4_1 #(
     .ID( 1 ),
     .NUM_STAGE( 4 ),
     .din0_WIDTH( 16 ),
-    .din1_WIDTH( 12 ),
+    .din1_WIDTH( 13 ),
     .din2_WIDTH( 24 ),
     .dout_WIDTH( 24 ))
-mac_muladd_16s_12s_24s_24_4_1_U186(
+mac_muladd_16s_13s_24s_24_4_1_U188(
     .clk(ap_clk),
     .reset(ap_rst),
-    .din0(grp_fu_1571_p0),
-    .din1(p_ZN7weights4PW_WE_13_load_reg_1920_pp0_iter13_reg),
-    .din2(grp_fu_1571_p2),
+    .din0(grp_fu_1588_p0),
+    .din1(p_ZN7weights4PW_WE_15_load_reg_1936_pp0_iter15_reg),
+    .din2(grp_fu_1588_p2),
     .ce(1'b1),
-    .dout(grp_fu_1571_p3)
-);
-
-ds_cnn_mac_muladd_16s_11s_24s_24_4_1 #(
-    .ID( 1 ),
-    .NUM_STAGE( 4 ),
-    .din0_WIDTH( 16 ),
-    .din1_WIDTH( 11 ),
-    .din2_WIDTH( 24 ),
-    .dout_WIDTH( 24 ))
-mac_muladd_16s_11s_24s_24_4_1_U187(
-    .clk(ap_clk),
-    .reset(ap_rst),
-    .din0(grp_fu_1579_p0),
-    .din1(p_ZN7weights4PW_WE_14_load_reg_1925_pp0_iter14_reg),
-    .din2(grp_fu_1579_p2),
-    .ce(1'b1),
-    .dout(grp_fu_1579_p3)
-);
-
-ds_cnn_mac_muladd_16s_11s_24s_24_4_1 #(
-    .ID( 1 ),
-    .NUM_STAGE( 4 ),
-    .din0_WIDTH( 16 ),
-    .din1_WIDTH( 11 ),
-    .din2_WIDTH( 24 ),
-    .dout_WIDTH( 24 ))
-mac_muladd_16s_11s_24s_24_4_1_U188(
-    .clk(ap_clk),
-    .reset(ap_rst),
-    .din0(grp_fu_1587_p0),
-    .din1(p_ZN7weights4PW_WE_15_load_reg_1930_pp0_iter15_reg),
-    .din2(grp_fu_1587_p2),
-    .ce(1'b1),
-    .dout(grp_fu_1587_p3)
+    .dout(grp_fu_1588_p3)
 );
 
 ds_cnn_flow_control_loop_pipe_sequential_init flow_control_loop_pipe_sequential_init_U(
@@ -1364,72 +1360,68 @@ always @ (posedge ap_clk) begin
         ap_loop_exit_ready_pp0_iter7_reg <= ap_loop_exit_ready_pp0_iter6_reg;
         ap_loop_exit_ready_pp0_iter8_reg <= ap_loop_exit_ready_pp0_iter7_reg;
         ap_loop_exit_ready_pp0_iter9_reg <= ap_loop_exit_ready_pp0_iter8_reg;
-        ap_predicate_pred1019_state21 <= ((tmp_38_reg_1612 == 3'd6) & (tmp_reg_1603 == 2'd1));
-        ap_predicate_pred1033_state21 <= ((tmp_38_reg_1612 == 3'd5) & (tmp_reg_1603 == 2'd1));
-        ap_predicate_pred1047_state21 <= ((tmp_38_reg_1612 == 3'd4) & (tmp_reg_1603 == 2'd1));
-        ap_predicate_pred1061_state21 <= ((tmp_38_reg_1612 == 3'd3) & (tmp_reg_1603 == 2'd1));
-        ap_predicate_pred1075_state21 <= ((tmp_38_reg_1612 == 3'd2) & (tmp_reg_1603 == 2'd1));
-        ap_predicate_pred1089_state21 <= ((tmp_38_reg_1612 == 3'd1) & (tmp_reg_1603 == 2'd1));
-        ap_predicate_pred1103_state21 <= ((tmp_38_reg_1612 == 3'd0) & (tmp_reg_1603 == 2'd1));
-        ap_predicate_pred1117_state21 <= ((tmp_38_reg_1612 == 3'd7) & (tmp_reg_1603 == 2'd1));
-        ap_predicate_pred1131_state21 <= ((tmp_38_reg_1612 == 3'd6) & (tmp_reg_1603 == 2'd0));
-        ap_predicate_pred1143_state21 <= ((tmp_38_reg_1612 == 3'd5) & (tmp_reg_1603 == 2'd0));
-        ap_predicate_pred1155_state21 <= ((tmp_38_reg_1612 == 3'd4) & (tmp_reg_1603 == 2'd0));
-        ap_predicate_pred1167_state21 <= ((tmp_38_reg_1612 == 3'd3) & (tmp_reg_1603 == 2'd0));
-        ap_predicate_pred1179_state21 <= ((tmp_38_reg_1612 == 3'd2) & (tmp_reg_1603 == 2'd0));
-        ap_predicate_pred1191_state21 <= ((tmp_38_reg_1612 == 3'd1) & (tmp_reg_1603 == 2'd0));
-        ap_predicate_pred1203_state21 <= ((tmp_38_reg_1612 == 3'd0) & (tmp_reg_1603 == 2'd0));
-        ap_predicate_pred1215_state21 <= ((tmp_38_reg_1612 == 3'd7) & (tmp_reg_1603 == 2'd0));
-        ap_predicate_pred1230_state21 <= (~(tmp_reg_1603 == 2'd0) & ~(tmp_reg_1603 == 2'd1) & (tmp_38_reg_1612 == 3'd6));
-        ap_predicate_pred1242_state21 <= (~(tmp_reg_1603 == 2'd0) & ~(tmp_reg_1603 == 2'd1) & (tmp_38_reg_1612 == 3'd5));
-        ap_predicate_pred1254_state21 <= (~(tmp_reg_1603 == 2'd0) & ~(tmp_reg_1603 == 2'd1) & (tmp_38_reg_1612 == 3'd4));
-        ap_predicate_pred1266_state21 <= (~(tmp_reg_1603 == 2'd0) & ~(tmp_reg_1603 == 2'd1) & (tmp_38_reg_1612 == 3'd3));
-        ap_predicate_pred1278_state21 <= (~(tmp_reg_1603 == 2'd0) & ~(tmp_reg_1603 == 2'd1) & (tmp_38_reg_1612 == 3'd2));
-        ap_predicate_pred1290_state21 <= (~(tmp_reg_1603 == 2'd0) & ~(tmp_reg_1603 == 2'd1) & (tmp_38_reg_1612 == 3'd1));
-        ap_predicate_pred1302_state21 <= (~(tmp_reg_1603 == 2'd0) & ~(tmp_reg_1603 == 2'd1) & (tmp_38_reg_1612 == 3'd0));
-        ap_predicate_pred1314_state21 <= (~(tmp_reg_1603 == 2'd0) & ~(tmp_reg_1603 == 2'd1) & (tmp_38_reg_1612 == 3'd7));
-        oc_1_reg_1696_pp0_iter10_reg <= oc_1_reg_1696_pp0_iter9_reg;
-        oc_1_reg_1696_pp0_iter11_reg <= oc_1_reg_1696_pp0_iter10_reg;
-        oc_1_reg_1696_pp0_iter12_reg <= oc_1_reg_1696_pp0_iter11_reg;
-        oc_1_reg_1696_pp0_iter13_reg <= oc_1_reg_1696_pp0_iter12_reg;
-        oc_1_reg_1696_pp0_iter14_reg <= oc_1_reg_1696_pp0_iter13_reg;
-        oc_1_reg_1696_pp0_iter15_reg <= oc_1_reg_1696_pp0_iter14_reg;
-        oc_1_reg_1696_pp0_iter16_reg <= oc_1_reg_1696_pp0_iter15_reg;
-        oc_1_reg_1696_pp0_iter17_reg <= oc_1_reg_1696_pp0_iter16_reg;
-        oc_1_reg_1696_pp0_iter18_reg <= oc_1_reg_1696_pp0_iter17_reg;
-        oc_1_reg_1696_pp0_iter19_reg <= oc_1_reg_1696_pp0_iter18_reg;
-        oc_1_reg_1696_pp0_iter2_reg <= oc_1_reg_1696_pp0_iter1_reg;
-        oc_1_reg_1696_pp0_iter3_reg <= oc_1_reg_1696_pp0_iter2_reg;
-        oc_1_reg_1696_pp0_iter4_reg <= oc_1_reg_1696_pp0_iter3_reg;
-        oc_1_reg_1696_pp0_iter5_reg <= oc_1_reg_1696_pp0_iter4_reg;
-        oc_1_reg_1696_pp0_iter6_reg <= oc_1_reg_1696_pp0_iter5_reg;
-        oc_1_reg_1696_pp0_iter7_reg <= oc_1_reg_1696_pp0_iter6_reg;
-        oc_1_reg_1696_pp0_iter8_reg <= oc_1_reg_1696_pp0_iter7_reg;
-        oc_1_reg_1696_pp0_iter9_reg <= oc_1_reg_1696_pp0_iter8_reg;
-        p_ZN7weights4PW_WE_11_load_reg_1910 <= p_ZN7weights4PW_WE_11_q0;
-        p_ZN7weights4PW_WE_12_load_reg_1915 <= p_ZN7weights4PW_WE_12_q0;
-        p_ZN7weights4PW_WE_12_load_reg_1915_pp0_iter12_reg <= p_ZN7weights4PW_WE_12_load_reg_1915;
-        p_ZN7weights4PW_WE_13_load_reg_1920 <= p_ZN7weights4PW_WE_13_q0;
-        p_ZN7weights4PW_WE_13_load_reg_1920_pp0_iter12_reg <= p_ZN7weights4PW_WE_13_load_reg_1920;
-        p_ZN7weights4PW_WE_13_load_reg_1920_pp0_iter13_reg <= p_ZN7weights4PW_WE_13_load_reg_1920_pp0_iter12_reg;
-        p_ZN7weights4PW_WE_14_load_reg_1925 <= p_ZN7weights4PW_WE_14_q0;
-        p_ZN7weights4PW_WE_14_load_reg_1925_pp0_iter12_reg <= p_ZN7weights4PW_WE_14_load_reg_1925;
-        p_ZN7weights4PW_WE_14_load_reg_1925_pp0_iter13_reg <= p_ZN7weights4PW_WE_14_load_reg_1925_pp0_iter12_reg;
-        p_ZN7weights4PW_WE_14_load_reg_1925_pp0_iter14_reg <= p_ZN7weights4PW_WE_14_load_reg_1925_pp0_iter13_reg;
-        p_ZN7weights4PW_WE_15_load_reg_1930 <= p_ZN7weights4PW_WE_15_q0;
-        p_ZN7weights4PW_WE_15_load_reg_1930_pp0_iter12_reg <= p_ZN7weights4PW_WE_15_load_reg_1930;
-        p_ZN7weights4PW_WE_15_load_reg_1930_pp0_iter13_reg <= p_ZN7weights4PW_WE_15_load_reg_1930_pp0_iter12_reg;
-        p_ZN7weights4PW_WE_15_load_reg_1930_pp0_iter14_reg <= p_ZN7weights4PW_WE_15_load_reg_1930_pp0_iter13_reg;
-        p_ZN7weights4PW_WE_15_load_reg_1930_pp0_iter15_reg <= p_ZN7weights4PW_WE_15_load_reg_1930_pp0_iter14_reg;
-        select_ln13_reg_1995 <= select_ln13_fu_1423_p3;
-        zext_ln111_reg_1705_pp0_iter2_reg[3 : 0] <= zext_ln111_reg_1705_pp0_iter1_reg[3 : 0];
-        zext_ln111_reg_1705_pp0_iter3_reg[3 : 0] <= zext_ln111_reg_1705_pp0_iter2_reg[3 : 0];
-        zext_ln111_reg_1705_pp0_iter4_reg[3 : 0] <= zext_ln111_reg_1705_pp0_iter3_reg[3 : 0];
-        zext_ln111_reg_1705_pp0_iter5_reg[3 : 0] <= zext_ln111_reg_1705_pp0_iter4_reg[3 : 0];
-        zext_ln111_reg_1705_pp0_iter6_reg[3 : 0] <= zext_ln111_reg_1705_pp0_iter5_reg[3 : 0];
-        zext_ln111_reg_1705_pp0_iter7_reg[3 : 0] <= zext_ln111_reg_1705_pp0_iter6_reg[3 : 0];
-        zext_ln111_reg_1705_pp0_iter8_reg[3 : 0] <= zext_ln111_reg_1705_pp0_iter7_reg[3 : 0];
-        zext_ln111_reg_1705_pp0_iter9_reg[3 : 0] <= zext_ln111_reg_1705_pp0_iter8_reg[3 : 0];
+        ap_predicate_pred1017_state21 <= ((tmp_38_reg_1613 == 3'd6) & (tmp_reg_1604 == 2'd1));
+        ap_predicate_pred1031_state21 <= ((tmp_38_reg_1613 == 3'd5) & (tmp_reg_1604 == 2'd1));
+        ap_predicate_pred1045_state21 <= ((tmp_38_reg_1613 == 3'd4) & (tmp_reg_1604 == 2'd1));
+        ap_predicate_pred1059_state21 <= ((tmp_38_reg_1613 == 3'd3) & (tmp_reg_1604 == 2'd1));
+        ap_predicate_pred1073_state21 <= ((tmp_38_reg_1613 == 3'd2) & (tmp_reg_1604 == 2'd1));
+        ap_predicate_pred1087_state21 <= ((tmp_38_reg_1613 == 3'd1) & (tmp_reg_1604 == 2'd1));
+        ap_predicate_pred1101_state21 <= ((tmp_38_reg_1613 == 3'd0) & (tmp_reg_1604 == 2'd1));
+        ap_predicate_pred1115_state21 <= ((tmp_38_reg_1613 == 3'd7) & (tmp_reg_1604 == 2'd1));
+        ap_predicate_pred1129_state21 <= ((tmp_38_reg_1613 == 3'd6) & (tmp_reg_1604 == 2'd0));
+        ap_predicate_pred1141_state21 <= ((tmp_38_reg_1613 == 3'd5) & (tmp_reg_1604 == 2'd0));
+        ap_predicate_pred1153_state21 <= ((tmp_38_reg_1613 == 3'd4) & (tmp_reg_1604 == 2'd0));
+        ap_predicate_pred1165_state21 <= ((tmp_38_reg_1613 == 3'd3) & (tmp_reg_1604 == 2'd0));
+        ap_predicate_pred1177_state21 <= ((tmp_38_reg_1613 == 3'd2) & (tmp_reg_1604 == 2'd0));
+        ap_predicate_pred1189_state21 <= ((tmp_38_reg_1613 == 3'd1) & (tmp_reg_1604 == 2'd0));
+        ap_predicate_pred1201_state21 <= ((tmp_38_reg_1613 == 3'd0) & (tmp_reg_1604 == 2'd0));
+        ap_predicate_pred1213_state21 <= ((tmp_38_reg_1613 == 3'd7) & (tmp_reg_1604 == 2'd0));
+        ap_predicate_pred1228_state21 <= (~(tmp_reg_1604 == 2'd0) & ~(tmp_reg_1604 == 2'd1) & (tmp_38_reg_1613 == 3'd6));
+        ap_predicate_pred1240_state21 <= (~(tmp_reg_1604 == 2'd0) & ~(tmp_reg_1604 == 2'd1) & (tmp_38_reg_1613 == 3'd5));
+        ap_predicate_pred1252_state21 <= (~(tmp_reg_1604 == 2'd0) & ~(tmp_reg_1604 == 2'd1) & (tmp_38_reg_1613 == 3'd4));
+        ap_predicate_pred1264_state21 <= (~(tmp_reg_1604 == 2'd0) & ~(tmp_reg_1604 == 2'd1) & (tmp_38_reg_1613 == 3'd3));
+        ap_predicate_pred1276_state21 <= (~(tmp_reg_1604 == 2'd0) & ~(tmp_reg_1604 == 2'd1) & (tmp_38_reg_1613 == 3'd2));
+        ap_predicate_pred1288_state21 <= (~(tmp_reg_1604 == 2'd0) & ~(tmp_reg_1604 == 2'd1) & (tmp_38_reg_1613 == 3'd1));
+        ap_predicate_pred1300_state21 <= (~(tmp_reg_1604 == 2'd0) & ~(tmp_reg_1604 == 2'd1) & (tmp_38_reg_1613 == 3'd0));
+        ap_predicate_pred1312_state21 <= (~(tmp_reg_1604 == 2'd0) & ~(tmp_reg_1604 == 2'd1) & (tmp_38_reg_1613 == 3'd7));
+        oc_1_reg_1697_pp0_iter10_reg <= oc_1_reg_1697_pp0_iter9_reg;
+        oc_1_reg_1697_pp0_iter11_reg <= oc_1_reg_1697_pp0_iter10_reg;
+        oc_1_reg_1697_pp0_iter12_reg <= oc_1_reg_1697_pp0_iter11_reg;
+        oc_1_reg_1697_pp0_iter13_reg <= oc_1_reg_1697_pp0_iter12_reg;
+        oc_1_reg_1697_pp0_iter14_reg <= oc_1_reg_1697_pp0_iter13_reg;
+        oc_1_reg_1697_pp0_iter15_reg <= oc_1_reg_1697_pp0_iter14_reg;
+        oc_1_reg_1697_pp0_iter16_reg <= oc_1_reg_1697_pp0_iter15_reg;
+        oc_1_reg_1697_pp0_iter17_reg <= oc_1_reg_1697_pp0_iter16_reg;
+        oc_1_reg_1697_pp0_iter18_reg <= oc_1_reg_1697_pp0_iter17_reg;
+        oc_1_reg_1697_pp0_iter19_reg <= oc_1_reg_1697_pp0_iter18_reg;
+        oc_1_reg_1697_pp0_iter2_reg <= oc_1_reg_1697_pp0_iter1_reg;
+        oc_1_reg_1697_pp0_iter3_reg <= oc_1_reg_1697_pp0_iter2_reg;
+        oc_1_reg_1697_pp0_iter4_reg <= oc_1_reg_1697_pp0_iter3_reg;
+        oc_1_reg_1697_pp0_iter5_reg <= oc_1_reg_1697_pp0_iter4_reg;
+        oc_1_reg_1697_pp0_iter6_reg <= oc_1_reg_1697_pp0_iter5_reg;
+        oc_1_reg_1697_pp0_iter7_reg <= oc_1_reg_1697_pp0_iter6_reg;
+        oc_1_reg_1697_pp0_iter8_reg <= oc_1_reg_1697_pp0_iter7_reg;
+        oc_1_reg_1697_pp0_iter9_reg <= oc_1_reg_1697_pp0_iter8_reg;
+        p_ZN7weights4PW_WE_12_load_reg_1921 <= p_ZN7weights4PW_WE_12_q0;
+        p_ZN7weights4PW_WE_13_load_reg_1926 <= p_ZN7weights4PW_WE_13_q0;
+        p_ZN7weights4PW_WE_13_load_reg_1926_pp0_iter13_reg <= p_ZN7weights4PW_WE_13_load_reg_1926;
+        p_ZN7weights4PW_WE_14_load_reg_1931 <= p_ZN7weights4PW_WE_14_q0;
+        p_ZN7weights4PW_WE_14_load_reg_1931_pp0_iter13_reg <= p_ZN7weights4PW_WE_14_load_reg_1931;
+        p_ZN7weights4PW_WE_14_load_reg_1931_pp0_iter14_reg <= p_ZN7weights4PW_WE_14_load_reg_1931_pp0_iter13_reg;
+        p_ZN7weights4PW_WE_15_load_reg_1936 <= p_ZN7weights4PW_WE_15_q0;
+        p_ZN7weights4PW_WE_15_load_reg_1936_pp0_iter13_reg <= p_ZN7weights4PW_WE_15_load_reg_1936;
+        p_ZN7weights4PW_WE_15_load_reg_1936_pp0_iter14_reg <= p_ZN7weights4PW_WE_15_load_reg_1936_pp0_iter13_reg;
+        p_ZN7weights4PW_WE_15_load_reg_1936_pp0_iter15_reg <= p_ZN7weights4PW_WE_15_load_reg_1936_pp0_iter14_reg;
+        select_ln13_reg_1991 <= select_ln13_fu_1424_p3;
+        zext_ln111_reg_1706_pp0_iter10_reg[3 : 0] <= zext_ln111_reg_1706_pp0_iter9_reg[3 : 0];
+        zext_ln111_reg_1706_pp0_iter2_reg[3 : 0] <= zext_ln111_reg_1706_pp0_iter1_reg[3 : 0];
+        zext_ln111_reg_1706_pp0_iter3_reg[3 : 0] <= zext_ln111_reg_1706_pp0_iter2_reg[3 : 0];
+        zext_ln111_reg_1706_pp0_iter4_reg[3 : 0] <= zext_ln111_reg_1706_pp0_iter3_reg[3 : 0];
+        zext_ln111_reg_1706_pp0_iter5_reg[3 : 0] <= zext_ln111_reg_1706_pp0_iter4_reg[3 : 0];
+        zext_ln111_reg_1706_pp0_iter6_reg[3 : 0] <= zext_ln111_reg_1706_pp0_iter5_reg[3 : 0];
+        zext_ln111_reg_1706_pp0_iter7_reg[3 : 0] <= zext_ln111_reg_1706_pp0_iter6_reg[3 : 0];
+        zext_ln111_reg_1706_pp0_iter8_reg[3 : 0] <= zext_ln111_reg_1706_pp0_iter7_reg[3 : 0];
+        zext_ln111_reg_1706_pp0_iter9_reg[3 : 0] <= zext_ln111_reg_1706_pp0_iter8_reg[3 : 0];
     end
 end
 
@@ -1437,26 +1429,26 @@ always @ (posedge ap_clk) begin
     if (((1'b0 == ap_block_pp0_stage0_11001) & (1'b1 == ap_CS_fsm_pp0_stage0))) begin
         ap_loop_exit_ready_pp0_iter1_reg <= ap_loop_exit_ready;
         ap_loop_exit_ready_pp0_iter2_reg <= ap_loop_exit_ready_pp0_iter1_reg;
-        oc_1_reg_1696 <= ap_sig_allocacmp_oc_1;
-        oc_1_reg_1696_pp0_iter1_reg <= oc_1_reg_1696;
-        sext_ln118_10_cast_reg_1641 <= sext_ln118_10_cast_fu_991_p1;
-        sext_ln118_11_cast_reg_1636 <= sext_ln118_11_cast_fu_987_p1;
-        sext_ln118_12_cast_reg_1631 <= sext_ln118_12_cast_fu_983_p1;
-        sext_ln118_13_cast_reg_1626 <= sext_ln118_13_cast_fu_979_p1;
-        sext_ln118_14_cast_reg_1621 <= sext_ln118_14_cast_fu_975_p1;
-        sext_ln118_15_cast_reg_1616 <= sext_ln118_15_cast_fu_971_p1;
-        sext_ln118_1_cast_reg_1686 <= sext_ln118_1_cast_fu_1027_p1;
-        sext_ln118_2_cast_reg_1681 <= sext_ln118_2_cast_fu_1023_p1;
-        sext_ln118_3_cast_reg_1676 <= sext_ln118_3_cast_fu_1019_p1;
-        sext_ln118_4_cast_reg_1671 <= sext_ln118_4_cast_fu_1015_p1;
-        sext_ln118_5_cast_reg_1666 <= sext_ln118_5_cast_fu_1011_p1;
-        sext_ln118_6_cast_reg_1661 <= sext_ln118_6_cast_fu_1007_p1;
-        sext_ln118_7_cast_reg_1656 <= sext_ln118_7_cast_fu_1003_p1;
-        sext_ln118_8_cast_reg_1651 <= sext_ln118_8_cast_fu_999_p1;
-        sext_ln118_9_cast_reg_1646 <= sext_ln118_9_cast_fu_995_p1;
-        sext_ln118_cast_reg_1691 <= sext_ln118_cast_fu_1031_p1;
-        zext_ln111_reg_1705[3 : 0] <= zext_ln111_fu_1055_p1[3 : 0];
-        zext_ln111_reg_1705_pp0_iter1_reg[3 : 0] <= zext_ln111_reg_1705[3 : 0];
+        oc_1_reg_1697 <= ap_sig_allocacmp_oc_1;
+        oc_1_reg_1697_pp0_iter1_reg <= oc_1_reg_1697;
+        sext_ln118_10_cast_reg_1642 <= sext_ln118_10_cast_fu_991_p1;
+        sext_ln118_11_cast_reg_1637 <= sext_ln118_11_cast_fu_987_p1;
+        sext_ln118_12_cast_reg_1632 <= sext_ln118_12_cast_fu_983_p1;
+        sext_ln118_13_cast_reg_1627 <= sext_ln118_13_cast_fu_979_p1;
+        sext_ln118_14_cast_reg_1622 <= sext_ln118_14_cast_fu_975_p1;
+        sext_ln118_15_cast_reg_1617 <= sext_ln118_15_cast_fu_971_p1;
+        sext_ln118_1_cast_reg_1687 <= sext_ln118_1_cast_fu_1027_p1;
+        sext_ln118_2_cast_reg_1682 <= sext_ln118_2_cast_fu_1023_p1;
+        sext_ln118_3_cast_reg_1677 <= sext_ln118_3_cast_fu_1019_p1;
+        sext_ln118_4_cast_reg_1672 <= sext_ln118_4_cast_fu_1015_p1;
+        sext_ln118_5_cast_reg_1667 <= sext_ln118_5_cast_fu_1011_p1;
+        sext_ln118_6_cast_reg_1662 <= sext_ln118_6_cast_fu_1007_p1;
+        sext_ln118_7_cast_reg_1657 <= sext_ln118_7_cast_fu_1003_p1;
+        sext_ln118_8_cast_reg_1652 <= sext_ln118_8_cast_fu_999_p1;
+        sext_ln118_9_cast_reg_1647 <= sext_ln118_9_cast_fu_995_p1;
+        sext_ln118_cast_reg_1692 <= sext_ln118_cast_fu_1031_p1;
+        zext_ln111_reg_1706[3 : 0] <= zext_ln111_fu_1055_p1[3 : 0];
+        zext_ln111_reg_1706_pp0_iter1_reg[3 : 0] <= zext_ln111_reg_1706[3 : 0];
     end
 end
 
@@ -1525,7 +1517,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter10 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter11 == 1'b1))) begin
         p_ZN7weights4PW_WE_11_ce0_local = 1'b1;
     end else begin
         p_ZN7weights4PW_WE_11_ce0_local = 1'b0;
@@ -1533,7 +1525,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter10 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter11 == 1'b1))) begin
         p_ZN7weights4PW_WE_12_ce0_local = 1'b1;
     end else begin
         p_ZN7weights4PW_WE_12_ce0_local = 1'b0;
@@ -1541,7 +1533,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter10 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter11 == 1'b1))) begin
         p_ZN7weights4PW_WE_13_ce0_local = 1'b1;
     end else begin
         p_ZN7weights4PW_WE_13_ce0_local = 1'b0;
@@ -1549,7 +1541,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter10 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter11 == 1'b1))) begin
         p_ZN7weights4PW_WE_14_ce0_local = 1'b1;
     end else begin
         p_ZN7weights4PW_WE_14_ce0_local = 1'b0;
@@ -1557,7 +1549,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter10 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter11 == 1'b1))) begin
         p_ZN7weights4PW_WE_15_ce0_local = 1'b1;
     end else begin
         p_ZN7weights4PW_WE_15_ce0_local = 1'b0;
@@ -1645,7 +1637,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1203_state21 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1201_state21 == 1'b1))) begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_0_we1_local = 1'b1;
     end else begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_0_we1_local = 1'b0;
@@ -1661,7 +1653,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1191_state21 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1189_state21 == 1'b1))) begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_1_we1_local = 1'b1;
     end else begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_1_we1_local = 1'b0;
@@ -1677,7 +1669,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1179_state21 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1177_state21 == 1'b1))) begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_2_we1_local = 1'b1;
     end else begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_2_we1_local = 1'b0;
@@ -1693,7 +1685,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1167_state21 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1165_state21 == 1'b1))) begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_3_we1_local = 1'b1;
     end else begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_3_we1_local = 1'b0;
@@ -1709,7 +1701,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1155_state21 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1153_state21 == 1'b1))) begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_4_we1_local = 1'b1;
     end else begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_4_we1_local = 1'b0;
@@ -1725,7 +1717,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1143_state21 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1141_state21 == 1'b1))) begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_5_we1_local = 1'b1;
     end else begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_5_we1_local = 1'b0;
@@ -1741,7 +1733,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1131_state21 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1129_state21 == 1'b1))) begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_6_we1_local = 1'b1;
     end else begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_6_we1_local = 1'b0;
@@ -1757,7 +1749,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1215_state21 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1213_state21 == 1'b1))) begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_7_we1_local = 1'b1;
     end else begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_7_we1_local = 1'b0;
@@ -1773,7 +1765,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1103_state21 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1101_state21 == 1'b1))) begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_0_we1_local = 1'b1;
     end else begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_0_we1_local = 1'b0;
@@ -1789,7 +1781,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1089_state21 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1087_state21 == 1'b1))) begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_1_we1_local = 1'b1;
     end else begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_1_we1_local = 1'b0;
@@ -1805,7 +1797,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1075_state21 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1073_state21 == 1'b1))) begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_2_we1_local = 1'b1;
     end else begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_2_we1_local = 1'b0;
@@ -1821,7 +1813,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1061_state21 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1059_state21 == 1'b1))) begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_3_we1_local = 1'b1;
     end else begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_3_we1_local = 1'b0;
@@ -1837,7 +1829,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1047_state21 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1045_state21 == 1'b1))) begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_4_we1_local = 1'b1;
     end else begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_4_we1_local = 1'b0;
@@ -1853,7 +1845,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1033_state21 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1031_state21 == 1'b1))) begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_5_we1_local = 1'b1;
     end else begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_5_we1_local = 1'b0;
@@ -1869,7 +1861,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1019_state21 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1017_state21 == 1'b1))) begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_6_we1_local = 1'b1;
     end else begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_6_we1_local = 1'b0;
@@ -1885,7 +1877,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1117_state21 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1115_state21 == 1'b1))) begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_7_we1_local = 1'b1;
     end else begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_7_we1_local = 1'b0;
@@ -1901,7 +1893,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1302_state21 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1300_state21 == 1'b1))) begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_0_we1_local = 1'b1;
     end else begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_0_we1_local = 1'b0;
@@ -1917,7 +1909,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1290_state21 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1288_state21 == 1'b1))) begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_1_we1_local = 1'b1;
     end else begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_1_we1_local = 1'b0;
@@ -1933,7 +1925,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1278_state21 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1276_state21 == 1'b1))) begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_2_we1_local = 1'b1;
     end else begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_2_we1_local = 1'b0;
@@ -1949,7 +1941,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1266_state21 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1264_state21 == 1'b1))) begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_3_we1_local = 1'b1;
     end else begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_3_we1_local = 1'b0;
@@ -1965,7 +1957,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1254_state21 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1252_state21 == 1'b1))) begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_4_we1_local = 1'b1;
     end else begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_4_we1_local = 1'b0;
@@ -1981,7 +1973,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1242_state21 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1240_state21 == 1'b1))) begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_5_we1_local = 1'b1;
     end else begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_5_we1_local = 1'b0;
@@ -1997,7 +1989,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1230_state21 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1228_state21 == 1'b1))) begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_6_we1_local = 1'b1;
     end else begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_6_we1_local = 1'b0;
@@ -2013,7 +2005,7 @@ always @ (*) begin
 end
 
 always @ (*) begin
-    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1314_state21 == 1'b1))) begin
+    if (((1'b0 == ap_block_pp0_stage0_11001) & (ap_enable_reg_pp0_iter20 == 1'b1) & (ap_predicate_pred1312_state21 == 1'b1))) begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_7_we1_local = 1'b1;
     end else begin
         p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_7_we1_local = 1'b0;
@@ -2041,7 +2033,7 @@ end
 
 assign add_ln111_fu_1049_p2 = (ap_sig_allocacmp_oc_1 + 4'd1);
 
-assign add_ln121_fu_1434_p2 = (empty_60 + zext_ln121_fu_1431_p1);
+assign add_ln121_fu_1435_p2 = (empty_60 + zext_ln121_fu_1432_p1);
 
 assign ap_CS_fsm_pp0_stage0 = ap_CS_fsm[32'd0];
 
@@ -2061,297 +2053,297 @@ assign ap_loop_exit_ready = ap_condition_exit_pp0_iter0_stage0;
 
 assign ap_ready = ap_ready_sig;
 
-assign grp_fu_1467_p0 = sext_ln118_cast_reg_1691;
+assign grp_fu_1468_p0 = sext_ln118_cast_reg_1692;
 
-assign grp_fu_1475_p0 = sext_ln118_1_cast_reg_1686;
+assign grp_fu_1476_p0 = sext_ln118_1_cast_reg_1687;
 
-assign grp_fu_1475_p2 = {{tmp_s_fu_1097_p4}, {4'd0}};
+assign grp_fu_1476_p2 = {{tmp_s_fu_1097_p4}, {4'd0}};
 
-assign grp_fu_1483_p0 = sext_ln118_2_cast_reg_1681;
+assign grp_fu_1484_p0 = sext_ln118_2_cast_reg_1682;
 
-assign grp_fu_1483_p2 = {{tmp_45_fu_1118_p4}, {4'd0}};
+assign grp_fu_1484_p2 = {{tmp_45_fu_1118_p4}, {4'd0}};
 
-assign grp_fu_1491_p0 = sext_ln118_3_cast_reg_1676;
+assign grp_fu_1492_p0 = sext_ln118_3_cast_reg_1677;
 
-assign grp_fu_1491_p2 = {{tmp_46_fu_1139_p4}, {4'd0}};
+assign grp_fu_1492_p2 = {{tmp_46_fu_1139_p4}, {4'd0}};
 
-assign grp_fu_1499_p0 = sext_ln118_4_cast_reg_1671;
+assign grp_fu_1500_p0 = sext_ln118_4_cast_reg_1672;
 
-assign grp_fu_1499_p2 = {{tmp_47_fu_1160_p4}, {4'd0}};
+assign grp_fu_1500_p2 = {{tmp_47_fu_1160_p4}, {4'd0}};
 
-assign grp_fu_1507_p0 = sext_ln118_5_cast_reg_1666;
+assign grp_fu_1508_p0 = sext_ln118_5_cast_reg_1667;
 
-assign grp_fu_1507_p2 = {{tmp_48_fu_1181_p4}, {4'd0}};
+assign grp_fu_1508_p2 = {{tmp_48_fu_1181_p4}, {4'd0}};
 
-assign grp_fu_1515_p0 = sext_ln118_6_cast_reg_1661;
+assign grp_fu_1516_p0 = sext_ln118_6_cast_reg_1662;
 
-assign grp_fu_1515_p2 = {{tmp_49_fu_1202_p4}, {4'd0}};
+assign grp_fu_1516_p2 = {{tmp_49_fu_1202_p4}, {4'd0}};
 
-assign grp_fu_1523_p0 = sext_ln118_7_cast_reg_1656;
+assign grp_fu_1524_p0 = sext_ln118_7_cast_reg_1657;
 
-assign grp_fu_1523_p2 = {{tmp_50_fu_1223_p4}, {4'd0}};
+assign grp_fu_1524_p2 = {{tmp_50_fu_1223_p4}, {4'd0}};
 
-assign grp_fu_1531_p0 = sext_ln118_8_cast_reg_1651;
+assign grp_fu_1532_p0 = sext_ln118_8_cast_reg_1652;
 
-assign grp_fu_1531_p2 = {{tmp_51_fu_1244_p4}, {4'd0}};
+assign grp_fu_1532_p2 = {{tmp_51_fu_1244_p4}, {4'd0}};
 
-assign grp_fu_1539_p0 = sext_ln118_9_cast_reg_1646;
+assign grp_fu_1540_p0 = sext_ln118_9_cast_reg_1647;
 
-assign grp_fu_1539_p2 = {{tmp_52_fu_1265_p4}, {4'd0}};
+assign grp_fu_1540_p2 = {{tmp_52_fu_1265_p4}, {4'd0}};
 
-assign grp_fu_1547_p0 = sext_ln118_10_cast_reg_1641;
+assign grp_fu_1548_p0 = sext_ln118_10_cast_reg_1642;
 
-assign grp_fu_1547_p2 = {{tmp_53_fu_1285_p4}, {4'd0}};
+assign grp_fu_1548_p2 = {{tmp_53_fu_1286_p4}, {4'd0}};
 
-assign grp_fu_1555_p0 = sext_ln118_11_cast_reg_1636;
+assign grp_fu_1556_p0 = sext_ln118_11_cast_reg_1637;
 
-assign grp_fu_1555_p2 = {{tmp_54_fu_1305_p4}, {4'd0}};
+assign grp_fu_1556_p2 = {{tmp_54_fu_1306_p4}, {4'd0}};
 
-assign grp_fu_1563_p0 = sext_ln118_12_cast_reg_1631;
+assign grp_fu_1564_p0 = sext_ln118_12_cast_reg_1632;
 
-assign grp_fu_1563_p2 = {{tmp_55_fu_1325_p4}, {4'd0}};
+assign grp_fu_1564_p2 = {{tmp_55_fu_1326_p4}, {4'd0}};
 
-assign grp_fu_1571_p0 = sext_ln118_13_cast_reg_1626;
+assign grp_fu_1572_p0 = sext_ln118_13_cast_reg_1627;
 
-assign grp_fu_1571_p2 = {{tmp_56_fu_1345_p4}, {4'd0}};
+assign grp_fu_1572_p2 = {{tmp_56_fu_1346_p4}, {4'd0}};
 
-assign grp_fu_1579_p0 = sext_ln118_14_cast_reg_1621;
+assign grp_fu_1580_p0 = sext_ln118_14_cast_reg_1622;
 
-assign grp_fu_1579_p2 = {{tmp_57_fu_1365_p4}, {4'd0}};
+assign grp_fu_1580_p2 = {{tmp_57_fu_1366_p4}, {4'd0}};
 
-assign grp_fu_1587_p0 = sext_ln118_15_cast_reg_1616;
+assign grp_fu_1588_p0 = sext_ln118_15_cast_reg_1617;
 
-assign grp_fu_1587_p2 = {{tmp_58_fu_1382_p4}, {4'd0}};
+assign grp_fu_1588_p2 = {{tmp_58_fu_1383_p4}, {4'd0}};
 
 assign icmp_ln111_fu_1043_p2 = ((ap_sig_allocacmp_oc_1 == 4'd8) ? 1'b1 : 1'b0);
 
-assign icmp_ln13_fu_1417_p2 = (($signed(x_fu_1399_p4) > $signed(16'd0)) ? 1'b1 : 1'b0);
+assign icmp_ln13_fu_1418_p2 = (($signed(x_fu_1400_p4) > $signed(16'd0)) ? 1'b1 : 1'b0);
 
 assign p_ZN7weights4PW_WE_0_address0 = zext_ln111_fu_1055_p1;
 
-assign p_ZN7weights4PW_WE_10_address0 = zext_ln111_reg_1705_pp0_iter9_reg;
+assign p_ZN7weights4PW_WE_10_address0 = zext_ln111_reg_1706_pp0_iter9_reg;
 
-assign p_ZN7weights4PW_WE_11_address0 = zext_ln111_reg_1705_pp0_iter9_reg;
+assign p_ZN7weights4PW_WE_11_address0 = zext_ln111_reg_1706_pp0_iter10_reg;
 
-assign p_ZN7weights4PW_WE_12_address0 = zext_ln111_reg_1705_pp0_iter9_reg;
+assign p_ZN7weights4PW_WE_12_address0 = zext_ln111_reg_1706_pp0_iter10_reg;
 
-assign p_ZN7weights4PW_WE_13_address0 = zext_ln111_reg_1705_pp0_iter9_reg;
+assign p_ZN7weights4PW_WE_13_address0 = zext_ln111_reg_1706_pp0_iter10_reg;
 
-assign p_ZN7weights4PW_WE_14_address0 = zext_ln111_reg_1705_pp0_iter9_reg;
+assign p_ZN7weights4PW_WE_14_address0 = zext_ln111_reg_1706_pp0_iter10_reg;
 
-assign p_ZN7weights4PW_WE_15_address0 = zext_ln111_reg_1705_pp0_iter9_reg;
+assign p_ZN7weights4PW_WE_15_address0 = zext_ln111_reg_1706_pp0_iter10_reg;
 
-assign p_ZN7weights4PW_WE_1_address0 = zext_ln111_reg_1705;
+assign p_ZN7weights4PW_WE_1_address0 = zext_ln111_reg_1706;
 
-assign p_ZN7weights4PW_WE_2_address0 = zext_ln111_reg_1705_pp0_iter1_reg;
+assign p_ZN7weights4PW_WE_2_address0 = zext_ln111_reg_1706_pp0_iter1_reg;
 
-assign p_ZN7weights4PW_WE_3_address0 = zext_ln111_reg_1705_pp0_iter2_reg;
+assign p_ZN7weights4PW_WE_3_address0 = zext_ln111_reg_1706_pp0_iter2_reg;
 
-assign p_ZN7weights4PW_WE_4_address0 = zext_ln111_reg_1705_pp0_iter3_reg;
+assign p_ZN7weights4PW_WE_4_address0 = zext_ln111_reg_1706_pp0_iter3_reg;
 
-assign p_ZN7weights4PW_WE_5_address0 = zext_ln111_reg_1705_pp0_iter4_reg;
+assign p_ZN7weights4PW_WE_5_address0 = zext_ln111_reg_1706_pp0_iter4_reg;
 
-assign p_ZN7weights4PW_WE_6_address0 = zext_ln111_reg_1705_pp0_iter5_reg;
+assign p_ZN7weights4PW_WE_6_address0 = zext_ln111_reg_1706_pp0_iter5_reg;
 
-assign p_ZN7weights4PW_WE_7_address0 = zext_ln111_reg_1705_pp0_iter6_reg;
+assign p_ZN7weights4PW_WE_7_address0 = zext_ln111_reg_1706_pp0_iter6_reg;
 
-assign p_ZN7weights4PW_WE_8_address0 = zext_ln111_reg_1705_pp0_iter7_reg;
+assign p_ZN7weights4PW_WE_8_address0 = zext_ln111_reg_1706_pp0_iter7_reg;
 
-assign p_ZN7weights4PW_WE_9_address0 = zext_ln111_reg_1705_pp0_iter8_reg;
+assign p_ZN7weights4PW_WE_9_address0 = zext_ln111_reg_1706_pp0_iter8_reg;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_0_address1 = zext_ln121_1_fu_1439_p1;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_0_address1 = zext_ln121_1_fu_1440_p1;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_0_ce1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_0_ce1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_0_d1 = select_ln13_reg_1995;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_0_d1 = select_ln13_reg_1991;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_0_we1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_0_we1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_1_address1 = zext_ln121_1_fu_1439_p1;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_1_address1 = zext_ln121_1_fu_1440_p1;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_1_ce1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_1_ce1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_1_d1 = select_ln13_reg_1995;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_1_d1 = select_ln13_reg_1991;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_1_we1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_1_we1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_2_address1 = zext_ln121_1_fu_1439_p1;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_2_address1 = zext_ln121_1_fu_1440_p1;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_2_ce1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_2_ce1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_2_d1 = select_ln13_reg_1995;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_2_d1 = select_ln13_reg_1991;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_2_we1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_2_we1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_3_address1 = zext_ln121_1_fu_1439_p1;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_3_address1 = zext_ln121_1_fu_1440_p1;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_3_ce1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_3_ce1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_3_d1 = select_ln13_reg_1995;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_3_d1 = select_ln13_reg_1991;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_3_we1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_3_we1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_4_address1 = zext_ln121_1_fu_1439_p1;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_4_address1 = zext_ln121_1_fu_1440_p1;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_4_ce1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_4_ce1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_4_d1 = select_ln13_reg_1995;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_4_d1 = select_ln13_reg_1991;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_4_we1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_4_we1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_5_address1 = zext_ln121_1_fu_1439_p1;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_5_address1 = zext_ln121_1_fu_1440_p1;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_5_ce1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_5_ce1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_5_d1 = select_ln13_reg_1995;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_5_d1 = select_ln13_reg_1991;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_5_we1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_5_we1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_6_address1 = zext_ln121_1_fu_1439_p1;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_6_address1 = zext_ln121_1_fu_1440_p1;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_6_ce1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_6_ce1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_6_d1 = select_ln13_reg_1995;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_6_d1 = select_ln13_reg_1991;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_6_we1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_6_we1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_7_address1 = zext_ln121_1_fu_1439_p1;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_7_address1 = zext_ln121_1_fu_1440_p1;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_7_ce1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_7_ce1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_7_d1 = select_ln13_reg_1995;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_7_d1 = select_ln13_reg_1991;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_7_we1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_0_7_we1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_0_address1 = zext_ln121_1_fu_1439_p1;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_0_address1 = zext_ln121_1_fu_1440_p1;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_0_ce1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_0_ce1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_0_d1 = select_ln13_reg_1995;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_0_d1 = select_ln13_reg_1991;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_0_we1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_0_we1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_1_address1 = zext_ln121_1_fu_1439_p1;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_1_address1 = zext_ln121_1_fu_1440_p1;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_1_ce1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_1_ce1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_1_d1 = select_ln13_reg_1995;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_1_d1 = select_ln13_reg_1991;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_1_we1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_1_we1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_2_address1 = zext_ln121_1_fu_1439_p1;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_2_address1 = zext_ln121_1_fu_1440_p1;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_2_ce1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_2_ce1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_2_d1 = select_ln13_reg_1995;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_2_d1 = select_ln13_reg_1991;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_2_we1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_2_we1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_3_address1 = zext_ln121_1_fu_1439_p1;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_3_address1 = zext_ln121_1_fu_1440_p1;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_3_ce1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_3_ce1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_3_d1 = select_ln13_reg_1995;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_3_d1 = select_ln13_reg_1991;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_3_we1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_3_we1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_4_address1 = zext_ln121_1_fu_1439_p1;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_4_address1 = zext_ln121_1_fu_1440_p1;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_4_ce1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_4_ce1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_4_d1 = select_ln13_reg_1995;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_4_d1 = select_ln13_reg_1991;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_4_we1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_4_we1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_5_address1 = zext_ln121_1_fu_1439_p1;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_5_address1 = zext_ln121_1_fu_1440_p1;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_5_ce1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_5_ce1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_5_d1 = select_ln13_reg_1995;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_5_d1 = select_ln13_reg_1991;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_5_we1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_5_we1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_6_address1 = zext_ln121_1_fu_1439_p1;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_6_address1 = zext_ln121_1_fu_1440_p1;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_6_ce1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_6_ce1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_6_d1 = select_ln13_reg_1995;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_6_d1 = select_ln13_reg_1991;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_6_we1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_6_we1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_7_address1 = zext_ln121_1_fu_1439_p1;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_7_address1 = zext_ln121_1_fu_1440_p1;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_7_ce1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_7_ce1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_7_d1 = select_ln13_reg_1995;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_7_d1 = select_ln13_reg_1991;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_7_we1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_1_7_we1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_0_address1 = zext_ln121_1_fu_1439_p1;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_0_address1 = zext_ln121_1_fu_1440_p1;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_0_ce1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_0_ce1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_0_d1 = select_ln13_reg_1995;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_0_d1 = select_ln13_reg_1991;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_0_we1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_0_we1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_1_address1 = zext_ln121_1_fu_1439_p1;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_1_address1 = zext_ln121_1_fu_1440_p1;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_1_ce1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_1_ce1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_1_d1 = select_ln13_reg_1995;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_1_d1 = select_ln13_reg_1991;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_1_we1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_1_we1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_2_address1 = zext_ln121_1_fu_1439_p1;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_2_address1 = zext_ln121_1_fu_1440_p1;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_2_ce1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_2_ce1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_2_d1 = select_ln13_reg_1995;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_2_d1 = select_ln13_reg_1991;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_2_we1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_2_we1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_3_address1 = zext_ln121_1_fu_1439_p1;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_3_address1 = zext_ln121_1_fu_1440_p1;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_3_ce1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_3_ce1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_3_d1 = select_ln13_reg_1995;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_3_d1 = select_ln13_reg_1991;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_3_we1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_3_we1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_4_address1 = zext_ln121_1_fu_1439_p1;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_4_address1 = zext_ln121_1_fu_1440_p1;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_4_ce1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_4_ce1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_4_d1 = select_ln13_reg_1995;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_4_d1 = select_ln13_reg_1991;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_4_we1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_4_we1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_5_address1 = zext_ln121_1_fu_1439_p1;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_5_address1 = zext_ln121_1_fu_1440_p1;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_5_ce1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_5_ce1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_5_d1 = select_ln13_reg_1995;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_5_d1 = select_ln13_reg_1991;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_5_we1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_5_we1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_6_address1 = zext_ln121_1_fu_1439_p1;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_6_address1 = zext_ln121_1_fu_1440_p1;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_6_ce1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_6_ce1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_6_d1 = select_ln13_reg_1995;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_6_d1 = select_ln13_reg_1991;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_6_we1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_6_we1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_7_address1 = zext_ln121_1_fu_1439_p1;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_7_address1 = zext_ln121_1_fu_1440_p1;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_7_ce1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_7_ce1_local;
 
-assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_7_d1 = select_ln13_reg_1995;
+assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_7_d1 = select_ln13_reg_1991;
 
 assign p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_7_we1 = p_ZZ6ds_cnnPK8ap_fixedILi16ELi8EL9ap_q_mode5EL9ap_o_mode3ELi0EEPiPS2_E2pw_2_7_we1_local;
 
-assign select_ln13_fu_1423_p3 = ((icmp_ln13_fu_1417_p2[0:0] == 1'b1) ? trunc_ln11_1_fu_1408_p4 : 15'd0);
+assign select_ln13_fu_1424_p3 = ((icmp_ln13_fu_1418_p2[0:0] == 1'b1) ? trunc_ln11_1_fu_1409_p4 : 15'd0);
 
 assign sext_ln118_10_cast_fu_991_p1 = $signed(sext_ln118_10);
 
@@ -2387,63 +2379,64 @@ assign sext_ln118_cast_fu_1031_p1 = $signed(sext_ln118);
 
 assign shl_ln1_fu_1081_p3 = {{weights_PW_B_q0}, {8'd0}};
 
-assign tmp_38_reg_1612 = empty_59;
+assign tmp_38_reg_1613 = empty_59;
 
-assign tmp_45_fu_1118_p4 = {{grp_fu_1475_p3[23:4]}};
+assign tmp_45_fu_1118_p4 = {{grp_fu_1476_p3[23:4]}};
 
-assign tmp_46_fu_1139_p4 = {{grp_fu_1483_p3[23:4]}};
+assign tmp_46_fu_1139_p4 = {{grp_fu_1484_p3[23:4]}};
 
-assign tmp_47_fu_1160_p4 = {{grp_fu_1491_p3[23:4]}};
+assign tmp_47_fu_1160_p4 = {{grp_fu_1492_p3[23:4]}};
 
-assign tmp_48_fu_1181_p4 = {{grp_fu_1499_p3[23:4]}};
+assign tmp_48_fu_1181_p4 = {{grp_fu_1500_p3[23:4]}};
 
-assign tmp_49_fu_1202_p4 = {{grp_fu_1507_p3[23:4]}};
+assign tmp_49_fu_1202_p4 = {{grp_fu_1508_p3[23:4]}};
 
-assign tmp_50_fu_1223_p4 = {{grp_fu_1515_p3[23:4]}};
+assign tmp_50_fu_1223_p4 = {{grp_fu_1516_p3[23:4]}};
 
-assign tmp_51_fu_1244_p4 = {{grp_fu_1523_p3[23:4]}};
+assign tmp_51_fu_1244_p4 = {{grp_fu_1524_p3[23:4]}};
 
-assign tmp_52_fu_1265_p4 = {{grp_fu_1531_p3[23:4]}};
+assign tmp_52_fu_1265_p4 = {{grp_fu_1532_p3[23:4]}};
 
-assign tmp_53_fu_1285_p4 = {{grp_fu_1539_p3[23:4]}};
+assign tmp_53_fu_1286_p4 = {{grp_fu_1540_p3[23:4]}};
 
-assign tmp_54_fu_1305_p4 = {{grp_fu_1547_p3[23:4]}};
+assign tmp_54_fu_1306_p4 = {{grp_fu_1548_p3[23:4]}};
 
-assign tmp_55_fu_1325_p4 = {{grp_fu_1555_p3[23:4]}};
+assign tmp_55_fu_1326_p4 = {{grp_fu_1556_p3[23:4]}};
 
-assign tmp_56_fu_1345_p4 = {{grp_fu_1563_p3[23:4]}};
+assign tmp_56_fu_1346_p4 = {{grp_fu_1564_p3[23:4]}};
 
-assign tmp_57_fu_1365_p4 = {{grp_fu_1571_p3[23:4]}};
+assign tmp_57_fu_1366_p4 = {{grp_fu_1572_p3[23:4]}};
 
-assign tmp_58_fu_1382_p4 = {{grp_fu_1579_p3[23:4]}};
+assign tmp_58_fu_1383_p4 = {{grp_fu_1580_p3[23:4]}};
 
-assign tmp_reg_1603 = empty;
+assign tmp_reg_1604 = empty;
 
-assign tmp_s_fu_1097_p4 = {{grp_fu_1467_p3[23:4]}};
+assign tmp_s_fu_1097_p4 = {{grp_fu_1468_p3[23:4]}};
 
-assign trunc_ln11_1_fu_1408_p4 = {{grp_fu_1587_p3[22:8]}};
+assign trunc_ln11_1_fu_1409_p4 = {{grp_fu_1588_p3[22:8]}};
 
-assign weights_PW_B_address0 = zext_ln111_reg_1705_pp0_iter1_reg;
+assign weights_PW_B_address0 = zext_ln111_reg_1706_pp0_iter1_reg;
 
-assign x_fu_1399_p4 = {{grp_fu_1587_p3[23:8]}};
+assign x_fu_1400_p4 = {{grp_fu_1588_p3[23:8]}};
 
 assign zext_ln111_fu_1055_p1 = ap_sig_allocacmp_oc_1;
 
-assign zext_ln121_1_fu_1439_p1 = add_ln121_fu_1434_p2;
+assign zext_ln121_1_fu_1440_p1 = add_ln121_fu_1435_p2;
 
-assign zext_ln121_fu_1431_p1 = oc_1_reg_1696_pp0_iter19_reg;
+assign zext_ln121_fu_1432_p1 = oc_1_reg_1697_pp0_iter19_reg;
 
 always @ (posedge ap_clk) begin
-    zext_ln111_reg_1705[63:4] <= 60'b000000000000000000000000000000000000000000000000000000000000;
-    zext_ln111_reg_1705_pp0_iter1_reg[63:4] <= 60'b000000000000000000000000000000000000000000000000000000000000;
-    zext_ln111_reg_1705_pp0_iter2_reg[63:4] <= 60'b000000000000000000000000000000000000000000000000000000000000;
-    zext_ln111_reg_1705_pp0_iter3_reg[63:4] <= 60'b000000000000000000000000000000000000000000000000000000000000;
-    zext_ln111_reg_1705_pp0_iter4_reg[63:4] <= 60'b000000000000000000000000000000000000000000000000000000000000;
-    zext_ln111_reg_1705_pp0_iter5_reg[63:4] <= 60'b000000000000000000000000000000000000000000000000000000000000;
-    zext_ln111_reg_1705_pp0_iter6_reg[63:4] <= 60'b000000000000000000000000000000000000000000000000000000000000;
-    zext_ln111_reg_1705_pp0_iter7_reg[63:4] <= 60'b000000000000000000000000000000000000000000000000000000000000;
-    zext_ln111_reg_1705_pp0_iter8_reg[63:4] <= 60'b000000000000000000000000000000000000000000000000000000000000;
-    zext_ln111_reg_1705_pp0_iter9_reg[63:4] <= 60'b000000000000000000000000000000000000000000000000000000000000;
+    zext_ln111_reg_1706[63:4] <= 60'b000000000000000000000000000000000000000000000000000000000000;
+    zext_ln111_reg_1706_pp0_iter1_reg[63:4] <= 60'b000000000000000000000000000000000000000000000000000000000000;
+    zext_ln111_reg_1706_pp0_iter2_reg[63:4] <= 60'b000000000000000000000000000000000000000000000000000000000000;
+    zext_ln111_reg_1706_pp0_iter3_reg[63:4] <= 60'b000000000000000000000000000000000000000000000000000000000000;
+    zext_ln111_reg_1706_pp0_iter4_reg[63:4] <= 60'b000000000000000000000000000000000000000000000000000000000000;
+    zext_ln111_reg_1706_pp0_iter5_reg[63:4] <= 60'b000000000000000000000000000000000000000000000000000000000000;
+    zext_ln111_reg_1706_pp0_iter6_reg[63:4] <= 60'b000000000000000000000000000000000000000000000000000000000000;
+    zext_ln111_reg_1706_pp0_iter7_reg[63:4] <= 60'b000000000000000000000000000000000000000000000000000000000000;
+    zext_ln111_reg_1706_pp0_iter8_reg[63:4] <= 60'b000000000000000000000000000000000000000000000000000000000000;
+    zext_ln111_reg_1706_pp0_iter9_reg[63:4] <= 60'b000000000000000000000000000000000000000000000000000000000000;
+    zext_ln111_reg_1706_pp0_iter10_reg[63:4] <= 60'b000000000000000000000000000000000000000000000000000000000000;
 end
 
 endmodule //ds_cnn_depthwise_pointwise_relu_fused_Pipeline_VITIS_LOOP_111_6

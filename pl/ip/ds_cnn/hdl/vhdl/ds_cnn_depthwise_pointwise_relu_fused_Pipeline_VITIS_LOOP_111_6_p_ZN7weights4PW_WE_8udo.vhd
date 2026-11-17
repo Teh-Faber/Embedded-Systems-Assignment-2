@@ -9,7 +9,7 @@ use ieee.std_logic_unsigned.all;
 
 entity ds_cnn_depthwise_pointwise_relu_fused_Pipeline_VITIS_LOOP_111_6_p_ZN7weights4PW_WE_8udo is 
     generic(
-             DataWidth     : integer := 11; 
+             DataWidth     : integer := 13; 
              AddressWidth     : integer := 3; 
              AddressRange    : integer := 8
     ); 
@@ -34,8 +34,8 @@ signal address0_tmp : std_logic_vector(AddressWidth-1 downto 0);
 type mem_array is array (0 to AddressRange-1) of std_logic_vector (DataWidth-1 downto 0); 
 
 signal mem0 : mem_array := (
-    0 => "11101100111", 1 => "00000110011", 2 => "10001101110", 3 => "00110111110", 
-    4 => "10110101000", 5 => "00001000100", 6 => "00100100011", 7 => "00010110010");
+    0 => "0010010000100", 1 => "0001111001101", 2 => "1010010100000", 3 => "1111100110100", 
+    4 => "1010011100011", 5 => "0010000111110", 6 => "1111110011001", 7 => "0010001100111");
 
 
 

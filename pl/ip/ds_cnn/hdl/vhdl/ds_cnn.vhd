@@ -97,7 +97,7 @@ architecture behav of ds_cnn is
     attribute DowngradeIPIdentifiedWarnings of behav : architecture is "yes";
     attribute CORE_GENERATION_INFO : STRING;
     attribute CORE_GENERATION_INFO of behav : architecture is
-    "ds_cnn_ds_cnn,hls_ip_2026_1,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xc7z020-clg400-1,HLS_INPUT_CLOCK=8.000000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=7.341000,HLS_SYN_LAT=108740,HLS_SYN_TPT=none,HLS_SYN_MEM=70,HLS_SYN_DSP=0,HLS_SYN_FF=9636,HLS_SYN_LUT=11279,HLS_VERSION=2026_1}";
+    "ds_cnn_ds_cnn,hls_ip_2026_1,{HLS_INPUT_TYPE=cxx,HLS_INPUT_FLOAT=0,HLS_INPUT_FIXED=0,HLS_INPUT_PART=xc7z020-clg400-1,HLS_INPUT_CLOCK=8.000000,HLS_INPUT_ARCH=others,HLS_SYN_CLOCK=7.341000,HLS_SYN_LAT=108740,HLS_SYN_TPT=none,HLS_SYN_MEM=70,HLS_SYN_DSP=0,HLS_SYN_FF=9612,HLS_SYN_LUT=11248,HLS_VERSION=2026_1}";
     constant ap_const_logic_1 : STD_LOGIC := '1';
     constant ap_const_logic_0 : STD_LOGIC := '0';
     constant ap_ST_fsm_state1 : STD_LOGIC_VECTOR (18 downto 0) := "0000000000000000001";

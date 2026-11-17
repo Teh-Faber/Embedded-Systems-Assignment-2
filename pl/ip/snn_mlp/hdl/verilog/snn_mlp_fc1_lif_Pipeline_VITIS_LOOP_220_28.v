@@ -59,9 +59,9 @@ reg    ap_condition_exit_pp0_iter0_stage0;
 wire    ap_loop_exit_ready;
 reg    ap_ready_int;
 wire   [11:0] p_ZL5fc1_w_2_0_address0;
-wire   [6:0] p_ZL5fc1_w_2_0_q0;
+wire   [7:0] p_ZL5fc1_w_2_0_q0;
 wire   [11:0] p_ZL5fc1_w_2_1_address0;
-wire   [6:0] p_ZL5fc1_w_2_1_q0;
+wire   [8:0] p_ZL5fc1_w_2_1_q0;
 wire    ap_block_pp0_stage0_11001;
 reg   [0:0] icmp_ln220_reg_301;
 reg   [0:0] icmp_ln220_reg_301_pp0_iter1_reg;
@@ -69,16 +69,16 @@ reg   [7:0] x_load_reg_325;
 wire   [0:0] icmp_ln223_fu_206_p2;
 reg   [0:0] icmp_ln223_reg_330;
 reg   [0:0] icmp_ln223_reg_330_pp0_iter2_reg;
-reg  signed [6:0] p_ZL5fc1_w_2_0_load_reg_335;
+reg  signed [7:0] p_ZL5fc1_w_2_0_load_reg_335;
 reg   [7:0] x_load_2_reg_340;
 wire   [0:0] icmp_ln227_fu_212_p2;
 reg   [0:0] icmp_ln227_reg_345;
 reg   [0:0] icmp_ln227_reg_345_pp0_iter2_reg;
-reg  signed [6:0] p_ZL5fc1_w_2_1_load_reg_350;
-wire   [14:0] mul_ln224_fu_224_p2;
-reg   [14:0] mul_ln224_reg_355;
-wire   [14:0] mul_ln228_fu_236_p2;
-reg   [14:0] mul_ln228_reg_360;
+reg  signed [8:0] p_ZL5fc1_w_2_1_load_reg_350;
+wire   [15:0] mul_ln224_fu_224_p2;
+reg   [15:0] mul_ln224_reg_355;
+wire   [16:0] mul_ln228_fu_236_p2;
+reg   [16:0] mul_ln228_reg_360;
 wire   [63:0] zext_ln224_3_fu_176_p1;
 wire    ap_block_pp0_stage0;
 wire   [63:0] zext_ln220_fu_151_p1;
@@ -115,8 +115,8 @@ wire    ap_enable_pp0;
 wire    ap_start_int;
 wire    ap_ready_sig;
 wire    ap_done_sig;
-wire   [14:0] mul_ln224_fu_224_p10;
-wire   [14:0] mul_ln228_fu_236_p10;
+wire   [15:0] mul_ln224_fu_224_p10;
+wire   [16:0] mul_ln228_fu_236_p10;
 wire    ap_ce_reg;
 
 // power-on initialization
@@ -131,7 +131,7 @@ initial begin
 end
 
 snn_mlp_fc1_lif_Pipeline_VITIS_LOOP_220_28_p_ZL5fc1_w_2_0_ROM_AUTO_1R #(
-    .DataWidth( 7 ),
+    .DataWidth( 8 ),
     .AddressRange( 3072 ),
     .AddressWidth( 12 ))
 p_ZL5fc1_w_2_0_U(
@@ -143,7 +143,7 @@ p_ZL5fc1_w_2_0_U(
 );
 
 snn_mlp_fc1_lif_Pipeline_VITIS_LOOP_220_28_p_ZL5fc1_w_2_1_ROM_AUTO_1R #(
-    .DataWidth( 7 ),
+    .DataWidth( 9 ),
     .AddressRange( 3072 ),
     .AddressWidth( 12 ))
 p_ZL5fc1_w_2_1_U(
@@ -154,25 +154,25 @@ p_ZL5fc1_w_2_1_U(
     .q0(p_ZL5fc1_w_2_1_q0)
 );
 
-snn_mlp_mul_7s_8ns_15_1_1 #(
+snn_mlp_mul_8s_8ns_16_1_1 #(
     .ID( 1 ),
     .NUM_STAGE( 1 ),
-    .din0_WIDTH( 7 ),
+    .din0_WIDTH( 8 ),
     .din1_WIDTH( 8 ),
-    .dout_WIDTH( 15 ))
-mul_7s_8ns_15_1_1_U77(
+    .dout_WIDTH( 16 ))
+mul_8s_8ns_16_1_1_U78(
     .din0(p_ZL5fc1_w_2_0_load_reg_335),
     .din1(mul_ln224_fu_224_p1),
     .dout(mul_ln224_fu_224_p2)
 );
 
-snn_mlp_mul_7s_8ns_15_1_1 #(
+snn_mlp_mul_9s_8ns_17_1_1 #(
     .ID( 1 ),
     .NUM_STAGE( 1 ),
-    .din0_WIDTH( 7 ),
+    .din0_WIDTH( 9 ),
     .din1_WIDTH( 8 ),
-    .dout_WIDTH( 15 ))
-mul_7s_8ns_15_1_1_U78(
+    .dout_WIDTH( 17 ))
+mul_9s_8ns_17_1_1_U79(
     .din0(p_ZL5fc1_w_2_1_load_reg_350),
     .din1(mul_ln228_fu_236_p1),
     .dout(mul_ln228_fu_236_p2)

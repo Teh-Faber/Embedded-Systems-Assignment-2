@@ -104,7 +104,7 @@ end
     .def_WIDTH( 20 ),
     .sel_WIDTH( 2 ),
     .dout_WIDTH( 20 ))
-sparsemux_7_2_20_1_1_U372(
+sparsemux_7_2_20_1_1_U373(
     .din0(empty_61),
     .din1(empty_62),
     .din2(empty),

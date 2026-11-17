@@ -9,7 +9,7 @@ use ieee.std_logic_unsigned.all;
 
 entity ds_cnn_conv1_relu_maxpool_p_ZN7weights7CONV1_WE_5_ROM_AUTO_1R is 
     generic(
-             DataWidth     : integer := 9; 
+             DataWidth     : integer := 10; 
              AddressWidth     : integer := 4; 
              AddressRange    : integer := 16
     ); 
@@ -34,10 +34,10 @@ signal address0_tmp : std_logic_vector(AddressWidth-1 downto 0);
 type mem_array is array (0 to AddressRange-1) of std_logic_vector (DataWidth-1 downto 0); 
 
 signal mem0 : mem_array := (
-    0 => "110011110", 1 => "001011100", 2 => "101110100", 3 => "110101101", 
-    4 => "110010101", 5 => "111111010", 6 => "000101001", 7 => "001111110", 
-    8 => "111111101", 9 => "110001101", 10 => "111000110", 11 => "000001010", 
-    12 => "111111110", 13 => "110111001", 14 => "000000010", 15 => "110011111");
+    0 => "1100111111", 1 => "0001010101", 2 => "1110110110", 3 => "1110001100", 
+    4 => "1111001000", 5 => "0000010110", 6 => "0001111001", 7 => "0100100001", 
+    8 => "0000000011", 9 => "1101110011", 10 => "1111010101", 11 => "0000001010", 
+    12 => "0001100101", 13 => "1110001001", 14 => "1111001101", 15 => "1111101110");
 
 
 

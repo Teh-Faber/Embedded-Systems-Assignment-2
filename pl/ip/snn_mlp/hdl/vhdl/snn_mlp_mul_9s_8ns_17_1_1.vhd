@@ -4,7 +4,7 @@ use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
 
-entity snn_mlp_mul_7s_8ns_15_1_1 is
+entity snn_mlp_mul_9s_8ns_17_1_1 is
 generic (
     ID : INTEGER := 1;
     NUM_STAGE : INTEGER := 0;
@@ -20,7 +20,7 @@ port (
 
 end entity;
 
-architecture behav of snn_mlp_mul_7s_8ns_15_1_1 is
+architecture behav of snn_mlp_mul_9s_8ns_17_1_1 is
 attribute DowngradeIPIdentifiedWarnings : string;
 attribute DowngradeIPIdentifiedWarnings of behav: architecture is "yes";
     signal tmp_product : std_logic_vector(dout_WIDTH - 1 downto 0);

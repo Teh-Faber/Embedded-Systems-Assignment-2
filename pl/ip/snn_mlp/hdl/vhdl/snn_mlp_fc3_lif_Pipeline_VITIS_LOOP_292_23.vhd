@@ -44,7 +44,7 @@ architecture behav of snn_mlp_fc3_lif_Pipeline_VITIS_LOOP_292_23 is
     constant ap_const_boolean_0 : BOOLEAN := false;
     constant ap_const_lv1_1 : STD_LOGIC_VECTOR (0 downto 0) := "1";
     constant ap_const_lv1_0 : STD_LOGIC_VECTOR (0 downto 0) := "0";
-    constant ap_const_lv32_FFFFFFE4 : STD_LOGIC_VECTOR (31 downto 0) := "11111111111111111111111111100100";
+    constant ap_const_lv32_FFFFFFE8 : STD_LOGIC_VECTOR (31 downto 0) := "11111111111111111111111111101000";
     constant ap_const_lv6_0 : STD_LOGIC_VECTOR (5 downto 0) := "000000";
     constant ap_const_lv6_20 : STD_LOGIC_VECTOR (5 downto 0) := "100000";
     constant ap_const_lv6_1 : STD_LOGIC_VECTOR (5 downto 0) := "000001";
@@ -67,7 +67,7 @@ attribute shreg_extract : string;
     signal ap_loop_exit_ready : STD_LOGIC;
     signal ap_ready_int : STD_LOGIC;
     signal p_ZL5fc3_w_3_address0 : STD_LOGIC_VECTOR (4 downto 0);
-    signal p_ZL5fc3_w_3_q0 : STD_LOGIC_VECTOR (7 downto 0);
+    signal p_ZL5fc3_w_3_q0 : STD_LOGIC_VECTOR (8 downto 0);
     signal ap_block_pp0_stage0_11001 : BOOLEAN;
     signal i_3_reg_263 : STD_LOGIC_VECTOR (5 downto 0);
     signal icmp_ln292_reg_269 : STD_LOGIC_VECTOR (0 downto 0);
@@ -144,7 +144,7 @@ attribute shreg_extract : string;
         reset : IN STD_LOGIC;
         address0 : IN STD_LOGIC_VECTOR (4 downto 0);
         ce0 : IN STD_LOGIC;
-        q0 : OUT STD_LOGIC_VECTOR (7 downto 0) );
+        q0 : OUT STD_LOGIC_VECTOR (8 downto 0) );
     end component;
 
 
@@ -169,7 +169,7 @@ attribute shreg_extract : string;
 begin
     p_ZL5fc3_w_3_U : component snn_mlp_fc3_lif_Pipeline_VITIS_LOOP_292_23_p_ZL5fc3_w_3_ROM_AUTO_1R
     generic map (
-        DataWidth => 8,
+        DataWidth => 9,
         AddressRange => 32,
         AddressWidth => 5)
     port map (
@@ -179,7 +179,7 @@ begin
         ce0 => p_ZL5fc3_w_3_ce0_local,
         q0 => p_ZL5fc3_w_3_q0);
 
-    sparsemux_9_2_1_1_1_U178 : component snn_mlp_sparsemux_9_2_1_1_1
+    sparsemux_9_2_1_1_1_U179 : component snn_mlp_sparsemux_9_2_1_1_1
     generic map (
         ID => 1,
         NUM_STAGE => 1,
@@ -285,7 +285,7 @@ begin
         if (ap_clk'event and ap_clk = '1') then
             if ((ap_const_boolean_0 = ap_block_pp0_stage0_11001)) then
                 if (((ap_const_logic_1 = ap_CS_fsm_pp0_stage0) and (ap_loop_init = ap_const_logic_1))) then 
-                    acc_fu_60 <= ap_const_lv32_FFFFFFE4;
+                    acc_fu_60 <= ap_const_lv32_FFFFFFE8;
                 elsif ((ap_enable_reg_pp0_iter2 = ap_const_logic_1)) then 
                     acc_fu_60 <= acc_2_fu_233_p2;
                 end if;

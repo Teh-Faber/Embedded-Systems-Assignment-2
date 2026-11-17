@@ -86,7 +86,7 @@ CLASS_FOLDERS = [
 
 IMG_H, IMG_W = 60, 80
 BATCH = 16
-EPOCHS = 20
+EPOCHS = 200
 LR = 3e-4
 
 USE_GPU0_ONLY = True
@@ -326,7 +326,8 @@ def save_weights_c_style_bn_folded(model, out_dir: Path):
             for i in range(W.shape[0]):
                 f.write("{")
                 for j in range(W.shape[1]):
-                    f.write(f"{float(W[i, j])}")
+                    # Round to the Q8.8 grid; ap_fixed<16,8> would truncate otherwise
+                    f.write(f"{float(np.round(W[i, j] * 256) / 256)}")
                     if j < W.shape[1] - 1:
                         f.write(", ")
                 f.write("}")
@@ -338,7 +339,8 @@ def save_weights_c_style_bn_folded(model, out_dir: Path):
         with open(fname, "w") as f:
             f.write("{")
             for i in range(len(v)):
-                f.write(f"{float(v[i])}")
+                # Round to the Q8.8 grid; ap_fixed<16,8> would truncate otherwise
+                f.write(f"{float(np.round(v[i] * 256) / 256)}")
                 if i < len(v) - 1:
                     f.write(", ")
             f.write("}")

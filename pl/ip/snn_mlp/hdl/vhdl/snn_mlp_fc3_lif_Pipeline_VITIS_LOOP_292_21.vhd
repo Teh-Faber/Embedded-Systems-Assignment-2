@@ -44,7 +44,7 @@ architecture behav of snn_mlp_fc3_lif_Pipeline_VITIS_LOOP_292_21 is
     constant ap_const_boolean_0 : BOOLEAN := false;
     constant ap_const_lv1_1 : STD_LOGIC_VECTOR (0 downto 0) := "1";
     constant ap_const_lv1_0 : STD_LOGIC_VECTOR (0 downto 0) := "0";
-    constant ap_const_lv32_FFFFFFE4 : STD_LOGIC_VECTOR (31 downto 0) := "11111111111111111111111111100100";
+    constant ap_const_lv32_FFFFFFDE : STD_LOGIC_VECTOR (31 downto 0) := "11111111111111111111111111011110";
     constant ap_const_lv6_0 : STD_LOGIC_VECTOR (5 downto 0) := "000000";
     constant ap_const_lv6_20 : STD_LOGIC_VECTOR (5 downto 0) := "100000";
     constant ap_const_lv6_1 : STD_LOGIC_VECTOR (5 downto 0) := "000001";
@@ -179,7 +179,7 @@ begin
         ce0 => p_ZL5fc3_w_1_ce0_local,
         q0 => p_ZL5fc3_w_1_q0);
 
-    sparsemux_9_2_1_1_1_U164 : component snn_mlp_sparsemux_9_2_1_1_1
+    sparsemux_9_2_1_1_1_U165 : component snn_mlp_sparsemux_9_2_1_1_1
     generic map (
         ID => 1,
         NUM_STAGE => 1,
@@ -285,7 +285,7 @@ begin
         if (ap_clk'event and ap_clk = '1') then
             if ((ap_const_boolean_0 = ap_block_pp0_stage0_11001)) then
                 if (((ap_const_logic_1 = ap_CS_fsm_pp0_stage0) and (ap_loop_init = ap_const_logic_1))) then 
-                    acc_3_fu_60 <= ap_const_lv32_FFFFFFE4;
+                    acc_3_fu_60 <= ap_const_lv32_FFFFFFDE;
                 elsif ((ap_enable_reg_pp0_iter2 = ap_const_logic_1)) then 
                     acc_3_fu_60 <= acc_fu_233_p2;
                 end if;

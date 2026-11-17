@@ -9,7 +9,7 @@ use ieee.std_logic_unsigned.all;
 
 entity ds_cnn_cls_gap_logits_argmax_Pipeline_VITIS_LOOP_185_6_p_ZN7weights5CLS_WE_4_ROM_AUTGfk is 
     generic(
-             DataWidth     : integer := 10; 
+             DataWidth     : integer := 12; 
              AddressWidth     : integer := 2; 
              AddressRange    : integer := 4
     ); 
@@ -34,7 +34,7 @@ signal address0_tmp : std_logic_vector(AddressWidth-1 downto 0);
 type mem_array is array (0 to AddressRange-1) of std_logic_vector (DataWidth-1 downto 0); 
 
 signal mem0 : mem_array := (
-    0 => "1001011110", 1 => "0011111100", 2 => "1111110100", 3 => "0000111110");
+    0 => "100111111110", 1 => "001011101010", 2 => "111100111110", 3 => "000011010001");
 
 
 

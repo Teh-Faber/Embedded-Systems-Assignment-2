@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from pathlib import Path
+import copy
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
@@ -42,7 +43,7 @@ MODEL_TYPE = "snn"
 
 SUBSET_SIZE = 1000000000
 BATCH_SIZE = 32
-EPOCHS = 10
+EPOCHS = 100 # upper limit. it keeps best 
 LR = 1e-3
 SEED = 42
 
@@ -724,6 +725,11 @@ def train():
     train_losses = []
     avg_val_steps_list = []
 
+    # Best epoch by validation accuracy (used for test, saving and FPGA export)
+    best_val_acc = -1.0
+    best_epoch = 0
+    best_state = None
+
     for epoch in range(EPOCHS):
         model.train()
 
@@ -844,6 +850,11 @@ def train():
         train_losses.append(train_loss)
         avg_val_steps_list.append(avg_val_steps)
 
+        if val_acc > best_val_acc:
+            best_val_acc = val_acc
+            best_epoch = epoch + 1
+            best_state = copy.deepcopy(model.state_dict())
+
         max_steps = T if MODEL_TYPE == "snn" else 1
 
         print(
@@ -857,6 +868,10 @@ def train():
             f"avg_L3/img={avg_l3_spikes:.1f} | "
             f"avg_total_layer/img={avg_total_layer_spikes:.1f}"
         )
+
+    # Go back to the best epoch before testing, saving and exporting
+    model.load_state_dict(best_state)
+    print(f"\nUsing best epoch {best_epoch} (val_acc={best_val_acc:.4f})")
 
     # ---- Test-set evaluation (software reference for the FPGA results) ----
     # All T steps are run (no early exit), like the hardware does.
@@ -872,7 +887,8 @@ def train():
                 confusion[t, p] += 1
 
     test_acc = np.trace(confusion) / confusion.sum()
-    lines = [f"Test accuracy: {test_acc:.4f} ({np.trace(confusion)}/{confusion.sum()})", ""]
+    lines = [f"Test accuracy: {test_acc:.4f} ({np.trace(confusion)}/{confusion.sum()})",
+             f"Best epoch: {best_epoch} of {EPOCHS} (val_acc={best_val_acc:.4f})", ""]
     lines += [f"{c}: {confusion[i, i] / confusion[i].sum():.4f}" for i, c in enumerate(CLASS_FOLDERS)]
     lines += ["", "Confusion matrix (rows=true, cols=pred)", str(confusion)]
     print("\n" + "\n".join(lines))
@@ -902,6 +918,3 @@ if __name__ == "__main__":
     print("Training data from:", ROOT)
     print("Saving outputs to:", OUT_DIR)
     train()
-
-
-

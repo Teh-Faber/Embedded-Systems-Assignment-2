@@ -2,7 +2,7 @@
 
 `timescale 1 ns / 1 ps
 
- (* DowngradeIPIdentifiedWarnings="yes" *) module snn_mlp_mul_7s_8ns_15_1_1(din0, din1, dout);
+ (* DowngradeIPIdentifiedWarnings="yes" *) module snn_mlp_mul_9s_8ns_17_1_1(din0, din1, dout);
 parameter ID = 1;
 parameter NUM_STAGE = 0;
 parameter din0_WIDTH = 14;

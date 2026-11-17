@@ -34,7 +34,7 @@ signal address0_tmp : std_logic_vector(AddressWidth-1 downto 0);
 type mem_array is array (0 to AddressRange-1) of std_logic_vector (DataWidth-1 downto 0); 
 
 signal mem0 : mem_array := (
-    0 => "0100101100", 1 => "1110011010", 2 => "0010001011", 3 => "1111000000");
+    0 => "0111000001", 1 => "1011010110", 2 => "0010011110", 3 => "1111011101");
 
 
 

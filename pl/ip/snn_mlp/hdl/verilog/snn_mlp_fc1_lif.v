@@ -133,11 +133,11 @@ wire    ap_CS_fsm_state1;
 wire   [3:0] p_ZL5fc1_b_0_address0;
 wire   [6:0] p_ZL5fc1_b_0_q0;
 wire   [3:0] p_ZL5fc1_b_1_address0;
-wire   [6:0] p_ZL5fc1_b_1_q0;
+wire   [5:0] p_ZL5fc1_b_1_q0;
 wire   [3:0] p_ZL5fc1_b_2_address0;
-wire   [6:0] p_ZL5fc1_b_2_q0;
+wire   [7:0] p_ZL5fc1_b_2_q0;
 wire   [3:0] p_ZL5fc1_b_3_address0;
-wire   [6:0] p_ZL5fc1_b_3_q0;
+wire   [5:0] p_ZL5fc1_b_3_q0;
 wire   [3:0] lshr_ln_fu_362_p4;
 reg   [3:0] lshr_ln_reg_971;
 wire    ap_CS_fsm_state2;
@@ -387,7 +387,7 @@ p_ZL5fc1_b_0_U(
 );
 
 snn_mlp_fc1_lif_p_ZL5fc1_b_1_ROM_AUTO_1R #(
-    .DataWidth( 7 ),
+    .DataWidth( 6 ),
     .AddressRange( 16 ),
     .AddressWidth( 4 ))
 p_ZL5fc1_b_1_U(
@@ -399,7 +399,7 @@ p_ZL5fc1_b_1_U(
 );
 
 snn_mlp_fc1_lif_p_ZL5fc1_b_2_ROM_AUTO_1R #(
-    .DataWidth( 7 ),
+    .DataWidth( 8 ),
     .AddressRange( 16 ),
     .AddressWidth( 4 ))
 p_ZL5fc1_b_2_U(
@@ -411,7 +411,7 @@ p_ZL5fc1_b_2_U(
 );
 
 snn_mlp_fc1_lif_p_ZL5fc1_b_3_ROM_AUTO_1R #(
-    .DataWidth( 7 ),
+    .DataWidth( 6 ),
     .AddressRange( 16 ),
     .AddressWidth( 4 ))
 p_ZL5fc1_b_3_U(

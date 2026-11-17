@@ -8,7 +8,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
-entity ds_cnn_sparsemux_9_2_6_1_1 is
+entity ds_cnn_sparsemux_9_2_9_1_1 is
 generic (
 
     din0_WIDTH : INTEGER := 1;
@@ -51,7 +51,7 @@ port (
 );
 end entity;
 
-architecture behav of ds_cnn_sparsemux_9_2_6_1_1 is
+architecture behav of ds_cnn_sparsemux_9_2_9_1_1 is
 attribute DowngradeIPIdentifiedWarnings : string;
 attribute DowngradeIPIdentifiedWarnings of behav: architecture is "yes";
     signal dout_tmp : std_logic_vector (dout_WIDTH-1 downto 0);

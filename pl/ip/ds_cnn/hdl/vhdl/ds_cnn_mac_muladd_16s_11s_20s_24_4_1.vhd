@@ -7,19 +7,19 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
-entity ds_cnn_mac_muladd_24s_9s_18s_32_4_1_DSP48_0 is
+entity ds_cnn_mac_muladd_16s_11s_20s_24_4_1_DSP48_0 is
 port (
     clk: in  std_logic;
     rst: in  std_logic;
     ce:  in  std_logic;
-    in0:  in  std_logic_vector(24 - 1 downto 0);
-    in1:  in  std_logic_vector(9 - 1 downto 0);
-    in2:  in  std_logic_vector(18 - 1 downto 0);
-    dout: out std_logic_vector(32 - 1 downto 0));
+    in0:  in  std_logic_vector(16 - 1 downto 0);
+    in1:  in  std_logic_vector(11 - 1 downto 0);
+    in2:  in  std_logic_vector(20 - 1 downto 0);
+    dout: out std_logic_vector(24 - 1 downto 0));
 
 end entity;
 
-architecture behav of ds_cnn_mac_muladd_24s_9s_18s_32_4_1_DSP48_0 is
+architecture behav of ds_cnn_mac_muladd_16s_11s_20s_24_4_1_DSP48_0 is
 attribute DowngradeIPIdentifiedWarnings : string;
 attribute DowngradeIPIdentifiedWarnings of behav: architecture is "yes";
     signal a       : signed(25-1 downto 0);
@@ -49,14 +49,14 @@ process (clk) begin
     end if;
 end process;
 
-dout <= std_logic_vector(resize(unsigned(p_reg), 32));
+dout <= std_logic_vector(resize(unsigned(p_reg), 24));
 
 end architecture;
 
 Library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity ds_cnn_mac_muladd_24s_9s_18s_32_4_1 is
+entity ds_cnn_mac_muladd_16s_11s_20s_24_4_1 is
     generic (
         ID : INTEGER;
         NUM_STAGE : INTEGER;
@@ -74,8 +74,8 @@ entity ds_cnn_mac_muladd_24s_9s_18s_32_4_1 is
         dout : OUT STD_LOGIC_VECTOR(dout_WIDTH - 1 DOWNTO 0));
 end entity;
 
-architecture arch of ds_cnn_mac_muladd_24s_9s_18s_32_4_1 is
-    component ds_cnn_mac_muladd_24s_9s_18s_32_4_1_DSP48_0 is
+architecture arch of ds_cnn_mac_muladd_16s_11s_20s_24_4_1 is
+    component ds_cnn_mac_muladd_16s_11s_20s_24_4_1_DSP48_0 is
         port (
             clk : IN STD_LOGIC;
             rst : IN STD_LOGIC;
@@ -89,7 +89,7 @@ architecture arch of ds_cnn_mac_muladd_24s_9s_18s_32_4_1 is
 
 
 begin
-    ds_cnn_mac_muladd_24s_9s_18s_32_4_1_DSP48_0_U :  component ds_cnn_mac_muladd_24s_9s_18s_32_4_1_DSP48_0
+    ds_cnn_mac_muladd_16s_11s_20s_24_4_1_DSP48_0_U :  component ds_cnn_mac_muladd_16s_11s_20s_24_4_1_DSP48_0
     port map (
         clk => clk,
         rst => reset,

@@ -1104,7 +1104,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>f4283565</spirit:value>
+            <spirit:value>1b5fa184</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1120,7 +1120,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>edee1bda</spirit:value>
+            <spirit:value>eb407341</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1136,7 +1136,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>55e6beae</spirit:value>
+            <spirit:value>e5cac226</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1152,7 +1152,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>f4fa1076</spirit:value>
+            <spirit:value>a572e8d9</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -2752,7 +2752,11 @@
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>hdl/verilog/snn_mlp_mul_7s_8ns_15_1_1.v</spirit:name>
+        <spirit:name>hdl/verilog/snn_mlp_mul_8s_8ns_16_1_1.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>hdl/verilog/snn_mlp_mul_9s_8ns_17_1_1.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
@@ -3186,7 +3190,12 @@
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>hdl/verilog/snn_mlp_mul_7s_8ns_15_1_1.v</spirit:name>
+        <spirit:name>hdl/verilog/snn_mlp_mul_8s_8ns_16_1_1.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>hdl/verilog/snn_mlp_mul_9s_8ns_17_1_1.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
@@ -3479,7 +3488,11 @@
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>hdl/vhdl/snn_mlp_mul_7s_8ns_15_1_1.vhd</spirit:name>
+        <spirit:name>hdl/vhdl/snn_mlp_mul_8s_8ns_16_1_1.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>hdl/vhdl/snn_mlp_mul_9s_8ns_17_1_1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
@@ -3529,7 +3542,7 @@
       <spirit:file>
         <spirit:name>hdl/vhdl/snn_mlp.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_ac67be95</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_6c06aeb2</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -3810,7 +3823,12 @@
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>hdl/vhdl/snn_mlp_mul_7s_8ns_15_1_1.vhd</spirit:name>
+        <spirit:name>hdl/vhdl/snn_mlp_mul_8s_8ns_16_1_1.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>hdl/vhdl/snn_mlp_mul_9s_8ns_17_1_1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
@@ -4096,8 +4114,8 @@
       </xilinx:taxonomies>
       <xilinx:displayName>Snn_mlp</xilinx:displayName>
       <xilinx:definitionSource>HLS</xilinx:definitionSource>
-      <xilinx:coreRevision>2114877458</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2026-11-17T06:38:26Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>2114877728</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2026-11-17T11:08:06Z</xilinx:coreCreationDateTime>
       <xilinx:sdxKernelAttributes>
         <xilinx:sdx_kernel>true</xilinx:sdx_kernel>
         <xilinx:sdx_kernel_type>hls</xilinx:sdx_kernel_type>
@@ -4108,7 +4126,7 @@
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="285b2d12"/>
       <xilinx:checksum xilinx:scope="addressSpaces" xilinx:value="2c1df7e3"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="11e73a9b"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="cdee9764"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="585fdcd0"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="69ed19cd"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="0b33322c"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="9c07353c"/>

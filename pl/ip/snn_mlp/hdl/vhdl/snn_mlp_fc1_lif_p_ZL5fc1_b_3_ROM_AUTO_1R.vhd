@@ -9,7 +9,7 @@ use ieee.std_logic_unsigned.all;
 
 entity snn_mlp_fc1_lif_p_ZL5fc1_b_3_ROM_AUTO_1R is 
     generic(
-             DataWidth     : integer := 7; 
+             DataWidth     : integer := 6; 
              AddressWidth     : integer := 4; 
              AddressRange    : integer := 16
     ); 
@@ -34,10 +34,10 @@ signal address0_tmp : std_logic_vector(AddressWidth-1 downto 0);
 type mem_array is array (0 to AddressRange-1) of std_logic_vector (DataWidth-1 downto 0); 
 
 signal mem0 : mem_array := (
-    0 => "1011110", 1 => "0010011", 2 => "1110011", 3 => "0000110", 
-    4 => "1111010", 5 => "0010001", 6 => "0001010", 7 => "0001101", 
-    8 => "1111100", 9 => "0000000", 10 => "0000010", 11 => "1111000", 
-    12 => "1110111", 13 => "0000110", 14 => "0000011", 15 => "0000000");
+    0 => "110101", 1 => "011101", 2 => "000100", 3 => "000100", 
+    4 => "101101", 5 => "011110", 6 => "011000", 7 => "010100", 
+    8 => "000010", 9 => "000001", 10 => "111100", 11 => "111010", 
+    12 => "101110", 13 => "010010", 14 => "111100", 15 => "110010");
 
 
 
