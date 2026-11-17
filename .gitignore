@@ -44,3 +44,20 @@ snn_env/
 # Run output
 *.jsonl
 !pc/example_output/*.jsonl
+
+/forget/
+# Vitis caches, platform and build output (recreated from the XSA / by building)
+.rigel_lopper/
+platform/
+app_component/build/
+compile_commands.json
+.compile_commands/
+cnn/build~/
+
+# Export outputs, recreated by pl/vivado/export_dfx.tcl
+ps/bitstreams/*.prm
+pl/vivado/dfx_static.xsa
+
+# Training outputs
+cnn/trained_model/
+snn/snn_mlp_model/

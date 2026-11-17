@@ -12,7 +12,7 @@
 set script_dir [file dirname [file normalize [info script]]]
 set repo_dir   [file dirname [file dirname $script_dir]]
 set out_dir    [file join $repo_dir ps bitstreams]
-set rp_cell    static_i/rp
+set rp_cell    dfx_static_i/rp
 file mkdir $out_dir
 
 if {[llength [get_projects -quiet]] == 0} {
@@ -34,8 +34,14 @@ foreach run [get_runs -filter {IS_IMPLEMENTATION == 1}] {
         close_design
         continue
     }
-    # -cell writes only the partial bitstream of the partition.
-    write_bitstream -force -bin_file -cell $rp_cell [file join $out_dir ${model}_partial]
+    # -cell writes only the partial bitstream of the partition (.bit).
+    write_bitstream -force -cell $rp_cell [file join $out_dir ${model}_partial]
+    # PCAP on Zynq-7000 needs this .bin format (UG909, "Formatting BIN Files
+    # for Delivery to Internal Configuration Ports"). write_bitstream -bin_file
+    # gives a .bin that PCAP ignores.
+    write_cfgmem -force -format BIN -interface SMAPx32 -disablebitswap \
+        -loadbit "up 0x0 [file join $out_dir ${model}_partial.bit]" \
+        -file [file join $out_dir ${model}_partial.bin]
     lappend exported $model
     close_design
 }

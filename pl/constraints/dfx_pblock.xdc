@@ -1,4 +1,4 @@
-# Floorplan of the reconfigurable partition (static_i/rp) on the xc7z020.
+# Floorplan of the reconfigurable partition (dfx_static_i/rp) on the xc7z020.
 #
 # The partition gets the two lower clock region rows over the full width of
 # the device (rows Y0-Y99). The static logic stays in the upper row, next to
@@ -11,7 +11,7 @@
 # (50 slice rows, 20 DSP rows, 10 RAMB36 rows) in the Device view.
 
 create_pblock pblock_rp
-add_cells_to_pblock [get_pblocks pblock_rp] [get_cells static_i/rp]
+add_cells_to_pblock [get_pblocks pblock_rp] [get_cells dfx_static_i/rp]
 resize_pblock [get_pblocks pblock_rp] -add {SLICE_X0Y0:SLICE_X113Y99}
 resize_pblock [get_pblocks pblock_rp] -add {DSP48_X0Y0:DSP48_X4Y39}
 resize_pblock [get_pblocks pblock_rp] -add {RAMB18_X0Y0:RAMB18_X5Y39}

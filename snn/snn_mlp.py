@@ -17,14 +17,17 @@ from snntorch import surrogate
 from tqdm import tqdm
 
 
+# Dataset from generate_shapes.py, in <repo>/data (same convention as the rest of the repo).
+# Expected layout: data/shapes_dataset/{train,val,test}/<class>/*.png
 REPO_ROOT = Path(__file__).resolve().parents[1]
-ROOT = REPO_ROOT / "data" / "new_training_data"
+ROOT = REPO_ROOT / "data" / "shapes_dataset"
 
+# Alphabetical, same as pc/send_images.py (order = class index).
 CLASS_FOLDERS = [
-    "Full Cable",
-    "Left End",
-    "Right End",
-    "No Cable",
+    "Circle",
+    "Figure Eight",
+    "Square",
+    "Triangle",
 ]
 
 IMG_H, IMG_W = 60, 80
@@ -44,6 +47,8 @@ LR = 1e-3
 SEED = 42
 
 SOBEL_PERCENTILE = 90
+# Rank (0-based, ascending) of the threshold pixel: floor(p/100 * (N-1)) -> 4319 for 90 %.
+SOBEL_RANK = int(np.floor(SOBEL_PERCENTILE / 100.0 * (IMG_H * IMG_W - 1)))
 ALPHA = 3.0
 
 SPIKE_PENALTY_WEIGHT = 1e-5
@@ -51,7 +56,7 @@ EARLY_EXIT_CONFIDENCE = 0.70
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
-OUT_DIR = Path(__file__).resolve().parent / "snn_mlp_model"
+OUT_DIR = Path(__file__).resolve().parent / "snn_mlp_model"  # next to this script
 
 MODELS_DIR = OUT_DIR / "models"
 PLOTS_DIR = OUT_DIR / "plots"
@@ -74,21 +79,27 @@ def image_to_spikes(img_u8):
         interpolation=cv2.INTER_LINEAR,
     )
 
-    img = img_u8.astype(np.float32) / 255.0
+    # ---- Integer pipeline: bit-exact with the HLS feature stage ----
+    # Same Q8.8 buffer the CNN reads from DDR: q = round((u8/255 - 0.5)/0.25 * 256)
+    q = (1024 * img_u8.astype(np.int32) + 127) // 255 - 512
 
-    sobel_x = cv2.Sobel(img, cv2.CV_32F, 1, 0, ksize=3)
-    sobel_y = cv2.Sobel(img, cv2.CV_32F, 0, 1, ksize=3)
+    # 3x3 Sobel on integers (float32 holds these values exactly; border = reflect-101).
+    qf = q.astype(np.float32)
+    sobel_x = cv2.Sobel(qf, cv2.CV_32F, 1, 0, ksize=3)
+    sobel_y = cv2.Sobel(qf, cv2.CV_32F, 0, 1, ksize=3)
+    sobel_combined = (sobel_x + sobel_y).astype(np.int32)
 
-    sobel_combined = sobel_x + sobel_y
+    pos_int = np.maximum(sobel_combined, 0)
+    neg_int = np.maximum(-sobel_combined, 0)
 
-    pos_edge = np.maximum(sobel_combined, 0)
-    neg_edge = np.maximum(-sobel_combined, 0)
+    # Percentile threshold as a rank: keep pixels above the SOBEL_RANK-th smallest value.
+    # (Identical to "> np.percentile(...)" on integer data.)
+    on_mask = pos_int > np.sort(pos_int, axis=None)[SOBEL_RANK]
+    off_mask = neg_int > np.sort(neg_int, axis=None)[SOBEL_RANK]
 
-    pos_edge /= pos_edge.max() + 1e-8
-    neg_edge /= neg_edge.max() + 1e-8
-
-    on_mask = pos_edge > np.percentile(pos_edge, SOBEL_PERCENTILE)
-    off_mask = neg_edge > np.percentile(neg_edge, SOBEL_PERCENTILE)
+    # Normalised edges, only used for spike timing when T > 1 (HLS supports T = 1 only).
+    pos_edge = pos_int / (pos_int.max() + 1e-8)
+    neg_edge = neg_int / (neg_int.max() + 1e-8)
 
     spikes = np.zeros((T, 2, IMG_H, IMG_W), dtype=np.float32)
 
@@ -504,6 +515,14 @@ def export_fpga_weights(model, save_dir, scale=128):
         f.write("#define HIDDEN2 32\n")
         f.write(f"#define NUM_CLASSES {len(CLASS_FOLDERS)}\n\n")
 
+        # Preprocessing constants for the HLS feature stage (single source: this script).
+        cell_px = (IMG_H // GRID_H) * (IMG_W // GRID_W)
+        lut = [int(v) for v in np.round(
+            (np.arange(cell_px + 1, dtype=np.float32) / np.float32(cell_px)) * scale)]
+        f.write(f"#define SOBEL_RANK {SOBEL_RANK}\n")
+        f.write(f"// feature value (x{scale}) for each possible spike count in one cell\n")
+        f.write(f"static const int16_t feat_lut[{cell_px + 1}] = {{{', '.join(map(str, lut))}}};\n\n")
+
         for name, arr in layers.items():
             q = q_int16(arr)
 
@@ -648,43 +667,23 @@ def train():
     torch.manual_seed(SEED)
     np.random.seed(SEED)
 
-    dataset_full = CableDataset(ROOT, CLASS_FOLDERS)
+    # Fixed splits from the dataset folders (no random split, no subset).
+    dataset_train = CableDataset(ROOT / "train", CLASS_FOLDERS)
+    dataset_val = CableDataset(ROOT / "val", CLASS_FOLDERS)
+    dataset_test = CableDataset(ROOT / "test", CLASS_FOLDERS)
 
-    visualize_one_image_per_class(dataset_full)
+    visualize_one_image_per_class(dataset_train)
 
-    if len(dataset_full) == 0:
-        raise RuntimeError("No samples found.")
+    if min(len(dataset_train), len(dataset_val), len(dataset_test)) == 0:
+        raise RuntimeError(f"Empty split. Check that {ROOT} has train/val/test with the class folders.")
 
-    subset_size = min(SUBSET_SIZE, len(dataset_full))
+    print("Train samples:", len(dataset_train))
+    print("Val samples:", len(dataset_val))
+    print("Test samples:", len(dataset_test))
 
-    all_indices = np.arange(len(dataset_full))
-    all_labels = np.array([label for _, label in dataset_full.samples])
-
-    if subset_size == len(dataset_full):
-        subset_indices = all_indices
-    else:
-        subset_indices, _ = train_test_split(
-            all_indices,
-            train_size=subset_size,
-            stratify=all_labels,
-            random_state=SEED,
-        )
-
-    subset_labels = all_labels[subset_indices]
-
-    train_indices, val_indices = train_test_split(
-        subset_indices,
-        test_size=0.30,
-        stratify=subset_labels,
-        random_state=SEED,
-    )
-
-    print("Using subset:", len(subset_indices), "out of", len(dataset_full))
-    print("Train samples:", len(train_indices))
-    print("Val samples:", len(val_indices))
-
-    train_set = CachedFeatureDataset(dataset_full, train_indices, name="train")
-    val_set = CachedFeatureDataset(dataset_full, val_indices, name="val")
+    train_set = CachedFeatureDataset(dataset_train, range(len(dataset_train)), name="train")
+    val_set = CachedFeatureDataset(dataset_val, range(len(dataset_val)), name="val")
+    test_set = CachedFeatureDataset(dataset_test, range(len(dataset_test)), name="test")
 
     train_loader = DataLoader(
         train_set,
@@ -858,6 +857,26 @@ def train():
             f"avg_L3/img={avg_l3_spikes:.1f} | "
             f"avg_total_layer/img={avg_total_layer_spikes:.1f}"
         )
+
+    # ---- Test-set evaluation (software reference for the FPGA results) ----
+    # All T steps are run (no early exit), like the hardware does.
+    test_loader = DataLoader(test_set, batch_size=BATCH_SIZE, shuffle=False, num_workers=0)
+    n_cls = len(CLASS_FOLDERS)
+    confusion = np.zeros((n_cls, n_cls), dtype=np.int64)   # rows=true, cols=pred
+
+    model.eval()
+    with torch.no_grad():
+        for x, y in test_loader:
+            logits, _, _ = model(x.to(DEVICE), return_spike_stats=True, early_exit=False)
+            for t, p in zip(y.numpy(), logits.argmax(dim=1).cpu().numpy()):
+                confusion[t, p] += 1
+
+    test_acc = np.trace(confusion) / confusion.sum()
+    lines = [f"Test accuracy: {test_acc:.4f} ({np.trace(confusion)}/{confusion.sum()})", ""]
+    lines += [f"{c}: {confusion[i, i] / confusion[i].sum():.4f}" for i, c in enumerate(CLASS_FOLDERS)]
+    lines += ["", "Confusion matrix (rows=true, cols=pred)", str(confusion)]
+    print("\n" + "\n".join(lines))
+    (REPORTS_DIR / "test_results.txt").write_text("\n".join(lines) + "\n")
 
     plot_accuracy(train_accs, val_accs, PLOTS_DIR / "accuracy_vs_epoch.png")
 

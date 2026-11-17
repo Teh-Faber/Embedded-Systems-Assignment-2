@@ -13,6 +13,12 @@ from PIL import Image
 import serial
 
 
+# Defaults for arguments that are left out. Change them here.
+DEFAULT_PORT = "/dev/ttyUSB1"                                         # Windows: e.g. "COM3"
+DEFAULT_DATASET = Path(__file__).resolve().parents[1] / "data" / "shapes_dataset"
+DEFAULT_OUTPUT_DIR = Path(__file__).resolve().parent / "results"      # one new JSONL per run
+DEFAULT_LIMIT_PER_CLASS = 1                                           # images sent per class
+
 IMAGE_SIZE = (80, 60)
 PIXEL_COUNT = 4800
 CLASS_NAMES = ("Circle", "Figure Eight", "Square", "Triangle")
@@ -284,13 +290,16 @@ def run(args):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--port", required=True, help="For example COM3 or /dev/ttyUSB1")
-    parser.add_argument("--dataset", required=True, type=Path, help="Dataset root or test folder")
-    parser.add_argument("--output", required=True, type=Path, help="New JSONL file")
+    parser.add_argument("--port", default=DEFAULT_PORT, help="For example COM3 or /dev/ttyUSB1")
+    parser.add_argument("--dataset", default=DEFAULT_DATASET, type=Path,
+                        help="Dataset root or test folder")
+    parser.add_argument("--output", type=Path,
+                        help="New JSONL file (default: timestamped file in DEFAULT_OUTPUT_DIR)")
     parser.add_argument("--models", choices=MODEL_MASKS, default="both")
     parser.add_argument("--classes", nargs=4, default=CLASS_NAMES, metavar="CLASS",
                         help="Four class folders in ascending model class ID order")
-    parser.add_argument("--limit-per-class", type=int)
+    parser.add_argument("--limit-per-class", type=int, default=DEFAULT_LIMIT_PER_CLASS,
+                        help="Images sent per class (first N by name)")
     parser.add_argument("--baud", type=int, default=4_000_000)
     parser.add_argument("--timeout", type=float, default=5.0, help="Seconds per request")
     parser.add_argument("--protocol-test", action="store_true", help="Use with ps_uart_test.c")
@@ -301,6 +310,10 @@ def main():
         parser.error("--limit-per-class must be positive.")
     if args.baud < 1 or not math.isfinite(args.timeout) or args.timeout <= 0:
         parser.error("Use a positive baud rate and a finite positive timeout.")
+    if args.output is None:
+        # e.g. results/20261117_095100_both.jsonl; still never overwrites (mode "x")
+        DEFAULT_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+        args.output = DEFAULT_OUTPUT_DIR / f"{time.strftime('%Y%m%d_%H%M%S')}_{args.models}.jsonl"
     try:
         return run(args)
     except (OSError, ValueError) as error:

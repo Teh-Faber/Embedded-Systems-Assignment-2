@@ -13,27 +13,31 @@
 typedef ap_int<16> data_t;
 typedef ap_int<32> acc_t;
 
+// Must match the top function in snn_mlp.cpp.
 void snn_mlp(
-    volatile data_t *feature_mem,
-    volatile ap_uint<8> *prediction,
-    volatile acc_t logits_out[NUM_CLASSES]
+    const ap_int<16> *input_img,
+    ap_uint<8> *pred_out,
+    ap_int<32> logits_out[NUM_CLASSES]
 );
 
+static const int N_PIXELS = IMG_H * IMG_W;   // 4800
+
+// Same names and order as CLASS_FOLDERS in snn_mlp.py.
 static int label_from_folder(const std::string &name)
 {
-    if (name == "Full Cable") return 0;
-    if (name == "Left End") return 1;
-    if (name == "Right End") return 2;
-    if (name == "No Cable") return 3;
+    if (name == "Circle") return 0;
+    if (name == "Figure Eight") return 1;
+    if (name == "Square") return 2;
+    if (name == "Triangle") return 3;
     return -1;
 }
 
 static const char* class_name(int label)
 {
-    if (label == 0) return "Full Cable";
-    if (label == 1) return "Left End";
-    if (label == 2) return "Right End";
-    if (label == 3) return "No Cable";
+    if (label == 0) return "Circle";
+    if (label == 1) return "Figure Eight";
+    if (label == 2) return "Square";
+    if (label == 3) return "Triangle";
     return "Unknown";
 }
 
@@ -50,9 +54,12 @@ static bool has_txt_extension(const std::string &name)
     return name.substr(name.size() - 4) == ".txt";
 }
 
-static bool load_txt_to_bram_array(
+// Reads one image as text: 4800 grayscale values 0..255, row-major, separated by
+// spaces and/or newlines (same format as the CNN testbench: 60 lines of 80 values).
+// Converts to the Q8.8 format the PS writes into DDR: q = round((u8/255 - 0.5)/0.25 * 256).
+static bool load_txt_image_q8_8(
     const std::string &txt_path,
-    data_t feature_mem[T_STEPS * N_FEATURES]
+    data_t image_mem[N_PIXELS]
 ) {
     std::ifstream file(txt_path.c_str());
 
@@ -61,26 +68,26 @@ static bool load_txt_to_bram_array(
         return false;
     }
 
-    std::string line;
     int count = 0;
+    int value = 0;
 
-    while (std::getline(file, line)) {
-        if (line.empty()) continue;
-        if (line[0] == '#') continue;
-
-        if (count >= T_STEPS * N_FEATURES) {
-            std::cerr << "Too many feature values in " << txt_path << std::endl;
+    while (file >> value) {
+        if (count >= N_PIXELS) {
+            std::cerr << "Too many pixel values in " << txt_path << std::endl;
+            return false;
+        }
+        if (value < 0 || value > 255) {
+            std::cerr << "Pixel out of range 0..255 in " << txt_path << std::endl;
             return false;
         }
 
-        int value = std::stoi(line);
-        feature_mem[count] = (data_t)value;
+        image_mem[count] = (data_t)((1024 * value + 127) / 255 - 512);
         count++;
     }
 
-    if (count != T_STEPS * N_FEATURES) {
-        std::cerr << "Bad feature count in " << txt_path << std::endl;
-        std::cerr << "Expected " << T_STEPS * N_FEATURES
+    if (count != N_PIXELS) {
+        std::cerr << "Bad pixel count in " << txt_path << std::endl;
+        std::cerr << "Expected " << N_PIXELS
                   << " values, got " << count << std::endl;
         return false;
     }
@@ -146,19 +153,17 @@ static std::vector<std::string> list_txt_files(const std::string &folder_path)
     return files;
 }
 
-// <repo>/data, located relative to this file
-static std::string repo_data_dir()
-{
-    std::string f = __FILE__;
-    size_t p = f.find_last_of("/\\");
-    return (p == std::string::npos ? std::string(".") : f.substr(0, p)) + "/../data";
-}
-
 int main()
 {
     const int N = 10;
 
-    const std::string root = repo_data_dir() + "/fpga_test_features";
+    // <repo>/data/shapes_test_txt: one subfolder per class, each holding .txt images
+    // (see loader above). Located relative to this file, like the repo version.
+    std::string tb_file = __FILE__;
+    size_t tb_sep = tb_file.find_last_of("/\\");
+    const std::string root =
+        (tb_sep == std::string::npos ? std::string(".") : tb_file.substr(0, tb_sep))
+        + "/../data/shapes_test_txt";
 
     int total = 0;
     int correct = 0;
@@ -192,21 +197,21 @@ int main()
         for (int i = 0; i < files_to_use; i++) {
             std::string txt_path = txt_files[i];
 
-            data_t feature_mem[T_STEPS * N_FEATURES];
+            data_t image_mem[N_PIXELS];
 
             ap_uint<8> prediction = 0;
             acc_t logits_out[NUM_CLASSES];
 
-            bool ok = load_txt_to_bram_array(
+            bool ok = load_txt_image_q8_8(
                 txt_path,
-                feature_mem
+                image_mem
             );
 
             if (!ok) continue;
 
 
             snn_mlp(
-                feature_mem,
+                image_mem,
                 &prediction,
                 logits_out
             );

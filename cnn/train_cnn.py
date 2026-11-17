@@ -71,20 +71,22 @@ from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, classifica
 
 
 # ===================== EDIT THESE =====================
+# Dataset from generate_shapes.py, in <repo>/data (same convention as the rest of the repo).
+# Expected layout: data/shapes_dataset/{train,val,test}/<class>/*.png
 REPO_ROOT = Path(__file__).resolve().parents[1]
-ROOT = REPO_ROOT / "data" / "new_training_data_aug"
+ROOT = REPO_ROOT / "data" / "shapes_dataset"
 
+# Alphabetical, same as pc/send_images.py (order = class index).
 CLASS_FOLDERS = [
-    "Full Cable", # 0
-    "Left End",   # 1
-    "Right End",  # 2
-    "No Cable",   # 3
+    "Circle",       # 0
+    "Figure Eight", # 1
+    "Square",       # 2
+    "Triangle",     # 3
 ]
 
 IMG_H, IMG_W = 60, 80
-VAL_SPLIT = 0.30
 BATCH = 16
-EPOCHS = 2
+EPOCHS = 20
 LR = 3e-4
 
 USE_GPU0_ONLY = True
@@ -97,7 +99,7 @@ BINS_POOL_SIZE = (6, 8)
 # RUNS_DIR = Path("runs")
 # RUN_NAME_PREFIX = "tinycnn_bn_DW_PW_convGAP_5x5_4class_60x80"
 
-run_dir = Path(__file__).resolve().parent / "trained_model"
+run_dir = Path(__file__).resolve().parent / "trained_model"  # same as the repo version
 
 # ======================================================
 
@@ -108,14 +110,16 @@ IMG_EXTS = {".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff", ".webp"}
 
 
 # ---------------------- Data ----------------------
-def load_all_images_cv2():
+def load_all_images_cv2(split: str):
+    """Load one fixed split ("train", "val" or "test") from ROOT/<split>/<class>/."""
     all_images = []
     all_labels = []
     resized_count = 0
     total_count = 0
 
+    print(f"\n[SPLIT] {split}")
     for label, cname in enumerate(CLASS_FOLDERS):
-        d = ROOT / cname
+        d = ROOT / split / cname
         if not d.is_dir():
             print(f"[WARN] Missing folder: {d}")
             continue
@@ -423,7 +427,7 @@ def main():
         f.write(f"root={ROOT}\n")
         f.write(f"classes={CLASS_FOLDERS}\n")
         f.write(f"img_h={IMG_H} img_w={IMG_W}\n")
-        f.write(f"val_split={VAL_SPLIT}\n")
+        f.write("splits=fixed folders (train/val/test)\n")
         f.write(f"batch={BATCH}\n")
         f.write(f"epochs={EPOCHS}\n")
         f.write(f"lr={LR}\n")
@@ -431,23 +435,19 @@ def main():
         f.write(f"bins_pool_size={BINS_POOL_SIZE}\n")
         f.write(f"bins_h={bins_h} bins_w={bins_w}\n")
 
-    # Load data
-    X, y = load_all_images_cv2()
-    if X.shape[0] == 0:
-        raise RuntimeError("No images loaded. Check ROOT and folder names.")
+    # Load data: fixed splits from the dataset folders (no random split)
+    x_train, y_train = load_all_images_cv2("train")
+    x_val, y_val = load_all_images_cv2("val")
+    x_test, y_test = load_all_images_cv2("test")
+    if min(x_train.shape[0], x_val.shape[0], x_test.shape[0]) == 0:
+        raise RuntimeError("Empty split. Check ROOT has train/val/test with the class folders.")
 
     # Normalize (match deployment)
-    X = (X - 0.5) / 0.25
+    x_train = (x_train - 0.5) / 0.25
+    x_val = (x_val - 0.5) / 0.25
+    x_test = (x_test - 0.5) / 0.25
 
-    # Stratified split
-    x_train, x_val, y_train, y_val = train_test_split(
-        X, y,
-        test_size=VAL_SPLIT,
-        stratify=y,
-        random_state=seed,
-        shuffle=True
-    )
-    print("[SPLIT] Train:", x_train.shape[0], "Val:", x_val.shape[0])
+    print("[SPLIT] Train:", x_train.shape[0], "Val:", x_val.shape[0], "Test:", x_test.shape[0])
 
     # Build + train
     model = build_model(num_classes=len(CLASS_FOLDERS))
@@ -502,6 +502,20 @@ def main():
     print("\nClassification report:\n", report)
     with open(reports_dir / "classification_report.txt", "w") as f:
         f.write(report)
+
+    # Test-set evaluation (software reference for the FPGA results)
+    y_test_pred = np.argmax(model.predict(x_test, verbose=0), axis=1)
+    plot_confusion_matrices(
+        y_true=y_test,
+        y_pred=y_test_pred,
+        class_names=CLASS_FOLDERS,
+        out_dir=plots_dir,
+        prefix="dw_pw_cnn_confusion_test"
+    )
+    test_report = classification_report(y_test, y_test_pred, target_names=CLASS_FOLDERS)
+    print("\nTest classification report:\n", test_report)
+    with open(reports_dir / "classification_report_test.txt", "w") as f:
+        f.write(test_report)
 
     # Save models
     model.save(models_dir / "dwpw_cnn.keras")

@@ -69,7 +69,8 @@ int dfx_init(void)
     XGpioPs_SetDirectionPin(&gpio, DFX_DECOUPLE_PIN, 1u);
     XGpioPs_SetOutputEnablePin(&gpio, DFX_DECOUPLE_PIN, 1u);
     set_decouple(true);
-
+    // The timer only starts on the first usleep(); start it now so the first dfx_load() is timed correctly. Without we get a 2000 micro second "deley" on first run.
+    usleep(1);
     XDcfg_Config *devcfg_config = XDcfg_LookupConfig(DEVCFG_BASE_ADDR);
     if (devcfg_config == NULL) {
         return XST_DEVICE_NOT_FOUND;

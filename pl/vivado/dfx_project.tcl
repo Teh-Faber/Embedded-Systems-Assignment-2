@@ -56,7 +56,8 @@ proc create_rm {name ipdef fclk_mhz} {
     set_property CONFIG.POLARITY ACTIVE_LOW $rst
 
     set ctrl [create_bd_intf_port -mode Slave -vlnv xilinx.com:interface:aximm_rtl:1.0 s_axi_control]
-    set_property -dict [list CONFIG.PROTOCOL AXI4LITE CONFIG.ADDR_WIDTH 16 CONFIG.DATA_WIDTH 32] $ctrl
+    # 32 bits so the module can hold the PS address 0x4000_0000 (DFX aperture check)
+    set_property -dict [list CONFIG.PROTOCOL AXI4LITE CONFIG.ADDR_WIDTH 32 CONFIG.DATA_WIDTH 32] $ctrl
     set gmem [create_bd_intf_port -mode Master -vlnv xilinx.com:interface:aximm_rtl:1.0 m_axi_gmem]
     set_property -dict [list CONFIG.PROTOCOL AXI4 CONFIG.ADDR_WIDTH 32 CONFIG.DATA_WIDTH 32] $gmem
     set_property -dict [list CONFIG.ASSOCIATED_BUSIF s_axi_control:m_axi_gmem \
@@ -75,6 +76,15 @@ proc create_rm {name ipdef fclk_mhz} {
     connect_bd_net $rst [get_bd_pins -of_objects $ip -filter {TYPE == rst}]
 
     assign_bd_address
+    # Same addresses in every module as in the static design, so the DFX
+    # aperture check passes: registers at rp_offset, master sees all of DDR.
+    global rp_offset rp_range
+    set seg [get_bd_addr_segs -of_objects [get_bd_addr_spaces /s_axi_control]]
+    set_property range  $rp_range  $seg
+    set_property offset $rp_offset $seg
+    set seg [get_bd_addr_segs -of_objects [get_bd_addr_spaces /accel/Data_m_axi_gmem]]
+    set_property range  512M       $seg
+    set_property offset 0x00000000 $seg
     validate_bd_design
     save_bd_design
     close_bd_design [current_bd_design]
@@ -95,7 +105,7 @@ foreach {rm top} $modules {
 # ----------------------------------------------------------------------------
 # Static block design
 # ----------------------------------------------------------------------------
-create_bd_design static
+create_bd_design dfx_static
 
 # PS with the board preset (DDR, UART0 on MIO 14/15, clocks), then the ports
 # the accelerator needs and one EMIO GPIO bit that decouples the partition.
@@ -191,6 +201,11 @@ connect_bd_net [get_bd_pins rst_rp/peripheral_aresetn] [get_bd_pins rp/ap_rst_n]
 connect_bd_intf_net [get_bd_intf_pins decoupler/rp_control] [get_bd_intf_pins rp/s_axi_control]
 connect_bd_intf_net [get_bd_intf_pins rp/m_axi_gmem]        [get_bd_intf_pins decoupler/rp_gmem]
 
+# Manual DFX apertures, one per interface (as Vivado writes them from the
+# rp > Addressing dialog). The first must match rp_offset / rp_range.
+set_property APERTURES { {{0x4000_0000 64K}}} [get_bd_intf_pins /rp/s_axi_control]
+set_property APERTURES { {{0x0 512M}}} [get_bd_intf_pins /rp/m_axi_gmem]
+
 # Addresses: the accelerator registers at a fixed address for the PS, and all
 # of DDR visible to the accelerator's AXI master.
 assign_bd_address
@@ -203,19 +218,27 @@ if {[llength $rp_seg] == 1} {
     puts "DFX: set the accelerator to $rp_offset in the Address Editor."
 }
 
-validate_bd_design
+# -assign_dfx_addressing pushes the apertures into every module copy in rp.
+validate_bd_design -assign_dfx_addressing
+
+# The decoupler's clock/reset pins only exist after the first validation.
+# Unconnected they are tied to 0, so connect them now and validate again.
+connect_bd_net $clk [get_bd_pins decoupler/control_aclk] [get_bd_pins decoupler/gmem_aclk]
+connect_bd_net [get_bd_pins rst_static/interconnect_aresetn] \
+    [get_bd_pins decoupler/control_arstn] [get_bd_pins decoupler/gmem_arstn]
+validate_bd_design -assign_dfx_addressing
 save_bd_design
 
 # ----------------------------------------------------------------------------
 # Wrapper, constraints, output products
 # ----------------------------------------------------------------------------
-set bd_file [get_files static.bd]
+set bd_file [get_files dfx_static.bd]
 make_wrapper -files $bd_file -top
 set wrapper [glob -nocomplain \
-    [file join $proj_dir $proj_name.gen  sources_1 bd static hdl static_wrapper.v] \
-    [file join $proj_dir $proj_name.srcs sources_1 bd static hdl static_wrapper.v]]
+    [file join $proj_dir $proj_name.gen  sources_1 bd dfx_static hdl dfx_static_wrapper.v] \
+    [file join $proj_dir $proj_name.srcs sources_1 bd dfx_static hdl dfx_static_wrapper.v]]
 add_files -norecurse [lindex $wrapper 0]
-set_property top static_wrapper [current_fileset]
+set_property top dfx_static_wrapper [current_fileset]
 update_compile_order -fileset sources_1
 
 add_files -fileset constrs_1 -norecurse [file join $pl_dir constraints dfx_pblock.xdc]
@@ -237,7 +260,7 @@ if {[catch {
     set index 0
     foreach rm $rms {
         set config config_$rm
-        create_pr_configuration -name $config -partitions [list static_i/rp:$rm]
+        create_pr_configuration -name $config -partitions [list dfx_static_i/rp:$rm]
         if {$index == 0} {
             set_property PR_CONFIGURATION $config [get_runs impl_1]
         } else {

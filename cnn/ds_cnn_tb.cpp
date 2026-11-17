@@ -40,27 +40,27 @@ static std::string repo_data_dir()
     size_t p = f.find_last_of("/\\");
     return (p == std::string::npos ? std::string(".") : f.substr(0, p)) + "/../data";
 }
-static const std::string BASE_DIR = repo_data_dir() + "/dwpw_cnn_testing_data_aug_txt";
+static const std::string BASE_DIR = repo_data_dir() + "/shapes_test_txt";
 
 
 
 // Folder names (GT labels match training order)
 static const std::string CLASS_DIRS[N_CLASSES] = {
-    "Full Cable", // 0
-    "Left End",   // 1
-    "Right End",  // 2
-    "No Cable"    // 3
+    "Circle",       // 0
+    "Figure Eight", // 1
+    "Square",       // 2
+    "Triangle"      // 3
 };
 
 static const char* CLASS_NAMES[N_CLASSES] = {
-    "Cable Full",
-    "Left End",
-    "Right End",
-    "No Cable"
+    "Circle",
+    "Figure Eight",
+    "Square",
+    "Triangle"
 };
 
 // How many random files per class (0 = test ALL files)
-static const int SAMPLES_PER_CLASS = 1;
+static const int SAMPLES_PER_CLASS = 0;
 
 // Print per-file results
 static const bool VERBOSE_PER_FILE = true;

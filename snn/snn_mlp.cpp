@@ -1,8 +1,13 @@
 
 
 // ============================================================================
-// SNN Inference from PS-written BRAM Features for Vitis HLS
+// SNN Inference for Vitis HLS
 // Resource-reduced + FC1 feature-parallel version
+//
+// Input : the same 60x80 Q8.8 image buffer the CNN reads from DDR.
+// Stage 1: Sobel ON/OFF feature extraction in hardware (bit-exact with snn_mlp.py).
+// Stage 2: spiking MLP (unchanged).
+// Supports T_STEPS = 1 only.
 // ============================================================================
 
 #include "ap_int.h"
@@ -48,21 +53,141 @@ static spike_t lif_update(acc_t input_current, acc_t &mem)
 }
 
 // ============================================================================
-// Read input features from BRAM
+// Feature extraction: image -> 384 Sobel ON/OFF cell densities
+// Mirrors image_to_spikes() + spikes_to_snn_mlp_features() in snn_mlp.py (T = 1).
 // ============================================================================
-static void read_features_from_bram(
-    volatile data_t *feature_mem,
+static const int N_PIX   = IMG_H * IMG_W;        // 4800
+static const int CELL_H  = IMG_H / GRID_H;       // 5
+static const int CELL_W  = IMG_W / GRID_W;       // 5
+static const int N_CELLS = GRID_H * GRID_W;      // 192
+
+// Pixels are Q8.8 in [-512, 512] -> |sobel_x + sobel_y| <= 8192.
+static const int HIST_SIZE = 8193;
+
+typedef ap_int<16>  pix_t;    // Q8.8 pixel
+typedef ap_int<15>  edge_t;   // sobel_x + sobel_y, -8192..8192
+typedef ap_uint<14> mag_t;    // |edge|, 0..8192
+typedef ap_uint<13> cnt_t;    // pixel counts, 0..4800
+
+static void extract_features(
+    const pix_t *image_mem,
     data_t features[T_STEPS][N_FEATURES]
 ) {
 #pragma HLS INLINE off
 
-    for (int i = 0; i < T_STEPS * N_FEATURES; i++) {
+    pix_t  img[IMG_H][IMG_W];
+    edge_t edge[N_PIX];
+    // Histograms of ON / OFF edge strength. Must start at zero:
+    // zero at configuration, and step 3 clears them again after every image.
+    static cnt_t hist_on[HIST_SIZE];
+    static cnt_t hist_off[HIST_SIZE];
+    ap_uint<5> cell_on[N_CELLS];    // spike count per cell, 0..25
+    ap_uint<5> cell_off[N_CELLS];
+
+// Rows y-1, y, y+1 land in three different memories -> one read each per cycle.
+#pragma HLS ARRAY_PARTITION variable=img cyclic factor=3 dim=1
+#pragma HLS BIND_STORAGE variable=img      type=ram_2p impl=bram
+#pragma HLS BIND_STORAGE variable=edge     type=ram_2p impl=bram
+#pragma HLS BIND_STORAGE variable=hist_on  type=ram_2p impl=bram
+#pragma HLS BIND_STORAGE variable=hist_off type=ram_2p impl=bram
+
+    // ---- 1. Read the image from DDR (one burst) ----
+    READ_IMG:
+    for (int i = 0; i < N_PIX; i++) {
 #pragma HLS PIPELINE II=1
+        img[i / IMG_W][i % IMG_W] = image_mem[i];
+    }
 
-        int t = i / N_FEATURES;
-        int f = i % N_FEATURES;
+    // ---- 2. 3x3 Sobel (x + y) and edge-strength histograms ----
+    // Border handling = reflect-101, like cv2.Sobel: index -1 -> 1, index N -> N-2.
+    // A 3x3 window slides along each row; one extra step per row flushes the last pixel.
+    SOBEL_ROW:
+    for (int y = 0; y < IMG_H; y++) {
+        const int r_top = (y == 0)         ? 1         : y - 1;
+        const int r_bot = (y == IMG_H - 1) ? IMG_H - 2 : y + 1;
 
-        features[t][f] = feature_mem[i];
+        pix_t l_top = 0, l_mid = 0, l_bot = 0;   // left column of the window
+        pix_t m_top = 0, m_mid = 0, m_bot = 0;   // middle column
+        pix_t r_tp  = 0, r_md  = 0, r_bt  = 0;   // right column
+
+        SOBEL_COL:
+        for (int xi = 0; xi <= IMG_W; xi++) {
+#pragma HLS PIPELINE II=2
+            // New right column (reflected past the right border).
+            const int c = (xi < IMG_W) ? xi : IMG_W - 2;
+            l_top = m_top; l_mid = m_mid; l_bot = m_bot;
+            m_top = r_tp;  m_mid = r_md;  m_bot = r_bt;
+            r_tp = img[r_top][c];
+            r_md = img[y][c];
+            r_bt = img[r_bot][c];
+
+            if (xi >= 1) {
+                const int x = xi - 1;             // pixel whose window is now complete
+                // Left border: column -1 is the reflection of column 1 (= current right column).
+                const pix_t a_top = (x == 0) ? r_tp : l_top;
+                const pix_t a_mid = (x == 0) ? r_md : l_mid;
+                const pix_t a_bot = (x == 0) ? r_bt : l_bot;
+
+                const ap_int<19> gx = (r_tp - a_top) + 2 * (r_md - a_mid) + (r_bt - a_bot);
+                const ap_int<19> gy = (a_bot + 2 * m_bot + r_bt) - (a_top + 2 * m_top + r_tp);
+                const edge_t s = gx + gy;
+
+                edge[y * IMG_W + x] = s;
+
+                const mag_t pos = (s > 0) ? mag_t(s)  : mag_t(0);
+                const mag_t neg = (s < 0) ? mag_t(-s) : mag_t(0);
+                hist_on[pos]  = hist_on[pos]  + 1;
+                hist_off[neg] = hist_off[neg] + 1;
+            }
+        }
+    }
+
+    // ---- 3. Percentile thresholds from the histograms (and clear them) ----
+    // Threshold = SOBEL_RANK-th smallest value = first bin where the running count exceeds SOBEL_RANK.
+    mag_t thr_on = 0, thr_off = 0;
+    cnt_t cum_on = 0, cum_off = 0;
+    bool  found_on = false, found_off = false;
+
+    FIND_THR:
+    for (int v = 0; v < HIST_SIZE; v++) {
+#pragma HLS PIPELINE II=1
+        cum_on  += hist_on[v];
+        cum_off += hist_off[v];
+        hist_on[v]  = 0;
+        hist_off[v] = 0;
+
+        if (!found_on && cum_on > SOBEL_RANK)   { thr_on  = v; found_on  = true; }
+        if (!found_off && cum_off > SOBEL_RANK) { thr_off = v; found_off = true; }
+    }
+
+    // ---- 4. Count ON / OFF spikes in each 5x5 cell ----
+    CELL_Y:
+    for (int gy = 0; gy < GRID_H; gy++) {
+        CELL_X:
+        for (int gx = 0; gx < GRID_W; gx++) {
+            ap_uint<5> n_on = 0, n_off = 0;
+
+            PIX_Y:
+            for (int dy = 0; dy < CELL_H; dy++) {
+                PIX_X:
+                for (int dx = 0; dx < CELL_W; dx++) {
+#pragma HLS PIPELINE II=1
+                    const edge_t s = edge[(gy * CELL_H + dy) * IMG_W + gx * CELL_W + dx];
+                    if (s > 0 && mag_t(s) > thr_on)   n_on++;
+                    if (s < 0 && mag_t(-s) > thr_off) n_off++;
+                }
+            }
+            cell_on[gy * GRID_W + gx]  = n_on;
+            cell_off[gy * GRID_W + gx] = n_off;
+        }
+    }
+
+    // ---- 5. Counts -> scaled features, order [cell][ON, OFF] as in Python ----
+    WRITE_FEAT:
+    for (int c = 0; c < N_CELLS; c++) {
+#pragma HLS PIPELINE II=2
+        features[0][2 * c]     = feat_lut[cell_on[c]];
+        features[0][2 * c + 1] = feat_lut[cell_off[c]];
     }
 }
 
@@ -268,33 +393,38 @@ static int snn_core(
 
 // ============================================================================
 // Top-level HLS function
-// PS writes features into BRAM.
-// HLS reads BRAM and returns prediction through AXI-Lite.
+// PS writes the 60x80 Q8.8 image into DDR (same buffer as for the CNN).
+// HLS reads it over AXI, extracts the features, runs the SNN,
+// and returns prediction + logits through AXI-Lite.
+//
+// DFX interface (see pl/ip/README.md): same argument names and order as
+// ds_cnn(input_img, pred_out, logits_out), one s_axilite bundle, one
+// read-only m_axi port with 16-bit elements.
 // ============================================================================
 void snn_mlp(
-    volatile data_t *feature_mem,
-    volatile ap_uint<8> *prediction,
-    volatile acc_t logits_out[NUM_CLASSES]
+    const ap_int<16> *input_img,             // 4800 px, Q8.8, row-major 60x80
+    ap_uint<8> *pred_out,                    // predicted class index
+    ap_int<32> logits_out[NUM_CLASSES]       // raw integer logits
 ) {
-#pragma HLS INTERFACE m_axi port=feature_mem offset=slave bundle=gmem depth=384
-#pragma HLS INTERFACE s_axilite port=feature_mem bundle=CTRL
-#pragma HLS INTERFACE s_axilite port=prediction bundle=CTRL
-#pragma HLS INTERFACE s_axilite port=logits_out bundle=CTRL
-#pragma HLS INTERFACE s_axilite port=return bundle=CTRL
+#pragma HLS INTERFACE m_axi     port=input_img  offset=slave bundle=gmem depth=4800
+#pragma HLS INTERFACE s_axilite port=input_img  bundle=control
+#pragma HLS INTERFACE s_axilite port=pred_out   bundle=control
+#pragma HLS INTERFACE s_axilite port=logits_out bundle=control
+#pragma HLS INTERFACE s_axilite port=return     bundle=control
 
     data_t features[T_STEPS][N_FEATURES];
 
 #pragma HLS BIND_STORAGE variable=features type=ram_2p impl=bram
 #pragma HLS ARRAY_PARTITION variable=features complete dim=1
 
-    read_features_from_bram(feature_mem, features);
+    extract_features(input_img, features);
 
     acc_t local_logits[NUM_CLASSES];
     #pragma HLS ARRAY_PARTITION variable=local_logits complete dim=1
 
-    int pred = snn_core(features, local_logits);
+    int best = snn_core(features, local_logits);
 
-    *prediction = (ap_uint<8>)pred;
+    *pred_out = (ap_uint<8>)best;
 
     for (int i = 0; i < NUM_CLASSES; i++) {
     #pragma HLS UNROLL
