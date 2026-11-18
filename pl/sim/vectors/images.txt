@@ -1,0 +1,8 @@
+0: gt=0 (Circle) golden_pred=0 logits=[3.88671875, -3.3203125, 2.64453125, 0.47265625]  generated Circle #0 (seed 7)
+1: gt=0 (Circle) golden_pred=0 logits=[4.015625, -3.2421875, 2.5859375, 0.03515625]  generated Circle #1 (seed 7)
+2: gt=1 (Figure Eight) golden_pred=1 logits=[-8.70703125, 3.72265625, -0.5625, 2.0078125]  generated Figure Eight #0 (seed 7)
+3: gt=1 (Figure Eight) golden_pred=1 logits=[-4.375, 1.1640625, 0.65625, 1.125]  generated Figure Eight #1 (seed 7)
+4: gt=2 (Square) golden_pred=2 logits=[0.44921875, -1.56640625, 1.7890625, 1.01171875]  generated Square #0 (seed 7)
+5: gt=2 (Square) golden_pred=2 logits=[-3.14453125, 0.15234375, 1.28125, 1.26171875]  generated Square #1 (seed 7)
+6: gt=3 (Triangle) golden_pred=3 logits=[-3.6953125, 0.8203125, 0.85546875, 1.5]  generated Triangle #0 (seed 7)
+7: gt=3 (Triangle) golden_pred=2 logits=[-0.109375, -0.94921875, 1.33203125, 0.9453125]  generated Triangle #1 (seed 7)
