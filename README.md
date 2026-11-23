@@ -88,17 +88,6 @@ Both are made by the scripts in `tools/` (step 1 above).
 Training output is written to `cnn/trained_model/` and `snn/snn_mlp_model/`.
 The serial port is set at the top of `pc/send_images.py` or given with `--port`.
 
-## To do
-
-- [x] Shapes dataset with fixed train/val/test split (circle, figure eight, square, triangle)
-- [ ] Retrain CNN, export weights, check HLS csim against Python (trained; csim is below Python)
-- [x] Retrain SNN, export weights, check HLS csim against Python
-- [x] Vivado design for each IP, decide memory arrangement for the SNN input
-- [x] SNN front end in the HLS IP (image in, same interface as the CNN)
-- [x] DFX: first Vivado build of `pl/vivado/dfx_project.tcl`, first run of the PS on the board
-- [ ] Benchmark runs: accuracy, latency, throughput, UART time, utilization, power
-- [ ] Report (3 pages) and video (15 min)
-
 ## Sources
 
 - https://github.com/dbaniya/CNN_guest_lecture
