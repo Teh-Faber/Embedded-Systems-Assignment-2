@@ -1,155 +1,112 @@
-# Build guide: from clone to results on the PYNQ-Z2
+# Build guide: from clone to recordings on the PYNQ-Z2
 
-All commands run from the repo root unless a step says otherwise.
-Tested on Ubuntu 24.04 with Vivado / Vitis / Vitis HLS **2026.1**.
+Tools: Vivado and Vitis 2026.1. Tested on Windows with the PYNQ-Z2 and the LSM6DSO32 on 26 Nov 2026.
+Run the commands from the repo root unless a step gives another folder.
 
 ---
 
 ## 0. One-time setup
 
-**Licence.** DFX needs a Vivado **ENTERPRISE** licence; the free BASIC one stops with `[Vivado 12-29795] ... does not cover DFX`.
-Put the `.lic` in `~/.Xilinx/` and move any BASIC licence out of that folder:
-```bash
-mkdir -p ~/xilinx_lic_backup && mv ~/.Xilinx/Xilinx.lic ~/xilinx_lic_backup/   # only if a BASIC licence is there
-```
-Vivado's first log line must say `ENTERPRISE license has been detected`.
+**Licence.** DFX needs a Vivado **ENTERPRISE** licence. The free BASIC licence stops with `[Vivado 12-29795] ... does not cover DFX`. Put the `.lic` file in `~/.Xilinx/` (Windows: `C:\Users\<user>\.Xilinx\`) and move any BASIC licence out of that folder. The first line of the Vivado log must say `ENTERPRISE license has been detected`.
 
-**Board files.** PYNQ-Z2 board files must be installed (Vivado → Xilinx Store, or copy to `<Vivado>/data/boards/board_files/pynq-z2`).
+**Board files.** Install the PYNQ-Z2 board files (Vivado: Xilinx Store).
 
-**Serial port access** (once, then log out and in):
-```bash
-sudo usermod -aG dialout $USER
-```
+**Sensor.** Connect the LSM6DSO32 to PMOD JB, top row, as in lab 6: JB1 CS, JB2 SDO, JB3 SDA, JB4 SCL, plus 3V3 and GND.
 
-**Tools in the shell:**
-```bash
-source /tools/2026.1/Vitis/settings64.sh    # adjust to your install path
-```
+**Serial port.** Windows: find the COM port of the board in Device Manager (COM8 on the test PC). Linux: `sudo usermod -aG dialout $USER`, then log out and in.
 
 ---
 
 ## 1. Clone
 
-```bash
-git clone git@github.com:Teh-Faber/Embedded-Systems-Assignment-2.git
-cd Embedded-Systems-Assignment-2
+```
+git clone -b Final-Assignment https://github.com/Teh-Faber/Embedded-Systems-Assignments.git
+cd Embedded-Systems-Assignments
 ```
 
 ---
 
-## 2. Python environments
+## 2. Python
 
-One venv per folder (TensorFlow and PyTorch need different NumPy versions).
-```bash
-python3 -m venv cnn/.venv && cnn/.venv/bin/pip install -r cnn/requirements.txt
-python3 -m venv snn/.venv && snn/.venv/bin/pip install -r snn/requirements.txt
-python3 -m venv pc/.venv  && pc/.venv/bin/pip install -r pc/requirements.txt
 ```
+python -m venv pc/.venv
+pc/.venv/bin/pip install -r pc/requirements.txt          # Windows: pc\.venv\Scripts\pip install -r pc\requirements.txt
+```
+
+Run Python from a normal terminal. Do not run it from the Vivado Tcl console: Vivado sets `PYTHONHOME` and `PYTHONPATH` for its own Python.
 
 ---
 
-## 3. Dataset
+## 3. Filters (only when you change them)
 
-`data/` is not in git. Generate it (2000/500/500 images per class, seed 42):
-```bash
-cnn/.venv/bin/python tools/generate_shapes.py     # -> data/shapes_dataset/{train,val,test}
-cnn/.venv/bin/python tools/export_test_txt.py     # -> data/shapes_test_txt/ (HLS testbenches)
 ```
+python filters/design_filters.py            # defaults: 104 Hz, window 200 samples, FIR 31 taps, IIR order 4
+python filters/design_filters.py --help
+```
+
+The script writes `filters/filters.json`, `filters/fir_lowpass.coe`, `pl/hdl/iir_coeffs_pkg.vhd` and `pl/vivado/imu_params.tcl`. After a change, rebuild both designs (step 4).
+
+Optional check of the RTL (Linux or WSL with GHDL 4): `cd pl/sim/imu && ./run_ghdl.sh`.
 
 ---
 
-## 4. Training (only when a model changes)
+## 4. Vivado: one DFX project per filter
 
-Weights and exported IPs are already in the repo. Skip to step 6 if nothing changed.
+Use the Vivado **GUI**. Close any open project (`close_project`). In the Tcl Console, with absolute paths:
 
-```bash
-# CNN (EPOCHS in train_cnn.py; export is rounded to Q8.8 automatically)
-cnn/.venv/bin/python cnn/train_cnn.py
-cp cnn/trained_model/weights_cstyle_folded/*.txt cnn/weights_cstyle_folded/
-
-# SNN (keeps the epoch with the best validation accuracy)
-snn/.venv/bin/python snn/snn_mlp.py
-cp snn/snn_mlp_model/models/fpga_export/fpga_weights.h snn/fpga_weights.h
-```
-Results: `cnn/trained_model/reports/`, `snn/snn_mlp_model/reports/test_results.txt`.
-
----
-
-## 5. HLS (only when a model changes)
-
-Vitis GUI: `File → Open Workspace` → repo root. The two HLS components use `cnn/hls_config.cfg` and `snn/hls_config.cfg`.
-
-For **each** component, in the Flow panel:
-1. **C Simulation**: accuracy should be close to Python (CNN ≈ 83 %, SNN ≈ 80 %).
-2. **C Synthesis**: keep the defaults (part `xc7z020clg400-1`; CNN 8 ns, SNN 10 ns). Estimated clock must be < 10 ns.
-3. **Package**: writes `cnn/build/ds_cnn.zip` and `snn/build/snn_mlp.zip`.
-
-Put the IPs where Vivado looks for them:
-```bash
-rm -rf pl/ip/ds_cnn  && unzip -q cnn/build/ds_cnn.zip  -d pl/ip/ds_cnn
-rm -rf pl/ip/snn_mlp && unzip -q snn/build/snn_mlp.zip -d pl/ip/snn_mlp
-ls pl/ip/ds_cnn/component.xml pl/ip/snn_mlp/component.xml    # both must exist
-```
-
----
-
-## 6. Vivado: DFX build
-
-Use the **GUI** (batch mode does not find the board files). If a project is open: `File → Close Project`.
-In the Tcl Console (absolute paths, the console runs in `~/.cache/vivado`):
 ```tcl
-source /path/to/Embedded-Systems-Assignment-2/pl/vivado/dfx_project.tcl
+set dfx_filter fir
+source <repo>/pl/vivado/dfx_project.tcl
 launch_runs impl_1 child_0_impl_1 -to_step write_bitstream -jobs 8
 wait_on_run child_0_impl_1
-source /path/to/Embedded-Systems-Assignment-2/pl/vivado/export_dfx.tcl
+source <repo>/pl/vivado/export_dfx.tcl
+close_project
 ```
+
+Do the same with `set dfx_filter iir`.
+
 Check:
-- `dfx_project.tcl` prints `DFX Aperture DRC completed with 0 error(s), 0 critical warning(s)` and `DFX: project ready`.
+- `dfx_project.tcl` prints `DFX: project ready`.
 - `export_dfx.tcl` ends with `DFX: partial bitstreams written for: cnn snn`.
+- Timing: in `pl/vivado/dfx_<filter>/dfx_<filter>.runs/impl_1/dfx_static_wrapper_timing_summary_routed.rpt` and in the same file in `child_0_impl_1`, WNS and WHS are 0 or more.
 
-Timing (1st value WNS and 5th value WHS must be ≥ 0):
-```bash
-for f in pl/vivado/dfx/dfx.runs/{impl_1,child_0_impl_1}/dfx_static_wrapper_timing_summary_routed.rpt; do
-    grep -A6 "Design Timing Summary" "$f" | tail -1
-done
-```
-Outputs: `ps/bitstreams/{cnn,snn}_partial.bin` and `pl/vivado/dfx_static.xsa`.
+Outputs: `ps/bitstreams/<filter>/{cnn,snn}_partial.bin` and `pl/vivado/dfx_static_<filter>.xsa`.
 
-Harmless warnings: `BD 41-3281` (decoupler/ps7 between SmartConnects), `PSU-1..4` (DDR preset), `dfx_decoupler-1`, SmartConnect clock-domain.
+Warnings that you can ignore: `PSU-1..4` (DDR preset of the board), `dfx_decoupler-1`, the SmartConnect clock domain warning for `sc_ctrl`, `BD 41-759` for the decoupler pins (the script connects them after the first validation), `BD 41-1347` for `filter/aresetn` (`imu_capture` makes this reset synchronously).
+
+Batch mode does not load the board store of the GUI. To use batch mode, set `board.repoPaths` before you source the script, for example `set_param board.repoPaths [list C:/Users/<user>/AppData/Roaming/Xilinx/Vivado/2026.1/xhub/board_store/xilinx_board_store]`.
 
 ---
 
-## 7. Vitis: platform and app
+## 5. Vitis: platform and application
 
-**Platform** (first time): create a Platform component named exactly **`platform`** from `pl/vivado/dfx_static.xsa`: OS standalone, processor `ps7_cortexa9_0`, generate boot artifacts on. Build it.
-
-**Platform** (after every new export): `platform` → Settings → `vitis-comp.json` → **Update XSA** → select `pl/vivado/dfx_static.xsa` → Build.
-
-**App:** `app_component` is in the repo and uses the sources in `ps/` and the `.bin` files in `ps/bitstreams/`. After a new export, force the bitstreams to be relinked, then build:
-```bash
-touch ps/ps_bitstreams.S
-```
-Build `app_component`. The ELF is ~8.5 MB (both partial bitstreams inside).
-
-**Run:** board jumper on **JTAG**, USB connected, power on → select `app_component` → **Run**.
+1. **Workspace.** Open the repo root as the workspace. If Vitis asks to update the workspace, click **Update**.
+2. **Platform** (first time). Create a platform component with the name **`platform`** from `pl/vivado/dfx_static_fir.xsa` (or `_iir`): OS standalone, processor `ps7_cortexa9_0`. Build it.
+3. **Platform** (after each new export, or to change the filter). `platform` → Settings → `vitis-comp.json` → **Update XSA** → select the new XSA → Build.
+4. **Application.** `app_component` is in the repo. Check two settings:
+   - `app_component/src/UserConfig.cmake`: the include folder `../../ps/bitstreams/fir` (or `iir`) must match the XSA of the platform. The partial bitstreams only work with their own static design.
+   - `app_component/src/app.yaml`: `domain_path` must point to `<repo>/platform/export/platform/sw/standalone_ps7_cortexa9_0` on your computer.
+5. **Build.** After a new export, do a clean build of `app_component` (or `touch ps/ps_bitstreams.S`), so that the new `.bin` files are linked in. The ELF is about 8.5 MB.
+6. **Run.** Set the boot jumper to **JTAG**, connect USB, power on, select `app_component`, then **Run**. The launch programs the full bitstream and starts the ELF.
 
 ---
 
-## 8. PC: test on the board
+## 6. PC: test and record
 
-```bash
-source pc/.venv/bin/activate
-python pc/send_images.py                          # 1 image per class, both models (smoke test)
-python pc/send_images.py --limit-per-class 500    # full test set, 2000 images
 ```
-Defaults (port `/dev/ttyUSB1`, dataset, output folder, images per class) are at the top of `send_images.py`. Windows: set `DEFAULT_PORT = "COM3"` (or the right COM port). Other options: `--models cnn|snn|both`, `--port`.
+cd pc
+py imu_tool.py --port COM8 info
+py imu_tool.py --port COM8 stream --seconds 10 --out test.csv
+py imu_tool.py check test.csv
+```
 
-Expected: CNN ≈ 1039 µs, SNN ≈ 430 µs, DFX switch ≈ 42.45 ms, four independent logits per model.
+Expected: `who_am_i 0x6C`, `imu_ok True`, `n_samples 200`, `no samples lost`, `PASS`. LD0 blinks, LD1 is on, LD2 shows SW1, LD3 is on (partition decoupled, no model loaded).
 
-Compare and plot:
-```bash
-python pc/results.py pc/results/<run>.jsonl --output pc/results/comparison.csv   # fails if the CSV exists
-python pc/plot_results.py                                                        # PNGs next to the CSV
+Record training data (details in `docs/imu_system.md`). Enter starts a take (`--auto`: countdown). After the take, Enter saves it, Space records it again, q stops.
+
+```
+py imu_tool.py --port COM8 record --label circle --takes 20
+py imu_tool.py check ../data/imu/circle
 ```
 
 ---
@@ -158,13 +115,17 @@ python pc/plot_results.py                                                       
 
 | Symptom | Fix |
 |---|---|
-| `licence BASIC ... does not cover DFX` | Step 0: Enterprise `.lic` in `~/.Xilinx`, BASIC one moved out |
-| `PYNQ-Z2 board files are not installed` | Run the script from the GUI Tcl Console, not batch mode |
-| `couldn't read file ".../dfx_project.tcl"` | Use the absolute path in `source` |
-| Build: `file not found: cnn_partial.bin` | Run `export_dfx.tcl` first; include path `../../ps/bitstreams` in `app_component/src/UserConfig.cmake` |
+| `licence BASIC ... does not cover DFX` | Step 0: ENTERPRISE licence in `~/.Xilinx`, BASIC licence moved out |
+| `PYNQ-Z2 board files are not installed` | Run the script in the GUI Tcl Console, or set `board.repoPaths` in batch mode (step 4) |
+| `couldn't read file ".../dfx_project.tcl"` | Give `source` the absolute path |
+| `create_project` cannot remove `dfx_<filter>.runs` | A run of the old project still uses the folder. Wait until it stops, or close the project |
+| Build: `file not found: cnn_partial.bin` | Run `export_dfx.tcl` first. Check the include folder in `UserConfig.cmake` |
+| Build cannot find the domain or the BSP | `domain_path` in `app_component/src/app.yaml` (step 5) |
 | Launch: `invalid command name "ps7_init"` | Copy the platform's `ps7_init.tcl` over `app_component/_ide/psinit/app_component.tcl` |
-| `Permission denied: /dev/ttyUSB1` | Step 0: `dialout` group, log out and in |
-| No reply / timeout | Wrong port (`ls /dev/ttyUSB*`, the board has two; UART is usually the second) or app not running |
-| SNN result equals CNN result, same time for both | Old `.bin` files: re-run `export_dfx.tcl`, `touch ps/ps_bitstreams.S`, rebuild app |
-| Board stops answering after a rebuild | Partial bitstreams from an older build: always Update XSA + rebuild app after a new export |
-| `send_images.py`: file exists | Each run needs a new output file; the default name has a timestamp |
+| `ModuleNotFoundError: No module named 'serial'` | The Python that `py` starts has no pyserial. Use the venv of step 2, or install `pc/requirements.txt` into that Python (`py -m pip install -r pc/requirements.txt`) |
+| `imu_tool.py`: no reply from the board | Wrong COM port, or the application does not run |
+| `who_am_i 0xFF`, `imu_ok False` | No sensor, or wrong wiring. The MISO line has a pull-up, so an open bus reads 0xFF |
+| `imu_tool.py`: samples lost | The PC did not read the serial port fast enough. Close other programs and record again |
+| Python errors in the Vivado Tcl console | Vivado sets `PYTHONHOME`. Run Python from a normal terminal |
+| Board stops answering after a rebuild | Partial bitstreams from an older build. After each export: Update XSA, then a clean build of the application |
+| `Permission denied: /dev/ttyUSB1` | Linux: step 0, `dialout` group |

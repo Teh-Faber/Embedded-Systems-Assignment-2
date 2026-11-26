@@ -1,7 +1,14 @@
-# Creates the DFX Vivado project in pl/vivado/dfx/.
+# Creates one of the two DFX projects of the IMU system:
 #
-#   vivado -mode batch -source pl/vivado/dfx_project.tcl
-#   (or in the Vivado Tcl console:  source <repo>/pl/vivado/dfx_project.tcl)
+#   vivado -mode batch -source pl/vivado/dfx_project.tcl -tclargs fir   -> pl/vivado/dfx_fir/
+#   vivado -mode batch -source pl/vivado/dfx_project.tcl -tclargs iir   -> pl/vivado/dfx_iir/
+#   (or in the Vivado Tcl console:  set dfx_filter iir; source <repo>/pl/vivado/dfx_project.tcl)
+#
+# The two static designs are identical except for the IMU filter cell:
+#   fir  Xilinx FIR Compiler with the coefficients from filters/fir_lowpass.coe (lab 6 flow)
+#   iir  pl/hdl/iir_mc.vhd, coefficients in pl/hdl/iir_coeffs_pkg.vhd
+# Both get the sampling rate, window length and IMU settings from
+# pl/vivado/imu_params.tcl. All three files come from filters/design_filters.py.
 #
 # The script builds the static block design and one reconfigurable module (RM)
 # per HLS IP it finds in pl/ip/. It can be run before the IPs exist: the static
@@ -12,16 +19,40 @@
 
 set script_dir [file dirname [file normalize [info script]]]
 set pl_dir     [file dirname $script_dir]
-set proj_name  dfx
+set repo_dir   [file dirname $pl_dir]
+set hdl_dir    [file join $pl_dir hdl]
+
+if {[info exists argv] && [llength $argv] > 0} {
+    set dfx_filter [lindex $argv 0]
+}
+if {![info exists dfx_filter]} {
+    set dfx_filter fir
+}
+if {$dfx_filter ni {fir iir}} {
+    error "dfx_filter must be fir or iir, not '$dfx_filter'"
+}
+set proj_name  dfx_$dfx_filter
 set proj_dir   [file join $script_dir $proj_name]
+
+# imu_fs_hz, imu_n_samples, imu_ctrl1_xl, imu_ctrl2_g, fir_coe_file, ...
+source [file join $script_dir imu_params.tcl]
+puts "DFX: $proj_name, IMU at $imu_fs_hz Hz, window $imu_n_samples samples"
 
 set part      xc7z020clg400-1
 set fclk_mhz  100
-# AXI-Lite address of the partition. ps/ps_main.c uses the same value.
+# AXI-Lite address of the partition. ps/ps_accel.c uses the same value.
 set rp_offset 0x40000000
 set rp_range  64K
-# RM name -> top-level name of the HLS IP that goes in it.
-set modules   {rm_cnn ds_cnn rm_snn snn_mlp}
+# AXI address of the IMU capture BRAM. ps/ps_imu.c uses the same value.
+set imu_bram_offset 0x42000000
+set imu_bram_range  16K
+# RM name -> top-level name of the HLS IP that goes in it. Set "modules"
+# before sourcing to use other IPs (e.g. the IMU models once they exist).
+# ds_cnn and snn_mlp are the image models of assignment 2. They are temporary
+# placeholders until the IMU models are exported (pl/ip/README.md).
+if {![info exists modules]} {
+    set modules {rm_cnn ds_cnn rm_snn snn_mlp}
+}
 
 # ----------------------------------------------------------------------------
 # Project
@@ -38,12 +69,23 @@ set_property ip_repo_paths [file join $pl_dir ip] [current_project]
 update_ip_catalog
 set_property PR_FLOW 1 [current_project]
 
+# RTL of the static IMU front end, used as block design module references
+add_files -norecurse [list \
+    [file join $hdl_dir imu_spi.vhd] \
+    [file join $hdl_dir imu_reader.vhd] \
+    [file join $hdl_dir imu_capture.vhd] \
+    [file join $hdl_dir emio_io.vhd] \
+    [file join $hdl_dir iir_coeffs_pkg.vhd] \
+    [file join $hdl_dir iir_mc.vhd] \
+]
+update_compile_order -fileset sources_1
+
 # ----------------------------------------------------------------------------
 # Reconfigurable modules: one block design per HLS IP, all with the same ports
 #
 #   ap_clk, ap_rst_n     clock and active-low reset
 #   s_axi_control        AXI4-Lite slave: start, status, input pointer, results
-#   m_axi_gmem           AXI4 master: reads the image from PS DDR
+#   m_axi_gmem           AXI4 master: reads the input window from PS DDR
 #
 # The IP's own interfaces are found by type, not by name, so the bundle names
 # in the HLS source do not matter here.
@@ -108,7 +150,10 @@ foreach {rm top} $modules {
 create_bd_design dfx_static
 
 # PS with the board preset (DDR, UART0 on MIO 14/15, clocks), then the ports
-# the accelerator needs and one EMIO GPIO bit that decouples the partition.
+# the accelerator needs and three EMIO GPIO bits (emio_io.vhd):
+#   EMIO 0 = PS GPIO pin 54  out  decouple the partition
+#   EMIO 1 = PS GPIO pin 55  out  clear the IMU capture
+#   EMIO 2 = PS GPIO pin 56  in   SW1
 set ps [create_bd_cell -type ip -vlnv xilinx.com:ip:processing_system7 ps7]
 apply_bd_automation -rule xilinx.com:bd_rule:processing_system7 \
     -config {make_external "FIXED_IO, DDR" apply_board_preset "1" Master "Disable" Slave "Disable"} $ps
@@ -117,7 +162,7 @@ set_property -dict [list \
     CONFIG.PCW_USE_M_AXI_GP0 1 \
     CONFIG.PCW_USE_S_AXI_HP0 1 \
     CONFIG.PCW_GPIO_EMIO_GPIO_ENABLE 1 \
-    CONFIG.PCW_GPIO_EMIO_GPIO_IO 1 \
+    CONFIG.PCW_GPIO_EMIO_GPIO_IO 3 \
 ] $ps
 
 # rst_static follows the PS reset. rst_rp is also asserted while the partition
@@ -128,7 +173,8 @@ set_property CONFIG.C_AUX_RESET_HIGH 1 $rst_rp
 
 set sc_ctrl [create_bd_cell -type ip -vlnv xilinx.com:ip:smartconnect sc_ctrl]
 set sc_mem  [create_bd_cell -type ip -vlnv xilinx.com:ip:smartconnect sc_mem]
-set_property -dict [list CONFIG.NUM_SI 1 CONFIG.NUM_MI 1] $sc_ctrl
+# sc_ctrl: M00 -> partition registers, M01 -> IMU capture BRAM
+set_property -dict [list CONFIG.NUM_SI 1 CONFIG.NUM_MI 2] $sc_ctrl
 set_property -dict [list CONFIG.NUM_SI 1 CONFIG.NUM_MI 1] $sc_mem
 
 # DFX decoupler with two interfaces and a plain "decouple" input.
@@ -166,9 +212,130 @@ connect_bd_net [get_bd_pins ps7/FCLK_RESET0_N] \
 connect_bd_net [get_bd_pins rst_static/interconnect_aresetn] \
     [get_bd_pins sc_ctrl/aresetn] [get_bd_pins sc_mem/aresetn]
 
-# Decouple: EMIO GPIO bit 0 (PS GPIO pin 54)
-connect_bd_net [get_bd_pins ps7/GPIO_O] \
+# EMIO GPIO: bit 0 decouples the partition, bit 1 clears the IMU capture,
+# bit 2 reads SW1
+set emio [create_bd_cell -type module -reference emio_io emio]
+connect_bd_net [get_bd_pins ps7/GPIO_O] [get_bd_pins emio/gpio_o]
+connect_bd_net [get_bd_pins emio/gpio_i] [get_bd_pins ps7/GPIO_I]
+connect_bd_net [get_bd_pins emio/decouple] \
     [get_bd_pins decoupler/decouple] [get_bd_pins rst_rp/aux_reset_in]
+
+# ----------------------------------------------------------------------------
+# IMU front end (static): SPI capture -> filter -> BRAM, read by the PS on GP0
+#
+#   imu_capture --m_axis_raw--> filter --> s_axis_filt--> imu_capture --BRAM_PORTB--> imu_bram
+#   ps7 GP0 -> sc_ctrl M01 -> imu_bram_ctrl --BRAM_PORTA--> imu_bram
+# ----------------------------------------------------------------------------
+set cap [create_bd_cell -type module -reference imu_capture imu_capture]
+set_property -dict [list \
+    CONFIG.CLK_HZ     [expr {$fclk_mhz * 1000000}] \
+    CONFIG.IMU_ODR_HZ $imu_fs_hz \
+    CONFIG.N_SAMPLES  $imu_n_samples \
+    CONFIG.CTRL1_XL   [expr {$imu_ctrl1_xl}] \
+    CONFIG.CTRL2_G    [expr {$imu_ctrl2_g}] \
+    CONFIG.MEM_BYTES  16384 \
+] $cap
+
+if {$dfx_filter eq "fir"} {
+    # Lab 6 flow: FIR Compiler with a .coe file. 6 interleaved channels share
+    # one multiplier; integer coefficients (scale 2^15) and full-precision
+    # output, so imu_capture rounds acc / 2^15 to int16 itself.
+    set filt [create_bd_cell -type ip -vlnv xilinx.com:ip:fir_compiler filter]
+    set_property -dict [list \
+        CONFIG.CoefficientSource {COE_File} \
+        CONFIG.Coefficient_File [file normalize $fir_coe_file] \
+        CONFIG.Filter_Type {Single_Rate} \
+        CONFIG.Number_Channels {6} \
+        CONFIG.Sample_Frequency [format %.6f [expr {$imu_fs_hz / 1.0e6}]] \
+        CONFIG.Clock_Frequency $fclk_mhz \
+        CONFIG.Coefficient_Sign {Signed} \
+        CONFIG.Quantization {Integer_Coefficients} \
+        CONFIG.Coefficient_Width {16} \
+        CONFIG.Data_Width {16} \
+        CONFIG.Data_Fractional_Bits {0} \
+        CONFIG.Output_Rounding_Mode {Full_Precision} \
+        CONFIG.Has_ARESETn {true} \
+        CONFIG.Reset_Data_Vector {true} \
+        CONFIG.DATA_Has_TLAST {Vector_Framing} \
+        CONFIG.M_DATA_Has_TREADY {true} \
+    ] $filt
+    set fir_out_w [get_property CONFIG.Output_Width $filt]
+    if {![string is integer -strict $fir_out_w] || $fir_out_w < 17} {
+        puts "DFX: WARNING: could not read the FIR output width ('$fir_out_w'), using $fir_acc_bits_est"
+        set fir_out_w $fir_acc_bits_est
+    } elseif {$fir_out_w != $fir_acc_bits_est} {
+        puts "DFX: NOTE: FIR Compiler output width $fir_out_w (estimate was $fir_acc_bits_est)"
+    }
+    # The FIR Compiler keeps its sample history through aresetn on the board,
+    # so imu_capture sends taps - 1 zero samples after every filter reset.
+    set_property -dict [list \
+        CONFIG.FILTER_ID    1 \
+        CONFIG.FILT_DATA_W  $fir_out_w \
+        CONFIG.FILT_TDATA_W [expr {8 * (($fir_out_w + 7) / 8)}] \
+        CONFIG.FILT_SHIFT   $fir_coeff_frac \
+        CONFIG.FILT_FLUSH   [expr {$fir_taps - 1}] \
+    ] $cap
+    puts "DFX: FIR Compiler, $fir_taps taps, output $fir_out_w bits"
+} else {
+    # Hand-written IIR (no IIR IP in Vivado): int16 in, int16 out
+    set filt [create_bd_cell -type module -reference iir_mc filter]
+    set_property -dict [list \
+        CONFIG.FILTER_ID    2 \
+        CONFIG.FILT_DATA_W  16 \
+        CONFIG.FILT_TDATA_W 16 \
+        CONFIG.FILT_SHIFT   0 \
+    ] $cap
+    puts "DFX: IIR (iir_mc.vhd)"
+}
+set filt_in  [get_bd_intf_pins -of_objects $filt -filter {MODE == Slave && VLNV =~ "*axis*"}]
+set filt_out [get_bd_intf_pins -of_objects $filt -filter {MODE == Master && VLNV =~ "*axis*"}]
+connect_bd_intf_net [get_bd_intf_pins imu_capture/m_axis_raw] $filt_in
+connect_bd_intf_net $filt_out [get_bd_intf_pins imu_capture/s_axis_filt]
+connect_bd_net [get_bd_pins imu_capture/filt_aresetn] [get_bd_pins -of_objects $filt -filter {TYPE == rst}]
+
+# Shared BRAM: the AXI BRAM controller on port A for the PS, imu_capture on port B
+set bram_ctrl [create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl imu_bram_ctrl]
+set_property -dict [list CONFIG.SINGLE_PORT_BRAM {1} CONFIG.PROTOCOL {AXI4LITE} CONFIG.DATA_WIDTH {32}] $bram_ctrl
+set bram [create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen imu_bram]
+set_property -dict [list CONFIG.Memory_Type {True_Dual_Port_RAM} CONFIG.use_bram_block {BRAM_Controller}] $bram
+connect_bd_intf_net [get_bd_intf_pins imu_bram_ctrl/BRAM_PORTA] [get_bd_intf_pins imu_bram/BRAM_PORTA]
+connect_bd_intf_net [get_bd_intf_pins imu_capture/BRAM_PORTB] [get_bd_intf_pins imu_bram/BRAM_PORTB]
+connect_bd_intf_net [get_bd_intf_pins sc_ctrl/M01_AXI] [get_bd_intf_pins imu_bram_ctrl/S_AXI]
+
+# Board pins: the IMU on PMOD JB (as in lab 6), SW1, LD0..LD3
+create_bd_port -dir O imu_cs_n
+create_bd_port -dir O imu_sclk
+create_bd_port -dir O imu_mosi
+create_bd_port -dir I imu_miso
+create_bd_port -dir I sw1
+create_bd_port -dir O -from 3 -to 0 led
+foreach p {imu_cs_n imu_sclk imu_mosi led} {
+    connect_bd_net [get_bd_pins imu_capture/$p] [get_bd_ports $p]
+}
+connect_bd_net [get_bd_ports imu_miso] [get_bd_pins imu_capture/imu_miso]
+connect_bd_net [get_bd_ports sw1] [get_bd_pins imu_capture/sw1]
+connect_bd_net [get_bd_pins imu_capture/sw1_sync] [get_bd_pins emio/sw1]
+connect_bd_net [get_bd_pins emio/capture_clear] [get_bd_pins imu_capture/capture_clear]
+connect_bd_net [get_bd_pins emio/decouple] [get_bd_pins imu_capture/decouple]
+
+# Clock and reset of the IMU front end (the filter's reset comes from imu_capture)
+connect_bd_net $clk \
+    [get_bd_pins imu_capture/aclk] [get_bd_pins -of_objects $filt -filter {TYPE == clk}] \
+    [get_bd_pins imu_bram_ctrl/s_axi_aclk]
+connect_bd_net [get_bd_pins rst_static/peripheral_aresetn] \
+    [get_bd_pins imu_capture/aresetn] [get_bd_pins imu_bram_ctrl/s_axi_aresetn]
+
+# Fixed address of the IMU BRAM (called again after every assign_bd_address)
+proc set_imu_bram_address {offset range} {
+    foreach seg [get_bd_addr_segs -of_objects [get_bd_addr_spaces ps7/Data]] {
+        if {[string match -nocase *imu_bram* $seg]} {
+            set_property range  $range  $seg
+            set_property offset $offset $seg
+            return $seg
+        }
+    }
+    puts "DFX: WARNING: no address segment for the IMU BRAM; set it to $offset in the Address Editor."
+}
 
 # AXI on the static side of the decoupler
 connect_bd_intf_net [get_bd_intf_pins ps7/M_AXI_GP0]    [get_bd_intf_pins sc_ctrl/S00_AXI]
@@ -177,6 +344,8 @@ connect_bd_intf_net [get_bd_intf_pins decoupler/s_gmem] [get_bd_intf_pins sc_mem
 connect_bd_intf_net [get_bd_intf_pins sc_mem/M00_AXI]   [get_bd_intf_pins ps7/S_AXI_HP0]
 
 if {[llength $rm_names] == 0} {
+    assign_bd_address
+    set_imu_bram_address $imu_bram_offset $imu_bram_range
     save_bd_design
     puts "DFX: static block design created without the partition."
     puts "DFX: export an HLS IP to pl/ip/ (see pl/ip/README.md) and run this script again."
@@ -209,7 +378,13 @@ set_property APERTURES { {{0x0 512M}}} [get_bd_intf_pins /rp/m_axi_gmem]
 # Addresses: the accelerator registers at a fixed address for the PS, and all
 # of DDR visible to the accelerator's AXI master.
 assign_bd_address
-set rp_seg [get_bd_addr_segs -of_objects [get_bd_addr_spaces ps7/Data]]
+set imu_seg [set_imu_bram_address $imu_bram_offset $imu_bram_range]
+set rp_seg {}
+foreach seg [get_bd_addr_segs -of_objects [get_bd_addr_spaces ps7/Data]] {
+    if {$seg ne $imu_seg} {
+        lappend rp_seg $seg
+    }
+}
 if {[llength $rp_seg] == 1} {
     set_property range  $rp_range  $rp_seg
     set_property offset $rp_offset $rp_seg
@@ -242,6 +417,7 @@ set_property top dfx_static_wrapper [current_fileset]
 update_compile_order -fileset sources_1
 
 add_files -fileset constrs_1 -norecurse [file join $pl_dir constraints dfx_pblock.xdc]
+add_files -fileset constrs_1 -norecurse [file join $pl_dir constraints imu_pins.xdc]
 generate_target all $bd_file
 
 # The PS loads .bin files over PCAP.
@@ -279,4 +455,4 @@ if {[catch {
 }
 
 puts "DFX: project ready in $proj_dir"
-puts "DFX: next: Generate Bitstream, then source [file join $script_dir export_dfx.tcl]"
+puts "DFX: next: Generate Bitstream, then: vivado -mode batch -source [file join $script_dir export_dfx.tcl] -tclargs $dfx_filter"

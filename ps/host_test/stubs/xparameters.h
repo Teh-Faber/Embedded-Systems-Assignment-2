@@ -1,0 +1,4 @@
+#ifndef XPARAMETERS_H
+#define XPARAMETERS_H
+#define XPAR_XUARTPS_0_BASEADDR 0xE0000000u
+#endif

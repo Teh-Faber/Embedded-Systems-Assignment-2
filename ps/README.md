@@ -1,85 +1,89 @@
 # ps
 
-Bare-metal C for the Zynq PS. UART protocol and PC scripts are described in `../docs/uart_integration.md`.
+Bare-metal C for the Zynq PS: the IMU application. The UART protocol is in `../docs/imu_system.md`.
 
-| File | Use |
+| File | Function |
 |---|---|
 | `ps.h` | Shared types and the API of the modules below |
-| `ps_uart.c` | UART framing: receive requests, send results |
-| `ps_main.c` | Main loop. Selects the model, runs the accelerator, sends the result |
-| `ps_dfx.c` | DFX: loads a partial bitstream over PCAP and decouples the partition meanwhile |
-| `ps_bitstreams.S` | Links `bitstreams/cnn_partial.bin` and `bitstreams/snn_partial.bin` into the ELF |
-| `ps_uart_test.c` | Separate test application for the UART protocol, no PL needed |
+| `ps_imu_main.c` | Main loop: IMU commands, streaming of samples, debug inference on windows from the PC, SW1 |
+| `ps_imu.c` | Reads the IMU capture BRAM of the static PL (sequence lock, window copy, stable header reads), capture clear and SW1 over EMIO |
+| `ps_accel.c` | The accelerator: register map, start and poll, model selection with DFX |
+| `ps_dfx.c` | Loads a partial bitstream over PCAP and decouples the partition during the load |
+| `ps_uart.c` | UART framing: receive requests, send replies |
+| `ps_bitstreams.S` | Links `cnn_partial.bin` and `snn_partial.bin` from the include folder into the ELF |
+| `bitstreams/` | Partial bitstreams from `pl/vivado/export_dfx.tcl`, one folder per filter design. Not in git |
+| `host_test/` | Builds the application on a PC with stub drivers and runs `pc/imu_tool.py` against it |
+
+## Build
+
+Vitis builds the application as `app_component` (`../build_guide.md`, step 5). `app_component/src/UserConfig.cmake` lists the sources. Its include folder `../../ps/bitstreams/fir` (or `iir`) must match the XSA of the platform.
+
+Host test, without a board (Linux or WSL, gcc, Python with numpy, scipy and pyserial):
+
+```
+python ps/host_test/run_host_test.py fir
+python ps/host_test/run_host_test.py iir
+```
+
+It builds the real sources against `host_test/mock.c` (UART on a pseudo-terminal, fake accelerator, DFX that always works) and `host_test/pl_sim.py` (the capture BRAM, samples at 97.64 Hz). Then it runs `imu_tool.py` and `imu_path.py` and checks the results (23 checks).
 
 ## How a model switch works
 
-`ps_main.c` keeps track of which module is in the reconfigurable partition (`ready_model`). When a request asks for the other one, `select_model()` calls `dfx_load()`:
+`ps_accel.c` records which module is in the reconfigurable partition (`ready_model`). When a request needs the other module, `accel_select()` calls `dfx_load()`:
 
-1. EMIO GPIO bit 0 high: the DFX decoupler isolates the partition and the partition is held in reset.
-2. The partial bitstream is written through the devcfg DMA (`XDcfg_Transfer`, non-secure PCAP write) and the PS waits for `DMA_DONE` and `D_P_DONE`.
-3. 1 ms in reset with the clock running, GPIO low, 1 ms for the reset to release.
+1. EMIO GPIO bit 0 goes high: the DFX decoupler isolates the partition and holds it in reset.
+2. The devcfg DMA writes the partial bitstream (`XDcfg_Transfer`, non-secure PCAP write). The PS waits for `DMA_DONE` and `D_P_DONE`.
+3. 1 ms in reset with the clock on, GPIO low, 1 ms for the reset release.
 
-The time for the whole switch is sent to the PC as a type 4 frame before the model's result. After start-up nothing is loaded from the PS's point of view, so the first request for each model always switches. A request for both models runs the loaded one first. If an inference times out, the next request loads the module again, which also resets it.
+The PS sends the time of the whole switch to the PC as a type 4 frame before the result of the model. After start-up no module is loaded, so the first request for each model always does a switch. A request for both models runs the loaded module first. If an inference times out, the next request loads the module again. This also resets it.
 
-Both modules are driven by the same `run_model()`: Q8.8 image in a DDR buffer, pointer written to the IP, start, poll done, read prediction and logits. Only the register offsets and the logit width differ, see `model_registers` in `ps_main.c`.
+`accel_run()` drives both modules: input buffer in DDR, pointer written to the IP, start, poll done, read the prediction and the logits. Only the register offsets and the logit width are different, see `model_registers` in `ps_accel.c`.
 
-## When the HLS IPs are generated
+## When the IMU models are exported
 
-Do the PL steps first (`../pl/README.md`). They leave three files:
-
-- `bitstreams/cnn_partial.bin` and `bitstreams/snn_partial.bin`
-- `../pl/vivado/dfx_static.xsa`
-
-Then:
-
-1. **Check the register offsets.** Open `x<top>_hw.h` for each IP (`pl/ip/<top>/drivers/<top>_v1_0/src/`) and compare with `model_registers` in `ps_main.c`:
+1. **Check the register offsets.** Open `x<top>_hw.h` of each IP (`pl/ip/<top>/drivers/<top>_v1_0/src/`) and compare it with `model_registers` in `ps_accel.c`:
 
    | Field | In the header |
    |---|---|
-   | `input_ptr` | `..._ADDR_<image argument>_DATA`, the lower word of the pointer |
+   | `input_ptr` | `..._ADDR_<input argument>_DATA`, the lower word of the pointer |
    | `prediction` | `..._ADDR_<prediction argument>_DATA` |
    | `logits` | `..._ADDR_LOGITS_OUT_BASE` |
    | `logit_bits` | `..._WIDTH_LOGITS_OUT`: 16 or 32 |
 
-   The CNN row is from the lab IP. The SNN row is a guess until the IP has been exported.
-2. **Platform.** In Vitis, create a platform from `dfx_static.xsa`: standalone, `ps7_cortexa9_0`, boot components on. If a platform already exists, update its XSA and rebuild it. The BSP gets the `devcfg` and `gpiops` drivers from the XSA.
-3. **Application.** Empty C application on that platform. Add `ps_main.c`, `ps_uart.c`, `ps_dfx.c`, `ps_bitstreams.S` and `ps.h`.
-4. **Include path.** Add the `ps/bitstreams` folder to the application's include directories (application settings, or `USER_INCLUDE_DIRECTORIES` in `UserConfig.cmake`). The assembler finds the `.bin` files through it. If the build says it cannot open `cnn_partial.bin`, this is the setting that is missing.
-5. **Build and run.** The launch configuration programs the FPGA with the full bitstream from the XSA, then starts the ELF. The ELF is several MB because of the bitstreams.
-6. **Test from the PC**, in `pc/`:
+   The values in the table now are those of the placeholder IPs.
+2. Build both static designs again and export them (`../pl/README.md`). Update the XSA of the platform and do a clean build of the application.
+3. Test with SW1 low:
 
    ```
-   py send_images.py --port COM3 --dataset <shapes dataset> --models both --limit-per-class 1 --output dfx_smoke.jsonl
+   py imu_tool.py --port COM8 window --out w.csv
+   py imu_tool.py --port COM8 infer --input w.csv --models both --classes <number of classes>
    ```
 
-   Expected: for the first image a DFX time for each model, then one switch per image. `--models cnn` followed by `--models snn` gives one switch per run.
-
-Whenever Vivado has implemented the design again: export again, update the platform with the new XSA and rebuild the application. A partial bitstream from an older build does not match the new static design and can stop the PL.
+   Expected: a DFX time for each model at the first request, then a class and the scores of each model.
 
 ## Build options
 
 | Define | Default | Meaning |
 |---|---|---|
-| `PS_DFX` | `1` | `0` builds for a fixed bitstream with only the CNN (the lab design). Then leave out `ps_dfx.c` and `ps_bitstreams.S`. |
-| `ACCEL_BASE_ADDR` | `0x40000000` | AXI-Lite address of the partition. With `PS_DFX=0` it defaults to `XPAR_DS_CNN_0_BASEADDR`. |
+| `ACCEL_BASE_ADDR` | `0x40000000` | AXI-Lite address of the partition |
 | `MODEL_TIMEOUT_MS` | `1000` | Inference timeout |
-| `DFX_TIMEOUT_MS` | `2000` | Timeout for each PCAP wait |
+| `DFX_TIMEOUT_MS` | `2000` | Timeout of each PCAP wait |
+| `DFX_SETTLE_US` | `1000` | Time in reset before and after the partition is coupled again |
 | `DFX_DECOUPLE_PIN` | `54` | PS GPIO pin of the decouple signal (54 = EMIO bit 0) |
+| `IMU_BRAM_BASE_ADDR` | `0x42000000` | AXI address of the IMU capture BRAM |
+| `IMU_CLEAR_PIN`, `IMU_SW1_PIN` | `55`, `56` | PS GPIO pins of capture clear and SW1 (EMIO bits 1 and 2) |
+| `UART_BAUD` | `4000000` | Baud rate of the PS UART |
 
 ## If it does not work
 
 | Symptom | Look at |
 |---|---|
-| Status 3 (model unavailable) and a DFX time near 2 s | PCAP timeout. `.bit` used instead of `.bin`, or the PL was not programmed with the full bitstream first. |
-| Status 3 and a short DFX time | devcfg reported an error or the bitstream length is not a multiple of 4. |
-| Board stops answering on the first model request | A register access to the partition got no answer: wrong `ACCEL_BASE_ADDR`, or the decouple signal is not EMIO bit 0. |
-| Status 4 (inference failed) | The module did not finish in time or returned a class above 3. Check the register offsets. |
-| Results that look random for the SNN | The lab `snn_mlp` expects 384 features, not the image. See `../snn/lab_app/README.md`. |
+| Status 10 (IMU not ready) for all IMU commands except info | The bitstream has no IMU capture BRAM, or the BRAM header is wrong. Program the full bitstream of `dfx_static_<filter>.xsa` |
+| Status 3 (model unavailable) and a DFX time near 2 s | PCAP timeout. A `.bit` file instead of a `.bin` file, or the PL did not get the full bitstream first |
+| Status 3 and a short DFX time | devcfg reported an error, or the length of the bitstream is not a multiple of 4 |
+| The board stops answering at the first model request | A register access to the partition got no answer: wrong `ACCEL_BASE_ADDR`, or the decouple signal is not EMIO bit 0 |
+| Status 4 (inference failed) | The module did not finish in time, or it returned a class that is not less than `n_classes`. Check the register offsets |
 
-## Status
+## Status (26 Nov 2026)
 
-Not compiled against the real BSP and not run on the board yet. `ps_main.c` and `ps_dfx.c` pass a syntax check against stub headers. The driver calls are modelled on the Zynq FSBL's PCAP code. Things to confirm on the first build:
-
-- that Vitis compiles the `.S` file as part of the application
-- the SNN register offsets
-- that the SNN IP takes the same Q8.8 image buffer as the CNN. Until the feature extraction has moved into the IP, the SNN will load and run, but its answers are meaningless
+Built with Vitis 2026.1 and run on the board with both static designs: `info`, `stream`, `window` and the capture clear work. `record` is tested in the host test only. Not tested on the board yet: debug inference and a DFX switch from the IMU application. The DFX code is the same as in assignment 2, where a switch took about 42 ms. The live inference loop for SW1 high is not written yet.

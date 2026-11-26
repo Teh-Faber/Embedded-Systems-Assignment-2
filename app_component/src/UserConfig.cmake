@@ -26,25 +26,24 @@ set(USER_UNDEFINED_SYMBOLS
 # Example 2: Adding ../../common/include will consider the path as relative to this component directory.
 # Example 3: Adding ${CMAKE_SOURCE_DIR}/data/include to add data/include from this project.
 
+# Partial bitstreams of the static design the platform was made from:
+# ps/bitstreams/fir with dfx_static_fir.xsa, ps/bitstreams/iir with dfx_static_iir.xsa
 set(USER_INCLUDE_DIRECTORIES
 ".."
-"../../ps/bitstreams"
+"../../ps/bitstreams/fir"
 )
 
 #Add any source below, they will be added as Compile sources.
 #Example 1: Adding /proj/data/helloworld.c will pass /proj/data/helloworld.c
 #Example 2: Adding ../../common/helloworld.c will consider the path as relative to this component directory
 #Example 3: Adding ${MY_ENV}/data/helloworld.c are expanded using project-specific environment settings.
-#set(USER_COMPILE_SOURCES
-#"../ps_bitstreams.S"
-#"../ps_dfx.c"
-#"../ps_main.c"
-#"../ps_uart.c"
-#)
+# IMU application (ps/README.md)
 set(USER_COMPILE_SOURCES
 "../../ps/ps_bitstreams.S"
 "../../ps/ps_dfx.c"
-"../../ps/ps_main.c"
+"../../ps/ps_accel.c"
+"../../ps/ps_imu.c"
+"../../ps/ps_imu_main.c"
 "../../ps/ps_uart.c"
 )
 

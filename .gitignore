@@ -20,30 +20,26 @@ NA/
 compile_commands.json
 .vitisWorkspace.json
 
-# Datasets
+# Recordings (pc/imu_tool.py writes to data/imu/)
 /data/
 
 # Workspaces
 pl/vivado/*/
-pl/vitis/ws/
 
 # Bitstreams exported for the PS (pl/vivado/export_dfx.tcl)
 ps/bitstreams/*.bin
 ps/bitstreams/*.bit
+ps/bitstreams/*/*.bin
+ps/bitstreams/*/*.bit
 
 # Python
 __pycache__/
 *.pyc
 .venv/
 venv/
-snn_env/
 
 # Editors
 .vscode/
-
-# Run output
-*.jsonl
-!pc/example_output/*.jsonl
 
 /forget/
 # Vitis caches, platform and build output (recreated from the XSA / by building)
@@ -52,12 +48,11 @@ platform/
 app_component/build/
 compile_commands.json
 .compile_commands/
-cnn/build~/
 
 # Export outputs, recreated by pl/vivado/export_dfx.tcl
 ps/bitstreams/*.prm
-pl/vivado/dfx_static.xsa
+ps/bitstreams/*/*.prm
+pl/vivado/dfx_static_*.xsa
 
-# Training outputs
-cnn/trained_model/
-snn/snn_mlp_model/
+# GHDL simulation output (pl/sim/imu/run_ghdl.sh)
+pl/sim/imu/build/
